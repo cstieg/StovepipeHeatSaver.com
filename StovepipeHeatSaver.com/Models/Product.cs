@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Cstieg.ShoppingCart;
 
 namespace StovepipeHeatSaver.Models
 {
     public class Product : ProductBase
     {
-        public static decimal MinTolerance = (decimal)0.5;
-        public static decimal MaxTolerance = (decimal)1.0;
+        public static decimal MinTolerancePct = 0.028M;
+        public static decimal MaxTolerancePct = 0.08M;
 
         public decimal Diameter { get; set; }
 
@@ -25,7 +22,7 @@ namespace StovepipeHeatSaver.Models
         {
             get
             {
-                return Circumference - MinTolerance;
+                return Circumference * (1.0M - MinTolerancePct);
             }
         }
 
@@ -33,7 +30,7 @@ namespace StovepipeHeatSaver.Models
         {
             get
             {
-                return Circumference + MaxTolerance;
+                return Circumference * (1.0M + MaxTolerancePct);
             }
         }
     }
