@@ -17,13 +17,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("StovepipeHeatSaver.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Products", "Home")</li>
+                    <li>@Html.ActionLink("Reviews", "Reviews", "Home")</li>
+                    <li>@Html.ActionLink("FAQ", "Faq", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>
+                        <a href="/shoppingcart">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>Cart
+                            <span class="badge" id="shoppingCartCount"></span>
+                        </a>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
