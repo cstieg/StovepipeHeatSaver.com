@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.PayPal", "..\_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StovepipeHeatSaver.com", "StovepipeHeatSaver.com\StovepipeHeatSaver.com.csproj", "{AEC1819D-A750-4E8A-B4F5-3A14436621A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFiles", "..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj", "{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
