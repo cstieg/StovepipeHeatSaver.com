@@ -62,6 +62,11 @@ namespace StovepipeHeatSaver.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Faqs()
+        {
+            return View(await db.Faqs.ToListAsync());
+        }
+
         public ActionResult Contact()
         {
             return View();

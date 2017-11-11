@@ -36,5 +36,6 @@ namespace StovepipeHeatSaver.Models
         public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
         public DbSet<Cstieg.ShoppingCart.ShipToAddress> Addresses { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Faq> Faqs { get; set; }
     }
 }

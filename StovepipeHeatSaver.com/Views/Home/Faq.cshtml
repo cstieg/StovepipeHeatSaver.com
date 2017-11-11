@@ -1,0 +1,24 @@
+﻿@model IEnumerable<StovepipeHeatSaver.Models.Faq>
+
+@{
+    ViewBag.Title = "FAQ";
+}
+<h2>Frequently Asked Questions</h2>
+
+<div class="container">
+    <div id="faqs" class="row">
+        @foreach (var faq in Model)
+        {
+            <article class="col-xs-12 col-sm-6 col-md-4 faq">
+                <div class="col-xs-12 faq-inner">
+                    <section class="qa-question">
+                        @faq.Question
+                    </section>
+                    <section class="qa-answer">
+                        @faq.Answer
+                    </section>
+                </div>
+            </article>
+        }
+    </div>
+</div>

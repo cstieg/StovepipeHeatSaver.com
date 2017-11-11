@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StovepipeRadiator</RootNamespace>
-    <AssemblyName>StovepipeRadiator.com</AssemblyName>
+    <RootNamespace>StovepipeHeatSaver</RootNamespace>
+    <AssemblyName>StovepipeHeatSaver.com</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -205,6 +206,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Faq.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -285,6 +287,12 @@
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\Testimonials.cshtml" />
     <Content Include="Views\Home\ProductSizeNotFound.cshtml" />
+    <Content Include="Views\Faqs\Create.cshtml" />
+    <Content Include="Views\Faqs\Delete.cshtml" />
+    <Content Include="Views\Faqs\Details.cshtml" />
+    <Content Include="Views\Faqs\Edit.cshtml" />
+    <Content Include="Views\Faqs\Index.cshtml" />
+    <Content Include="Views\Faqs\_ModifyPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
