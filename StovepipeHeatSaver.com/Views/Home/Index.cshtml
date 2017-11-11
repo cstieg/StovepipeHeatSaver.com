@@ -2,12 +2,142 @@
     ViewBag.Title = "Home";
 }
 
-<form action="/Home/Product" method="get">
-    <label>Circumference: </label>
-    <input type="text" name="circumference" />
-    <select name="unit">
-        <option value="inches">inches</option>
-        <option value="centimeters">centimeters</option>
-    </select><br />
-    <input type="submit" name="Submit" />
-</form>
+<div id="myCarousel" data-interval="5000" data-ride="carousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-textbox-center-right">
+                <p class="carousel-text s4">Put text here</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-textbox-center-right">
+                <p class="carousel-text s3">Tell a story</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-textbox-center-right">
+                <p class="carousel-text s3">Say more stuff</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-caption">Sample caption</div>
+        </div>
+        <div class="item">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-textbox-left">
+                <p class="carousel-text s3">Text on the left side</p>
+            </div>
+            <div class="carousel-textbox-right">
+                <p class="carousel-text s1">Text on the right</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/Content/images/blankSlide.png"
+                 alt="Sample slide">
+            <div class="carousel-textbox-center-left">
+                <p class="carousel-text s1">Finish the story</p>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next">&rsaquo;</a>
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+    </ol>
+</div>
+
+<section id="index-promo-video">
+    <div class="centered-text">
+        <h3>Watch a Video</h3>
+    </div>
+    <iframe class="hidden" src="https://www.youtube.com/embed/rmrtX79I1eA/rel=0" width="560" height="315" frameborder="allowfullscreen"></iframe>
+</section>
+
+<div class="container">
+    <div class="row">
+        <section id="index-about-heatsavers" class="col-sm-6">
+            <h2>Why Do I Need a HeatSaver?</h2>
+                <p>
+                    Your furnace or heating stove is a wonderful thing in the winter ... BUT, it's not very efficient.
+                    Much of the heat escapes out your chimney and heats the outdoors.
+                </p>
+                <p>
+                    A set of Stovepipe HeatSavers will wrap around your stovepipe, conduct the wasted heat into the bands,
+                    and radiate it back into your house, making your furnace or stove much more efficient.
+                    It will help you increase the heat going into your house and/or save on your energy bills!
+                </p>
+
+
+
+
+
+            Guaranteed to draw more heat from the stovepipe.
+
+            Pay for themselves in a short period of time.
+
+            Never need maintenance.
+
+            Will last a lifetime.
+
+            May be re-used if you replace the old stovepipe.
+
+            You may put on as many bands as you wish or have room for. The more bands, the less heat going out the chimney.
+            Snap-on radiator bands install in minutes
+            The bands, in effect, increase the outside surface area of your hot stovepipe. 
+            The bands conduct escaping heat from your existing stove pipe into the loops of the bands. 
+            This allows heat to be radiated from the loops. They salvage wasted heat.
+            Fit all sizes of stove pipe. Install in 5 minutes.
+            Salvage exhaust heat from your stack
+            Radiate the free heat into your room before it escapes.
+            Gives off heat just like the fins on a motorcycle engine.
+            Works with any heat source....wood, coal, pellet, corn, propane, fuel oil, natural gas.
+
+        </section>
+
+        <section id="index-how-to-measure" class="col-sm-6">
+            <h2>How to Order</h2>
+                <h3>Measure the circumference of your stovepipe</h3>
+                    <h4>Materials needed</h4>
+                        <h5>Method 1 - A flexible tape measure</h5>
+                        <ul>
+                            <li>If you have a flexible tape measure (like those used for taking clothing measurements), you may use that.</li>
+                            <li>Do NOT use a metal tape measure! You will not get a good measurement because it is too rigid.</li>
+                        </ul>
+                        <h5>Method 2 - A piece of string / yarn and a tape measure or yardstick</h5>
+                    <h4>How to Measure</h4>
+                    <ul>
+                        <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
+                        <li>Wrap your flexible tape measure or string around the stovepipe, and note where it starts to overlap.</li>
+                        <li>If using a flexible tape measure, note the measurement at the point of overlap.</li>
+                        <li>If using a string, grasp the string at the exact point of overlap.  
+                            Then place the loose end of the string at the beginning (0") of the tape measure,
+                            and stretch it tight down the tape measure.  
+                            Note the measurement at the point your fingers are grasping the string.</li>
+                    </ul>
+                <h3>Enter your measurement here</h3>
+            <div id="index-find-by-circumference">
+                @Html.Partial("_FindByCircumferencePartial")
+            </div>
+
+        </section>
+    </div>
+</div>
