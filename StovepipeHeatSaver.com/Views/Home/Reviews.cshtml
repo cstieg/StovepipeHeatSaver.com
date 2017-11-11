@@ -1,0 +1,23 @@
+﻿@model IEnumerable<StovepipeHeatSaver.Models.Review>
+
+@{
+    ViewBag.Title = "Reviews";
+}
+<h2>@ViewBag.Title</h2>
+
+<div id="product-reviews" class="container">
+    @foreach (var review in Model)
+    {
+        <article class="product-review">
+            <h3 class="product-review-title">@review.Title</h3>
+            <div class="product-review-content">
+                @Html.Raw(review.Text)
+            </div>
+            <hr />
+            <div class="product-review-footer">
+                <span class="product-review-date">@review.Date.Value.ToShortDateString()</span>
+                <span class="product-review-person">@review.GetReviewer()</span>
+            </div>
+        </article>
+    }
+</div>
