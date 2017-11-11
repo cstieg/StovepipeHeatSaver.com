@@ -18,6 +18,11 @@ namespace StovepipeHeatSaver.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Products()
+        {
+            return View(await db.Products.ToListAsync());
+        }
+
         public async Task<ActionResult> Product()
         {
             string circumferenceParam = Request.Params.Get("circumference");
