@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart", "..\_Reusables\C#\ShoppingCart\ShoppingCart\ShoppingCart.csproj", "{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales", "..\_Reusables\C#\ShoppingCart\ShoppingCart\Sales.csproj", "{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerHelper", "..\_Reusables\C#\ControllerHelper\ControllerHelper\ControllerHelper.csproj", "{C8DB3F11-651C-4A00-B2D6-650700D0007F}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionHelper", "..\_Reusab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringHelper", "..\_Reusables\C#\StringHelper\StringHelper.csproj", "{DFF3EF94-9144-45EB-BE2D-9BDE93671212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.PayPal", "..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj", "{601225F6-0D4D-41AE-89BA-5677D1354BFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.PayPal", "..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\Sales.PayPal.csproj", "{601225F6-0D4D-41AE-89BA-5677D1354BFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StovepipeHeatSaver.com", "StovepipeHeatSaver.com\StovepipeHeatSaver.com.csproj", "{AEC1819D-A750-4E8A-B4F5-3A14436621A4}"
 EndProject

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.Geography;
 using Cstieg.ControllerHelper;
-using Cstieg.ShoppingCart;
-using Cstieg.ShoppingCart.PayPal;
+using Cstieg.Sales.PayPal;
+using Cstieg.Sales.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {

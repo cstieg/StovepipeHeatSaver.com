@@ -1,5 +1,5 @@
 ﻿using System;
-using Cstieg.ShoppingCart;
+using Cstieg.Sales.Models;
 
 namespace StovepipeHeatSaver.Models
 {

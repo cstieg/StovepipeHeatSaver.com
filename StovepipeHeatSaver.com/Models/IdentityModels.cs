@@ -31,10 +31,12 @@ namespace StovepipeHeatSaver.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Cstieg.ShoppingCart.Customer> Customers { get; set; }
-        public DbSet<Cstieg.ShoppingCart.Order> Orders { get; set; }
-        public DbSet<Cstieg.ShoppingCart.OrderDetail> OrderDetails { get; set; }
-        public DbSet<Cstieg.ShoppingCart.ShipToAddress> Addresses { get; set; }
+        public DbSet<Cstieg.Sales.Models.Customer> Customers { get; set; }
+        public DbSet<Cstieg.Sales.Models.Order> Orders { get; set; }
+        public DbSet<Cstieg.Sales.Models.OrderDetail> OrderDetails { get; set; }
+        public DbSet<Cstieg.Sales.Models.ShipToAddress> Addresses { get; set; }
+        public DbSet<Cstieg.Sales.Models.ShippingScheme> ShippingSchemes { get; set; }
+        public DbSet<Cstieg.Sales.Models.ShippingCountry> ShippingCountries { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Review> Reviews { get; set; }
