@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201711110320397_reviews.Designer.cs">
       <DependentUpon>201711110320397_reviews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711122306495_ShippingScheme.cs" />
+    <Compile Include="Migrations\201711122306495_ShippingScheme.Designer.cs">
+      <DependentUpon>201711122306495_ShippingScheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711122332031_ShippingCountryIndex.cs" />
+    <Compile Include="Migrations\201711122332031_ShippingCountryIndex.Designer.cs">
+      <DependentUpon>201711122332031_ShippingCountryIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Faq.cs" />
@@ -251,7 +259,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -339,13 +349,13 @@
       <Project>{c68013c0-5ecd-4c34-ae72-07f6742efb70}</Project>
       <Name>Geography</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\ShoppingCart.PayPal.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\Sales.PayPal.csproj">
       <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
-      <Name>ShoppingCart.PayPal</Name>
+      <Name>Sales.PayPal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\ShoppingCart.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\Sales.csproj">
       <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
-      <Name>ShoppingCart</Name>
+      <Name>Sales</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj">
       <Project>{5612c6e4-f55c-4120-b33d-bcfcc2bda4bd}</Project>
@@ -361,6 +371,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711110320397_reviews.resx">
       <DependentUpon>201711110320397_reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711122306495_ShippingScheme.resx">
+      <DependentUpon>201711122306495_ShippingScheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711122332031_ShippingCountryIndex.resx">
+      <DependentUpon>201711122332031_ShippingCountryIndex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
