@@ -37,6 +37,7 @@ namespace StovepipeHeatSaver.Models
         public DbSet<Cstieg.Sales.Models.ShipToAddress> Addresses { get; set; }
         public DbSet<Cstieg.Sales.Models.ShippingScheme> ShippingSchemes { get; set; }
         public DbSet<Cstieg.Sales.Models.ShippingCountry> ShippingCountries { get; set; }
+        public DbSet<Cstieg.Geography.Country> Countries { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Review> Reviews { get; set; }

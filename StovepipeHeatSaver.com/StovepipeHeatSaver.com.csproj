@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\FaqsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -225,6 +226,14 @@
     <Compile Include="Migrations\201711131450127_Update.cs" />
     <Compile Include="Migrations\201711131450127_Update.Designer.cs">
       <DependentUpon>201711131450127_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711132211004_Country.cs" />
+    <Compile Include="Migrations\201711132211004_Country.Designer.cs">
+      <DependentUpon>201711132211004_Country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711132224143_test.cs" />
+    <Compile Include="Migrations\201711132224143_test.Designer.cs">
+      <DependentUpon>201711132224143_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -332,6 +341,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -359,11 +373,11 @@
       <Project>{c68013c0-5ecd-4c34-ae72-07f6742efb70}</Project>
       <Name>Geography</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart.PayPal\ShoppingCart.PayPal\Sales.PayPal.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj">
       <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
       <Name>Sales.PayPal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\ShoppingCart\ShoppingCart\Sales.csproj">
+    <ProjectReference Include="..\..\_Reusables\C#\Sales\Sales\Sales.csproj">
       <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
       <Name>Sales</Name>
     </ProjectReference>
@@ -390,6 +404,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711131450127_Update.resx">
       <DependentUpon>201711131450127_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711132211004_Country.resx">
+      <DependentUpon>201711132211004_Country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711132224143_test.resx">
+      <DependentUpon>201711132224143_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
