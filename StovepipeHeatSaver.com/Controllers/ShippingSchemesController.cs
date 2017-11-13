@@ -3,13 +3,18 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
+using Cstieg.ControllerHelper.ActionFilters;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    [ClearCache]
+    [RoutePrefix("edit/shippingschemes")]
+    [Route("{action}/{id?}")]
     public class ShippingSchemesController : BaseController
     {
 
         // GET: ShippingSchemes
+        [Route("")]
         public async Task<ActionResult> Index()
         {
             return View(await db.ShippingSchemes.ToListAsync());

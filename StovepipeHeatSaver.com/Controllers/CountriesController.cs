@@ -3,12 +3,17 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Cstieg.Geography;
+using Cstieg.ControllerHelper.ActionFilters;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    [ClearCache]
+    [RoutePrefix("edit/countries")]
+    [Route("{action}/{id?}")]
     public class CountriesController : BaseController
     {
         // GET: Countries
+        [Route("")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Countries.ToListAsync());

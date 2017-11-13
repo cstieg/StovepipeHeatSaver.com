@@ -3,13 +3,18 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
+using Cstieg.ControllerHelper.ActionFilters;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    [ClearCache]
+    [RoutePrefix("edit/shippingcountries")]
+    [Route("{action}/{id?}")]
     public class ShippingCountriesController : BaseController
     {
 
         // GET: ShippingCountries
+        [Route("")]
         public async Task<ActionResult> Index()
         {
             var shippingCountries = db.ShippingCountries.Include(s => s.Country).Include(s => s.ShippingScheme);
