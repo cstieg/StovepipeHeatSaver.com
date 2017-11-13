@@ -2,114 +2,119 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-using Cstieg.ControllerHelper.ActionFilters;
 using StovepipeHeatSaver.Models;
+using Cstieg.ControllerHelper.ActionFilters;
 
 namespace StovepipeHeatSaver.Controllers
 {
     [ClearCache]
-    [RoutePrefix("edit/reviews")]
+    [RoutePrefix("edit/products")]
     [Route("{action}/{id?}")]
-    public class ReviewsController : BaseController
+    public class ProductsController : BaseController
     {
-        // GET: Reviews
+        // GET: Products
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Reviews.ToListAsync());
+            var productBases = db.Products.Include(p => p.ShippingScheme);
+            return View(await productBases.ToListAsync());
         }
 
-        // GET: Reviews/Details/5
+        // GET: Products/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = await db.Reviews.FindAsync(id);
-            if (review == null)
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(review);
+            return View(product);
         }
 
-        // GET: Reviews/Create
+        // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name");
             return View();
         }
 
-        // POST: Reviews/Create
+        // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Price,Shipping,ShippingSchemeId,ProductInfo,DisplayOnFrontPage,DoNotDisplay,Diameter")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Reviews.Add(review);
+                db.Products.Add(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(review);
+            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
+            return View(product);
         }
 
-        // GET: Reviews/Edit/5
+        // GET: Products/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = await db.Reviews.FindAsync(id);
-            if (review == null)
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(review);
+            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
+            return View(product);
         }
 
-        // POST: Reviews/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,Shipping,ShippingSchemeId,ProductInfo,DisplayOnFrontPage,DoNotDisplay,Diameter")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(review).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(review);
+            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
+            return View(product);
         }
 
-        // GET: Reviews/Delete/5
+        // GET: Products/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Review review = await db.Reviews.FindAsync(id);
-            if (review == null)
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(review);
+            return View(product);
         }
 
-        // POST: Reviews/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Review review = await db.Reviews.FindAsync(id);
-            db.Reviews.Remove(review);
+            Product product = await db.Products.FindAsync(id);
+            db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

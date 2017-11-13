@@ -196,6 +196,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -220,6 +221,10 @@
     <Compile Include="Migrations\201711122332031_ShippingCountryIndex.cs" />
     <Compile Include="Migrations\201711122332031_ShippingCountryIndex.Designer.cs">
       <DependentUpon>201711122332031_ShippingCountryIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711131450127_Update.cs" />
+    <Compile Include="Migrations\201711131450127_Update.Designer.cs">
+      <DependentUpon>201711131450127_Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +327,11 @@
     <Content Include="Views\Reviews\_ModifyPartial.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -377,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711122332031_ShippingCountryIndex.resx">
       <DependentUpon>201711122332031_ShippingCountryIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711131450127_Update.resx">
+      <DependentUpon>201711131450127_Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

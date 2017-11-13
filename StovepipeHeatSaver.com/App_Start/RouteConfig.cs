@@ -27,8 +27,6 @@ namespace StovepipeHeatSaver
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
-
-
     }
 
     class IsHomeActionConstraint : IRouteConstraint
