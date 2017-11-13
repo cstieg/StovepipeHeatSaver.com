@@ -42,15 +42,14 @@ namespace StovepipeHeatSaver.Controllers
             return Json(returnData, JsonRequestBehavior.AllowGet);
         }
 
-
         /// <summary>
         /// Adds a product to the shopping cart
         /// </summary>
         /// <param name="id">ID of Product model to add</param>
         /// <returns>JSON success response if successful, error response if product already exists</returns>
-        [HttpPost, ActionName("AddOrderDetailToShoppingCart")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddOrderDetailToShoppingCart(int id)
+        public ActionResult AddItem(int id)
         {
             // look up product entity
             Product product = db.Products.SingleOrDefault(m => m.Id == id);
@@ -82,7 +81,7 @@ namespace StovepipeHeatSaver.Controllers
         /// <returns>JSON success response</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult IncrementItemInShoppingCart(int id)
+        public ActionResult IncrementItem(int id)
         {
             // look up product entity
             Product product = db.Products.SingleOrDefault(m => m.Id == id);
@@ -113,9 +112,9 @@ namespace StovepipeHeatSaver.Controllers
         /// </summary>
         /// <param name="id">ID of the Product model qty to decrement</param>
         /// <returns>JSON success response</returns>
-        [HttpPost, ActionName("DecrementItemInShoppingCart")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DecrementItemInShoppingCart(int id)
+        public ActionResult DecrementItem(int id)
         {
             // look up product entity
             Product product = db.Products.SingleOrDefault(m => m.Id == id);
@@ -145,9 +144,9 @@ namespace StovepipeHeatSaver.Controllers
         /// </summary>
         /// <param name="id">ID of Product model to remove</param>
         /// <returns>JSON success response</returns>
-        [HttpPost, ActionName("RemoveItemInShoppingCart")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RemoveItemInShoppingCart(int id)
+        public ActionResult RemoveItem(int id)
         {
             // look up product entity
             Product product = db.Products.SingleOrDefault(m => m.Id == id);

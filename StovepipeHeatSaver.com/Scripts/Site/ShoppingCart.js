@@ -22,7 +22,7 @@ function addToShoppingCart(id) {
     };
     $.ajax({
         type: 'POST',
-        url: '/ShoppingCart/AddOrderDetailToShoppingCart/',
+        url: '/ShoppingCart/AddItem/',
         data: postData,
         dataType: 'json',
         success: function (returnval) {
@@ -39,7 +39,7 @@ function buyNow(id) {
     };
     $.ajax({
         type: 'POST',
-        url: '/ShoppingCart/AddOrderDetailToShoppingCart/',
+        url: '/ShoppingCart/AddItem/',
         data: postData,
         dataType: 'json',
         success: function (returnval) {
@@ -56,14 +56,14 @@ function buyNow(id) {
     });
 }
 
-function incrementItemInShoppingCart(id) {
+function IncrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
     };
     $.ajax({
         type: 'POST',
-        url: '/ShoppingCart/IncrementItemInShoppingCart/',
+        url: '/ShoppingCart/IncrementItem/',
         data: postData,
         dataType: 'json',
         success: function (returnval) {
@@ -76,7 +76,7 @@ function incrementItemInShoppingCart(id) {
 }
 
 
-function decrementItemInShoppingCart(id) {
+function DecrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
@@ -95,7 +95,7 @@ function decrementItemInShoppingCart(id) {
 
     $.ajax({
         type: 'POST',
-        url: '/ShoppingCart/DecrementItemInShoppingCart/',
+        url: '/ShoppingCart/DecrementItem/',
         data: postData,
         dataType: 'json',
         success: function (returnval) {
@@ -106,14 +106,14 @@ function decrementItemInShoppingCart(id) {
     });
 }
 
-function removeItemInShoppingCart(id) {
+function RemoveItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
     };
     $.ajax({
         type: 'POST',
-        url: '/ShoppingCart/RemoveItemInShoppingCart/',
+        url: '/ShoppingCart/RemoveItem/',
         data: postData,
         dataType: 'json',
         success: function (returnval) {
