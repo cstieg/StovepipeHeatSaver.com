@@ -199,6 +199,7 @@
     <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\ShippingSchemesController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -346,6 +347,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\ShippingSchemes\Create.cshtml" />
+    <Content Include="Views\ShippingSchemes\Delete.cshtml" />
+    <Content Include="Views\ShippingSchemes\Details.cshtml" />
+    <Content Include="Views\ShippingSchemes\Edit.cshtml" />
+    <Content Include="Views\ShippingSchemes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
