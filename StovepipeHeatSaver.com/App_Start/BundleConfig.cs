@@ -24,6 +24,7 @@ namespace StovepipeHeatSaver
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
+                      "~/Scripts/Site/site.js",
                       "~/Scripts/Site/ShoppingCart.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

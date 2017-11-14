@@ -96,10 +96,10 @@ textarea {
 }
 
 
-    .navbar-inverse .navbar-brand,
-    .navbar-inverse .navbar-nav li a {
-        color: blue;
-    }
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav li a {
+    color: blue;
+}
 
 img#site-logo {
     height: 86px;
@@ -115,10 +115,10 @@ img#site-logo {
     margin: 3px 10px;
 }
 
-    .navbar-nav li a {
-        padding: 5px;
-        font-size: large;
-    }
+.navbar-nav li a {
+    padding: 5px;
+    font-size: large;
+}
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -253,6 +253,28 @@ span.glyphicon {
     height: 20px;
 }
 
+/* **************************** Video display ************************************* */
+#watch-video-tab {
+    width: 100%;
+    background-color: yellow;
+    border: 4px gold outset;
+    border-radius: 10px;
+}
+
+#watch-video-tab:hover {
+    border: 4px gold inset;
+}
+
+#watch-video {
+    width: 100%;
+}
+
+#watch-video iframe {
+    width: 100%;
+    height: 315px;
+    margin: auto;
+}
+
 /* **************************** Product display *********************************** */
 .product-item {
     height: auto;
@@ -261,11 +283,11 @@ span.glyphicon {
     border-radius: 14px;
 }
 
-    .product-item * {
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
+.product-item * {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
 .product-image {
     width: 200px;
@@ -275,14 +297,14 @@ span.glyphicon {
     border-radius: 8px;
 }
 
-    .product-image img {
-        max-width: 200px;
-    }
+.product-image img {
+    max-width: 200px;
+}
 
-    .product-image:hover {
-        border: inset green 4px;
-        border-radius: 8px;
-    }
+.product-image:hover {
+    border: inset green 4px;
+    border-radius: 8px;
+}
 
 .buy-now {
     background-color: red;
@@ -343,9 +365,9 @@ span.glyphicon {
     padding: 6px;
 }
 
-    #no-paypal h4 {
-        margin: auto;
-    }
+#no-paypal h4 {
+    margin: auto;
+}
 
 /* *********************************About Page **************************************** */
 .video-clip > iframe {
@@ -362,9 +384,9 @@ span.glyphicon {
     padding: 10px;
 }
 
-    .product-review > hr {
-        margin-bottom: 0;
-    }
+.product-review > hr {
+    margin-bottom: 0;
+}
 
 .product-review-footer {
     font-size: small;
@@ -405,23 +427,23 @@ span.glyphicon {
     padding-top: 4px;
 }
 
-    .qa-question::before,
-    .qa-answer::before {
-        color: blue;
-        font-size: 40pt;
-        font-weight: normal;
-        font-family: Impact;
-        text-align: center;
-        float: left;
-        width: 1em;
-        height: 1em;
-        padding: 3px;
-        padding-top: 0;
-        margin-top: -10px;
-        margin-right: 10px;
-        margin-bottom: 20px;
-        display: block;
-    }
+.qa-question::before,
+.qa-answer::before {
+    color: blue;
+    font-size: 40pt;
+    font-weight: normal;
+    font-family: Impact;
+    text-align: center;
+    float: left;
+    width: 1em;
+    height: 1em;
+    padding: 3px;
+    padding-top: 0;
+    margin-top: -10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    display: block;
+}
 
 .qa-question::before {
     content: 'Q';
@@ -436,4 +458,8 @@ span.glyphicon {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.centered-text {
+    text-align: center;
 }

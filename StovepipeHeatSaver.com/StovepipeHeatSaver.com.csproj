@@ -280,6 +280,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
+    <Content Include="Scripts\Site\site.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
