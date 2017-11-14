@@ -1,9 +1,11 @@
 ﻿// ShoppingCart.js
 
+// Gets the anti-forgery token to use in post calls
 function antiForgeryToken() {
-    return $('#anti-forgery-token input')[0].value;
+    return $('#anti-forgery-token input').val();
 }
 
+// Handler for errors in post calls
 function shoppingCartPostError(xhr, httpStatusMessage) {
     var message = 'Error: ';
     if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
@@ -15,6 +17,7 @@ function shoppingCartPostError(xhr, httpStatusMessage) {
     alert(message);
 }
 
+// Adds a product with a given id to the shopping cart
 function addToShoppingCart(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
@@ -25,13 +28,14 @@ function addToShoppingCart(id) {
         url: '/ShoppingCart/AddItem/',
         data: postData,
         dataType: 'json',
-        success: function (returnval) {
+        success: function (result) {
             incrementShoppingCartBadge();
         },
         error: shoppingCartPostError
     });
 }
 
+// Adds a product with a given id to the shopping cart, and redirects to the shopping cart
 function buyNow(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
@@ -42,11 +46,11 @@ function buyNow(id) {
         url: '/ShoppingCart/AddItem/',
         data: postData,
         dataType: 'json',
-        success: function (returnval) {
+        success: function (result) {
             window.location = "/shoppingCart";
         },
-        error: function (returnval) {
-            if (returnval.status = 403) {
+        error: function (result) {
+            if (result.status = 403) {
                 window.location = "/shoppingCart";
             }
             else {
@@ -56,6 +60,7 @@ function buyNow(id) {
     });
 }
 
+// Increments the quantity of an item in the shopping cart with a given id
 function IncrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
@@ -66,24 +71,22 @@ function IncrementItem(id) {
         url: '/ShoppingCart/IncrementItem/',
         data: postData,
         dataType: 'json',
-        success: function (returnval) {
-            var $qty = $('#qty-' + id)[0];
-            $qty.innerText = parseInt($qty.innerText) + 1;
+        success: function (result) {
+            refreshDetail(result);
             recalculate();
         },
         error: shoppingCartPostError
     });
 }
 
-
+// Decrements the quantity of an item in the shopping cart with a given id
 function DecrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
     };
-    var $qty = $('#qty-' + id)[0];
 
-    var qty = parseInt($qty.innerText);
+    var qty = parseInt($('#qty-' + id).text());
     if (qty < 1) {
         alert('No items to remove!');
         return;
@@ -98,14 +101,15 @@ function DecrementItem(id) {
         url: '/ShoppingCart/DecrementItem/',
         data: postData,
         dataType: 'json',
-        success: function (returnval) {
-            $qty.innerText = parseInt($qty.innerText) - 1;
+        success: function (result) {
+            refreshDetail(result);
             recalculate();
         },
         error: shoppingCartPostError
     });
 }
 
+// Removes an item with a given id from the shopping cart
 function RemoveItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
@@ -116,13 +120,13 @@ function RemoveItem(id) {
         url: '/ShoppingCart/RemoveItem/',
         data: postData,
         dataType: 'json',
-        success: function (returnval) {
-            var $item = $('#item-' + id)[0];
-            $item.remove();
+        success: function (result) {
+            $('#item-' + id).remove();
 
             decrementShoppingCartBadge();
 
-            if (itemsInDetailCount() === 0) {
+            // Reload page if no items remain in shopping cart
+            if ($('.item-detail-line').length === 0) {
                 location.reload();
             }
             recalculate();
@@ -131,59 +135,102 @@ function RemoveItem(id) {
     });
 }
 
+// Refreshes the order detail with data supplied from server
+function refreshDetail(orderDetail) {
+    var id = orderDetail.Product.Id;
+
+    var $orderDetail = $('#item-' + id);
+    var $name = $orderDetail.find('.item-name');
+    var $unitPrice = $orderDetail.find('.item-unit-price');
+    var $quantity = $orderDetail.find('.item-qty-ct');
+    var $extendedPrice = $orderDetail.find('.item-extended-price');
+    var $shipping = $orderDetail.find('.item-shipping');
+    var $totalPrice = $orderDetail.find('.item-total-price');
+    
+    $name.text(orderDetail.Product.Name);
+    $unitPrice.text('$' + orderDetail.UnitPrice.toFixed(2));
+    $quantity.text(orderDetail.Quantity);
+    $extendedPrice.text('$' + orderDetail.ExtendedPrice.toFixed(2));
+    $shipping.text('$' + orderDetail.Shipping.toFixed(2));
+    $totalPrice.text('$' + orderDetail.TotalPrice.toFixed(2));
+}
+
+// Recalculates the total line based on the order details
 function recalculate() {
-    var $itemDetailLines = $('.item-detail-line');
     var extendedPriceTotal = 0;
     var shippingTotal = 0;
+    var $itemDetailLines = $('.item-detail-line');
     $itemDetailLines.each(function () {
-        var linePrice = parseFloat($(this).find('.item-unit-price')[0].innerText.slice(1));
-        var lineQty = parseInt($(this).find('.item-qty-ct')[0].innerText);
-
-        var $itemExtendedPrice = $(this).find('.item-extended-price')[0];
-        var $itemShipping = $(this).find('.item-shipping')[0];
-        var $itemTotalPrice = $(this).find('.item-total-price')[0];
-
-        var itemExtendedPrice = 1.0 * linePrice * lineQty;
-        var itemShipping = parseFloat($itemShipping.innerText.slice(1)) || 0;
-        var itemTotalPrice = 1.0 * itemExtendedPrice + itemShipping;
-
-        $itemExtendedPrice.innerHTML = '$' + itemExtendedPrice.toFixed(2);
-        $itemShipping.innerHTML = '$' + itemShipping.toFixed(2);
-        if (itemShipping === 0) {
-            $itemShipping.innerHTML = 'FREE';
-        }
-        $itemTotalPrice.innerHTML = '$' + itemTotalPrice.toFixed(2);
+        var itemExtendedPrice = parseFloat($(this).find('.item-extended-price').text().slice(1)) || 0;
+        var itemShipping = parseFloat($(this).find('.item-shipping').text().slice(1)) || 0;
+        var itemTotalPrice = parseFloat($(this).find('.item-total-price').text().slice(1)) || 0;
 
         extendedPriceTotal += itemExtendedPrice;
         shippingTotal += itemShipping;
     });
 
-    $('.item-detail-total .item-extended-price')[0].innerText = '$' + extendedPriceTotal.toFixed(2);
-    $('.item-detail-total .item-shipping')[0].innerText = '$' + shippingTotal.toFixed(2);
-    $('.item-detail-total .item-total-price')[0].innerText = '$' + (extendedPriceTotal + shippingTotal).toFixed(2);
-}
-
-
-function itemsInDetailCount() {
-    var $itemDetailLines = $('.item-detail-line');
-    return $itemDetailLines.length;
+    $('.item-detail-total .item-extended-price').text('$' + extendedPriceTotal.toFixed(2));
+    $('.item-detail-total .item-shipping').text('$' + shippingTotal.toFixed(2));
+    $('.item-detail-total .item-total-price').text('$' + (extendedPriceTotal + shippingTotal).toFixed(2));
 }
 
 
 // ****************** Shopping cart badge *******************************************************
+// Initializes the shopping cart badge with the number of items from the server
 (function getShoppingCartCount() {
     $.getJSON('/shoppingCart/ShoppingCartCount', function (data) {
         $('#shoppingCartCount').text(data.shoppingCartCount);
     });
 })();
 
+// Increments the shopping cart badge
 function incrementShoppingCartBadge() {
     var currentCount = parseInt($('#shoppingCartCount').text());
     $('#shoppingCartCount').text(currentCount + 1);
 }
 
+// Decrements the shopping cart badge
 function decrementShoppingCartBadge() {
     var currentCount = parseInt($('#shoppingCartCount').text());
     $('#shoppingCartCount').text(currentCount - 1);
 }
 
+
+/* ***************************** Country ************************************** */
+// Sets the country selection from freegeoip.net
+function setCountry() {
+    $.getJSON('https://freegeoip.net/json/', function (data) {
+        var country = data.country_code;
+        var $countrySelect = $('#country-select');
+        var $countryOption = $countrySelect.find('option[value="' + country + '"]');
+
+        // Select 'other' if country is not in the list
+        if ($countryOption.length == 0) {
+            $countryOption = $countrySelect.find('option[value="--"]');
+        }
+        $countryOption.attr('selected', 'selected');
+        updateCountryInShoppingCart(country);
+    });
+}
+
+// Event called when country is manually changed
+function countryChange()
+{   
+    var country = $('#country-select option:selected').val();
+    updateCountryInShoppingCart(country);
+}
+
+// Updates the country on the server
+function updateCountryInShoppingCart(country) {
+    var postData = {
+        __RequestVerificationToken: antiForgeryToken(),
+        country: country
+    };
+    $.post('/shoppingcart/setcountry', postData, function (cart) {
+        for (var i = 0; i < cart.Order.OrderDetails.length; i++) {
+            var orderDetail = cart.Order.OrderDetails[i];
+            refreshDetail(orderDetail);
+        }
+        recalculate();
+    });
+}

@@ -1,4 +1,4 @@
-﻿@model Cstieg.Sales.ShoppingCart
+﻿@model Cstieg.Sales.Models.ShoppingCart
 @{
     ViewData["Title"] = "Shopping Cart";
 }
@@ -37,7 +37,6 @@
                 </div>
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1 item-extended-price">$@item.ExtendedPrice</div>
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1 item-shipping">$@item.Shipping</div>
-                <div class="item-shipping-saved hidden">@item.Shipping</div>
                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 item-total-price">$@item.TotalPrice</div>
                 <div class="col-xs-1">
                     <button onclick="RemoveItem(@item.Product.Id)">x</button>
@@ -54,6 +53,21 @@
             <div class="hidden-xs hidden-sm col-md-1 col-lg-1 item-shipping">$@Model.TotalShipping</div>
             <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 item-total-price">$@Model.GrandTotal</div>
             <div class="col-xs-1"></div>
+        </div>
+
+        <script>
+            window.onload = function () {
+                setCountry();
+            };
+        </script>
+        <div id="country-select" class="row">
+            <h4>Select your country:</h4>
+            <select onchange="countryChange()">
+                @foreach(var country in ViewBag.Countries)
+                {
+                    <option value="@country.IsoCode2">@country.Name</option>
+                }
+            </select>
         </div>
 
         <hr />

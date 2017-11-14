@@ -5,6 +5,8 @@ using Cstieg.ControllerHelper;
 using Cstieg.Sales.Models;
 using Cstieg.Sales.PayPal;
 using StovepipeHeatSaver.Models;
+using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -16,9 +18,10 @@ namespace StovepipeHeatSaver.Controllers
         ClientInfo ClientInfo = new PayPalApiClient().GetClientSecrets();
 
         // GET: ShoppingCart
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             ViewBag.ClientInfo = ClientInfo;
+            ViewBag.Countries = await db.Countries.ToListAsync();
             ShoppingCart shoppingCart = ShoppingCart.GetFromSession(HttpContext);
             return View(shoppingCart);
         }
@@ -96,9 +99,10 @@ namespace StovepipeHeatSaver.Controllers
             // Increment quantity and save shopping cart
             try
             {
-                shoppingCart.IncrementProduct(product);
+                var orderDetail = shoppingCart.IncrementProduct(product);
                 shoppingCart.SaveToSession(HttpContext);
-                return this.JOk();
+                return Json(orderDetail);
+                //return this.JOk();
             }
             catch (Exception e)
             {
@@ -129,9 +133,10 @@ namespace StovepipeHeatSaver.Controllers
             // Decrement qty and update shopping cart in session
             try
             {
-                shoppingCart.DecrementProduct(product);
+                var orderDetail = shoppingCart.DecrementProduct(product);
                 shoppingCart.SaveToSession(HttpContext);
-                return this.JOk();
+                return Json(orderDetail);
+                //return this.JOk();
             }
             catch (Exception e)
             {
@@ -170,7 +175,17 @@ namespace StovepipeHeatSaver.Controllers
                 return this.JError(403, e.Message);
             }
         }
-       
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SetCountry()
+        {
+            string country = Request.Params.Get("country");
+            var cart = ShoppingCart.GetFromSession(HttpContext);
+            cart.Country = country;
+            cart.UpdateShippingCharges();
+            cart.SaveToSession(HttpContext);
+            return Json(cart);
+        }
     }
 }
