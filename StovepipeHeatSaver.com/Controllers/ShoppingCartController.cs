@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper;
 using Cstieg.Sales.Models;
 using Cstieg.Sales.PayPal;
 using StovepipeHeatSaver.Models;
-using System.Threading.Tasks;
-using System.Data.Entity;
 
 namespace StovepipeHeatSaver.Controllers
 {

@@ -1,13 +1,50 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+/* ***************** COMMON ***************************************** */
+
+body {
+    /* Padding for height of navbar header */
+    padding: 106px 10px 20px 10px;
+    background-image: url("");
+    background-color: #fafafa; /* offwhite */
 }
 
-/* Set padding to keep content from hitting the edges */
+@media screen and (max-width: 416px) {
+    body {
+        padding-top: 140px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        background: linear-gradient(to right, lightgray, white 10%, white 90%, lightgray);
+    }
+}
+
 .body-content {
+    color: none;
     padding-left: 15px;
     padding-right: 15px;
+    font-size: medium;
 }
+
+main {
+    min-height: 75vh;
+    display: block;
+}
+
+footer {
+    font-size: small;
+    bottom: 0;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+.larger-text {
+    font-size: larger;
+}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -16,9 +53,387 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
+h1 {
+    font-family: Impact;
+}
+
+h2 {
+    background-color: silver;
+    color: blue;
+    padding: 4px;
+    border: 2px outset darkgray;
+    border-radius: 6px;
+}
+
 textarea {
-    max-width: 280px;
+    width: 100%;
+    min-height: 10em;
+}
+
+
+/* Cancel Bootstrap's margin / padding adjustments, which were causing misalignments */
+.container,
+.container > .navbar-header,
+.container > .navbar-collapse {
+    padding: 0;
+    margin: 0 auto;
+}
+
+.row {
+    margin: 5px auto;
+}
+
+/* ****************************** Navbar ****************************************** */
+.navbar-nav {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.navbar-inverse {
+    background-color: blue;
+    border-color: dodgerblue;
+    background: linear-gradient(lightblue, blue 20%, lightblue);
+}
+
+
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-nav li a {
+        color: blue;
+    }
+
+img#site-logo {
+    height: 86px;
+    width: 354px;
+}
+
+/* Menu items */
+.navbar-nav li {
+    background-color: white;
+    border: 3px blue groove;
+    border-radius: 10px;
+    height: 35px;
+    margin: 3px 10px;
+}
+
+    .navbar-nav li a {
+        padding: 5px;
+        font-size: large;
+    }
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: black;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: aliceblue;
+    color: black;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: aliceblue;
+}
+
+.dropdown-menu.dropdown-products {
+    left: 100%;
+    top: 0%;
+}
+
+/* Shopping Cart Icon Fix */
+span.glyphicon {
+    line-height: 0;
+    margin-right: 6px;
+}
+
+.dropdown li {
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        float: unset;
+    }
+}
+
+/* **************************** Main page carousel ******************************** */
+.carousel {
+    margin-bottom: 30px;
+}
+
+.carousel-textbox-center-left,
+.carousel-textbox-center-right,
+.carousel-textbox-left,
+.carousel-textbox-right {
+    position: absolute;
+    top: 10px;
+    bottom: 20px;
+    z-index: 10;
+    color: black;
+    text-align: center;
+}
+
+.carousel-textbox-center-right {
+    right: 3%;
+    left: 30%;
+}
+
+.carousel-textbox-center-left {
+    right: 50%;
+    left: 10%;
+}
+
+.carousel-textbox-right {
+    right: 10%;
+    left: 60%;
+}
+
+.carousel-textbox-left {
+    right: 60%;
+    left: 10%;
+}
+
+.carousel-text {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.carousel-caption {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2vw;
+}
+
+.s4 {
+    font-size: 3.75vw;
+    line-height: 1;
+}
+
+.s3 {
+    font-size: 3.25vw;
+}
+
+.s2 {
+    font-size: 2.75vw;
+}
+
+.s1 {
+    font-size: 2.5vw;
+}
+
+@media screen and (min-width: 1000px) {
+    .s4 {
+        font-size: 40pt;
+    }
+
+    .s3 {
+        font-size: 35pt;
+    }
+
+    .s2 {
+        font-size: 30pt;
+    }
+
+    .s1 {
+        font-size: 25pt;
+    }
+}
+
+.carousel-indicators {
+    background: linear-gradient(to right, lightblue, blue 50%, lightblue 100%);
+    border-radius: 14px;
+    width: 50%;
+    margin-left: -25%;
+    top: 101%;
+    height: 20px;
+}
+
+/* **************************** Product display *********************************** */
+.product-item {
+    height: auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 14px;
+}
+
+    .product-item * {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+.product-image {
+    width: 200px;
+    height: 220px;
+    margin: auto;
+    border: inset transparent 4px;
+    border-radius: 8px;
+}
+
+    .product-image img {
+        max-width: 200px;
+    }
+
+    .product-image:hover {
+        border: inset green 4px;
+        border-radius: 8px;
+    }
+
+.buy-now {
+    background-color: red;
+    color: white;
+    font-size: larger;
+    min-width: 100px;
+    min-height: 20px;
+    border: gray 2px outset;
+}
+
+.add-to-shopping-cart {
+    margin: 4px;
+}
+
+.product-item button:hover {
+    background-color: maroon;
+    color: white;
+}
+
+.product-item.selected .buy-now {
+    border: black 2px solid;
+    border-radius: 6px;
+}
+
+.image-wrapper {
+    width: 100%;
+}
+
+/* ************************* Product page ******************** */
+#product-page-images img {
+    width: auto;
+    max-width: 100%;
+    max-height: 75vh;
+    margin: auto;
+}
+
+#product-page-description dt,
+#product-page-description dd {
+    margin-bottom: 8px;
+}
+
+/* ************************* Order detail page *************** */
+.item-detail-header *,
+.item-detail-total * {
+    font-weight: bold;
+}
+
+
+/* ******************************** Shopping Cart Page ******************************** */
+.shopping-cart-product-image {
+    max-width: 100%;
+}
+
+#no-paypal {
+    width: 250px;
+    border: ridge thick green;
+    border-radius: 14px;
+    padding: 6px;
+}
+
+    #no-paypal h4 {
+        margin: auto;
+    }
+
+/* *********************************About Page **************************************** */
+.video-clip > iframe {
+    max-width: 100%;
+}
+
+/* ********************************Reviews Page *************************************** */
+.product-review {
+    background-color: aliceblue;
+    border: outset thick blue;
+    border-radius: 14px;
+    color: black;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+    .product-review > hr {
+        margin-bottom: 0;
+    }
+
+.product-review-footer {
+    font-size: small;
+    text-align: right;
+    margin-top: 6px;
+}
+
+/* *************************** FAQ ******************************* */
+#faqs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -25px;
+    margin-right: -5px;
+}
+
+/* Put margins on inner div instead of .faq to avoid causing flexbox to overflow*/
+.faq-inner {
+    margin: 10px;
+    padding: 10px;
+}
+
+.qa-question,
+.qa-answer {
+    min-height: 6em;
+    padding: 6px;
+}
+
+.qa-question {
+    font-size: 14pt;
+    font-weight: bold;
+    vertical-align: middle;
+    border: outset thick blue;
+    border-radius: 14px;
+    background-color: aliceblue;
+}
+
+.qa-answer {
+    padding-top: 4px;
+}
+
+    .qa-question::before,
+    .qa-answer::before {
+        color: blue;
+        font-size: 40pt;
+        font-weight: normal;
+        font-family: Impact;
+        text-align: center;
+        float: left;
+        width: 1em;
+        height: 1em;
+        padding: 3px;
+        padding-top: 0;
+        margin-top: -10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+.qa-question::before {
+    content: 'Q';
+}
+
+.qa-answer::before {
+    content: 'A';
+}
+
+/* ********************* Overrides ******************************* */
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
