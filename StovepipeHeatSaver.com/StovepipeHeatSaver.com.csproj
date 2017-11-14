@@ -358,6 +358,8 @@
     <Content Include="Views\ShippingCountries\Details.cshtml" />
     <Content Include="Views\ShippingCountries\Edit.cshtml" />
     <Content Include="Views\ShippingCountries\Index.cshtml" />
+    <Content Include="Views\ShippingSchemes\_ShippingCountriesIndexPartial.cshtml" />
+    <Content Include="Views\ShippingCountries\_ModifyPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

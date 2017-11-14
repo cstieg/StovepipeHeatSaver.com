@@ -1,9 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
 using Cstieg.ControllerHelper.ActionFilters;
+using System.Linq;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -42,8 +44,6 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // POST: ShippingSchemes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description")] ShippingScheme shippingScheme)
@@ -70,6 +70,7 @@ namespace StovepipeHeatSaver.Controllers
             {
                 return HttpNotFound();
             }
+            shippingScheme.ShippingCountries = await db.ShippingCountries.Where(s => s.Id == id).ToListAsync();
             return View(shippingScheme);
         }
 

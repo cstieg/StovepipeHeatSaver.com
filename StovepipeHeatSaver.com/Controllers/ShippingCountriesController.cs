@@ -12,15 +12,7 @@ namespace StovepipeHeatSaver.Controllers
     [Route("{action}/{id?}")]
     public class ShippingCountriesController : BaseController
     {
-
-        // GET: ShippingCountries
-        [Route("")]
-        public async Task<ActionResult> Index()
-        {
-            var shippingCountries = db.ShippingCountries.Include(s => s.Country).Include(s => s.ShippingScheme);
-            return View(await shippingCountries.ToListAsync());
-        }
-
+        
         // GET: ShippingCountries/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -37,16 +29,15 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: ShippingCountries/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
-            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name");
+            ViewBag.ShippingSchemeId = id;
+            
             return View();
         }
 
         // POST: ShippingCountries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,ShippingSchemeId,CountryId,MinQty,MaxQty,AdditionalShipping")] ShippingCountry shippingCountry)
@@ -55,11 +46,12 @@ namespace StovepipeHeatSaver.Controllers
             {
                 db.ShippingCountries.Add(shippingCountry);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "ShippingSchemes", new { id = shippingCountry.ShippingSchemeId });
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", shippingCountry.CountryId);
-            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", shippingCountry.ShippingSchemeId);
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
+            ViewBag.ShippingSchemeId = shippingCountry.ShippingSchemeId;
+
             return View(shippingCountry);
         }
 
@@ -76,13 +68,12 @@ namespace StovepipeHeatSaver.Controllers
                 return HttpNotFound();
             }
             ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", shippingCountry.CountryId);
-            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", shippingCountry.ShippingSchemeId);
+            ViewBag.ShippingSchemeId = shippingCountry.ShippingSchemeId;
+
             return View(shippingCountry);
         }
 
         // POST: ShippingCountries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,ShippingSchemeId,CountryId,MinQty,MaxQty,AdditionalShipping")] ShippingCountry shippingCountry)
@@ -91,10 +82,10 @@ namespace StovepipeHeatSaver.Controllers
             {
                 db.Entry(shippingCountry).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "ShippingSchemes", new { id = shippingCountry.ShippingSchemeId });
             }
             ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name", shippingCountry.CountryId);
-            ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", shippingCountry.ShippingSchemeId);
+            ViewBag.ShippingSchemeId = shippingCountry.ShippingSchemeId;
             return View(shippingCountry);
         }
 
@@ -121,7 +112,7 @@ namespace StovepipeHeatSaver.Controllers
             ShippingCountry shippingCountry = await db.ShippingCountries.FindAsync(id);
             db.ShippingCountries.Remove(shippingCountry);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit", "ShippingSchemes", new { id = shippingCountry.ShippingSchemeId });
         }
 
         protected override void Dispose(bool disposing)
