@@ -1,9 +1,16 @@
-﻿using System.Data.Entity;
-using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Net;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
-using StovepipeHeatSaver.Models;
+using Cstieg.ControllerHelper;
 using Cstieg.ControllerHelper.ActionFilters;
+using Cstieg.Sales.Models;
+using Cstieg.WebFiles.Controllers;
+using Cstieg.WebFiles;
+using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -117,6 +124,90 @@ namespace StovepipeHeatSaver.Controllers
             db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// Adds an image to the product model
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Json result containing image id</returns>
+        [HttpPost]
+        public async Task<JsonResult> AddImage(int? id)
+        {
+            if (id != null)
+            {
+                Product product = await db.Products.FindAsync(id);
+                if (product == null)
+                {
+                    return this.JError(404, "Can't find product " + id.ToString());
+                }
+            }
+
+
+            // Check file is exists and is valid image
+            HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "", "file");
+
+            // Save image to disk and store filepath in model
+            try
+            {
+                string timeStamp = FileManager.GetTimeStamp();
+                WebImage image = new WebImage
+                {
+                    ProductId = id,
+                    ImageUrl = await imageManager.SaveFile(imageFile, 200, timeStamp),
+                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, timeStamp)
+                };
+                db.WebImages.Add(image);
+                await db.SaveChangesAsync();
+                return new JsonResult
+                {
+                    Data = new
+                    {
+                        success = "True",
+                        imageId = image.Id
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                return this.JError(400, "Error saving image: " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Deletes an image from the product model
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Json result containing image id</returns>
+        [HttpPost]
+        public async Task<JsonResult> DeleteImage(int id)
+        {
+            Product product = await db.Products.FindAsync(id);
+            if (product == null)
+            {
+                return this.JError(404, "Can't find product " + id.ToString());
+            }
+
+            int imageId = int.Parse(Request.Params.Get("imageId"));
+            WebImage image = await db.WebImages.FindAsync(imageId);
+            if (image == null)
+            {
+                return this.JError(404, "Can't find image " + imageId.ToString());
+            }
+
+            // remove image files used by product
+            imageManager.DeleteImageWithMultipleSizes(image.ImageUrl);
+
+            db.WebImages.Remove(image);
+            await db.SaveChangesAsync();
+            return new JsonResult
+            {
+                Data = new
+                {
+                    success = "True",
+                    imageId = image.Id
+                }
+            };
         }
 
         protected override void Dispose(bool disposing)
