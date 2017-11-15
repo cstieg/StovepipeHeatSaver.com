@@ -75,6 +75,18 @@
                 @Html.DisplayFor(model => model.Name)
             </dd>
 
+            <dt>Stovepipe Circumference</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Circumference) inches
+            </dd>
+
+            <dt>
+                Fits stovepipes with circumference of
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MinCircumference) to @Html.DisplayFor(model => model.MaxCircumference) inches
+            </dd>
+
             <dt>
                 @Html.LabelFor(model => model.Price)
             </dt>

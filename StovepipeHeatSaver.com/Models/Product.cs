@@ -1,5 +1,6 @@
 ﻿using System;
 using Cstieg.Sales.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace StovepipeHeatSaver.Models
 {
@@ -10,6 +11,7 @@ namespace StovepipeHeatSaver.Models
 
         public decimal Diameter { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N1}")]
         public decimal Circumference
         {
             get
@@ -18,6 +20,7 @@ namespace StovepipeHeatSaver.Models
             }
         }
 
+        [DisplayFormat(DataFormatString = "{0:N1}")]
         public decimal MinCircumference
         {
             get
@@ -26,6 +29,7 @@ namespace StovepipeHeatSaver.Models
             }
         }
 
+        [DisplayFormat(DataFormatString = "{0:N1}")]
         public decimal MaxCircumference
         {
             get
