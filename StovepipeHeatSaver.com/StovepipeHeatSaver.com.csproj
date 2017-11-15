@@ -255,6 +255,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\ImageUnavailable.png" />
+    <Content Include="Content\NicEdit\nicEditorIcons.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -276,8 +277,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\NicEdit\nicEdit.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site\ImageUpload.js" />
+    <Content Include="Scripts\Site\LightboxMessage.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
     <Content Include="Scripts\Site\site.js" />
@@ -367,9 +371,11 @@
     <Content Include="Views\ShippingSchemes\_ShippingCountriesIndexPartial.cshtml" />
     <Content Include="Views\ShippingCountries\_ModifyPartial.cshtml" />
     <Content Include="Views\Countries\_ModifyPartial.cshtml" />
+    <Content Include="Views\Products\_ModifyPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -392,6 +398,10 @@
     <ProjectReference Include="..\..\_Reusables\C#\Geography\Geography\Geography.csproj">
       <Project>{c68013c0-5ecd-4c34-ae72-07f6742efb70}</Project>
       <Name>Geography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\_Reusables\C#\Image\Image.csproj">
+      <Project>{ea5294a7-7f80-4da0-960b-0ae3d376c841}</Project>
+      <Name>Image</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj">
       <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
