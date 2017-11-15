@@ -3,5 +3,5 @@
 })();
 
 function toggleHidden(e) {
-    $(e.data.toggleTarget).toggleClass('hidden');
+    $(e.data.toggleTarget).toggleClass('no-height');
 }

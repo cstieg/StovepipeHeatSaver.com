@@ -172,6 +172,7 @@ span.glyphicon {
     margin-bottom: 30px;
 }
 
+.carousel-textbox-center,
 .carousel-textbox-center-left,
 .carousel-textbox-center-right,
 .carousel-textbox-left,
@@ -182,6 +183,11 @@ span.glyphicon {
     z-index: 10;
     color: black;
     text-align: center;
+}
+
+.carousel-textbox-center {
+    left: 30%;
+    right: 30%;
 }
 
 .carousel-textbox-center-right {
@@ -468,4 +474,13 @@ span.glyphicon {
 
 .centered-text {
     text-align: center;
+}
+
+.no-height {
+    height: 0;
+    overflow: hidden;
+}
+
+.slide-down {
+    transition: height ease-in-out 1s;
 }
