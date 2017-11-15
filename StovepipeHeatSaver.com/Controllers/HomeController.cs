@@ -23,11 +23,20 @@ namespace StovepipeHeatSaver.Controllers
             return View(await db.Products.ToListAsync());
         }
 
-        public async Task<ActionResult> Product()
+        public async Task<ActionResult> Product(int? id)
         {
+            Product product;
             string circumferenceParam = Request.Params.Get("circumference");
             string unit = Request.Params.Get("unit");
-            if (circumferenceParam != null && unit != null)
+
+            // if id is specified, return that product
+            if (id != null)
+            {
+                product = await db.Products.FindAsync(id);
+            }
+
+            // if circumference is specified, search for product that matches
+            else if (circumferenceParam != null && unit != null)
             {
                 decimal circumference = decimal.Parse(circumferenceParam);
                 switch (unit)
@@ -43,18 +52,20 @@ namespace StovepipeHeatSaver.Controllers
                 
                 try
                 {
-                    Product product = await db.Products
-                        .Where(p => circumference >= p.MinCircumference && circumference <= p.MaxCircumference)
-                        .SingleAsync();
-                    return View(product);
+                    var products = await db.Products.ToListAsync();
+                    product = products.Single(p => circumference >= p.MinCircumference && circumference <= p.MaxCircumference);
+                        
                 }
                 catch (Exception)
                 {
                     return RedirectToAction("ProductSizeNotFound");
                 }
             }
-
-            return View();
+            else
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
         public ActionResult ProductSizeNotFound()

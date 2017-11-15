@@ -5,8 +5,8 @@ namespace StovepipeHeatSaver.Models
 {
     public class Product : ProductBase
     {
-        public static decimal MinTolerancePct = 0.028M;
-        public static decimal MaxTolerancePct = 0.08M;
+        public const decimal MinTolerancePct = 0.028M;
+        public const decimal MaxTolerancePct = 0.08M;
 
         public decimal Diameter { get; set; }
 
