@@ -5,7 +5,7 @@ body {
     /* Padding for height of navbar header */
     padding: 106px 10px 20px 10px;
     background-image: url("");
-    background-color: #fafafa; /* offwhite */
+    background-color: #ffe; /* offwhite */
 }
 
 @media screen and (max-width: 416px) {
@@ -16,7 +16,7 @@ body {
 
 @media screen and (min-width: 1200px) {
     body {
-        background: linear-gradient(to right, lightgray, white 10%, white 90%, lightgray);
+        background: linear-gradient(to right, #fb9, white 10%, white 90%, #fb9);
     }
 }
 
@@ -92,66 +92,38 @@ textarea {
 .navbar-inverse {
     background-color: darkred;
     border-color: maroon;
-    background: linear-gradient(pink, darkred 20%, pink);
 }
 
+.navbar-header .navbar-brand {
+    font-size: 18pt;
+}
 
 .navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav li a {
-    color: red;
-}
-
-img#site-logo {
-    height: 86px;
-    width: 354px;
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
 }
 
 
 /* Menu items */
-.navbar-nav li {
-    background-color: white;
-    border: 3px red groove;
-    border-radius: 10px;
-    height: 35px;
-    margin: 3px 10px;
-}
-
-.navbar-nav li a {
+.navbar-inverse .navbar-nav > li > a {
     padding: 5px;
     font-size: large;
-}
-
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
-    color: black;
-    background-color: #fee;
+    height: 35px;
+    margin: 3px 10px;
+    border: 3px transparent groove;
     border-radius: 10px;
 }
 
-.navbar-inverse .navbar-nav > .open > a,
-.navbar-inverse .navbar-nav > .open > a:hover,
-.navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #fee;
+.navbar-inverse .navbar-nav > li > a:hover {
     color: black;
-}
-
-.dropdown-menu > li > a:hover {
-    background-color: #fee;
-}
-
-.dropdown-menu.dropdown-products {
-    left: 100%;
-    top: 0%;
+    border: 3px red groove;
+    background-color: white;
 }
 
 /* Shopping Cart Icon Fix */
 span.glyphicon {
     line-height: 0;
     margin-right: 6px;
-}
-
-.dropdown li {
-    border: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -162,10 +134,6 @@ span.glyphicon {
     }
 }
 
-.navbar-header .navbar-brand {
-    font-size: 18pt;
-    color: white;
-}
 
 /* **************************** Main page carousel ******************************** */
 .carousel {
