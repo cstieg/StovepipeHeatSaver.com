@@ -58,7 +58,11 @@ namespace StovepipeHeatSaver.Controllers
                 }
                 catch (Exception)
                 {
-                    return RedirectToAction("ProductSizeNotFound");
+                    string circumferenceString = circumference.ToString() + "%20" + unit;
+                    ViewBag.MailToString = "mailto:stieg_d@yahoo.com?subject=Custom%20size%20Stovepipe%20HeatSaver%20-%20" + circumferenceString +
+                                           "&body=Please%20contact%20me%20with%20information%20about%20a%20custom%20size%20HeatSaver.%20" +
+                                           "I%20have%20measured%20the%20circumference%20of%20my%20stovepipe%20at%20" + circumferenceString + ".";
+                    return View("ProductSizeNotFound");
                 }
             }
             else

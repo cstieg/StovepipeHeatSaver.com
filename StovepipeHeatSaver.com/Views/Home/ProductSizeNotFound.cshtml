@@ -4,8 +4,11 @@
 }
 
 <h2>Product Size Not Found</h2>
+<p>@ViewBag.MailToString</p>
 
 <p>
     The size you submitted doesn't seem to be a standard size.
-    Please check your measurements again. If you have a non-standard size, please contact us for a custom heatsaver.
+    Please check your measurements again. If you have a non-standard size, please 
+    <a href="@ViewBag.MailToString">contact us</a>
+    for a custom HeatSaver.
 </p>
