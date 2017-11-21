@@ -174,11 +174,16 @@ namespace StovepipeHeatSaver.Controllers
 
             await db.SaveChangesAsync();
 
-            // don't add duplicate of product
+
+            // add order details to database
             for (int i = 0; i < shoppingCart.Order.OrderDetails.Count; i++)
             {
                 var orderDetail = shoppingCart.Order.OrderDetails[i];
                 orderDetail.ProductId = orderDetail.Product.Id;
+
+                db.Entry(orderDetail).State = EntityState.Added;
+
+                // don't add duplicate of product
                 db.Entry(orderDetail.Product).State = EntityState.Unchanged;
             }
 
