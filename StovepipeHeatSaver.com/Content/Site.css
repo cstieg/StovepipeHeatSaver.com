@@ -3,7 +3,7 @@
 
 body {
     /* Padding for height of navbar header */
-    padding: 106px 10px 20px 10px;
+    padding: 146px 10px 20px 10px;
     background-image: url("");
     background-color: #ffe; /* offwhite */
 }
@@ -57,12 +57,33 @@ h1 {
     font-family: Impact;
 }
 
+h2,
+h3,
+h4,
+h5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
 h2 {
     background-color: maroon;
     color: white;
     padding: 4px;
     border: 2px outset red;
     border-radius: 6px;
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 4vh;
+}
+
+h4 {
+    font-size: 3vh;
+}
+
+h5 {
+    font-size: 2.5vh;
 }
 
 textarea {
@@ -84,6 +105,12 @@ textarea {
 }
 
 /* ****************************** Navbar ****************************************** */
+.logo {
+    width: auto;
+    height: 100px;
+    margin: 3px 10px;
+}
+
 .navbar-nav {
     margin: 0;
     padding-top: 5px;
@@ -451,4 +478,28 @@ span.glyphicon {
 
 .slide-down {
     transition: height ease-in-out 1s;
+}
+
+.max-width {
+    max-width: 100%;
+    max-height: 50vh;
+    display: block;
+    margin: auto;
+}
+
+.side-nav {
+    position: fixed;
+    left: 10px;
+    top: 140px;
+}
+
+.side-nav a {
+    display: block;
+    font-size: 2vh;
+}
+
+@media screen and (max-width: 1400px) {
+    .side-nav {
+        display: none;
+    }
 }
