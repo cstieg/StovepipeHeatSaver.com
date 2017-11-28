@@ -2,12 +2,13 @@
     ViewBag.Title = "Home";
 }
 
-<div id="myCarousel" data-interval="5000" data-ride="carousel" class="carousel slide">
+<div id="carousel" data-interval="5000" data-ride="carousel" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="~/Content/images/BeforeAndAfterHeat.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222940-BeforeAndAfterHeat-w200.jpg"
+                 srcset="~/content/images/20171127222940-BeforeAndAfterHeat-w800.jpg 800w, ~/content/images/20171127222940-BeforeAndAfterHeat-w400.jpg 400w, ~/content/images/20171127222940-BeforeAndAfterHeat-w200.jpg 200w, ~/content/images/20171127222940-BeforeAndAfterHeat-w100.jpg 100w"
+                 alt="Draws more heat">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s3">Guaranteed</p>
                 <p class="carousel-text s1">to draw more</p>
@@ -17,8 +18,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/Content/images/PayForThemselves.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222939-PayForThemselves-w200.jpg"
+                 srcset="~/content/images/20171127222939-PayForThemselves-w800.jpg 800w, ~/content/images/20171127222939-PayForThemselves-w400.jpg 400w, ~/content/images/20171127222939-PayForThemselves-w200.jpg 200w, ~/content/images/20171127222939-PayForThemselves-w100.jpg 100w"
+                 alt="Pay for themselves quickly">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s2"><br /></p>
                 <p class="carousel-text s3">Pay for themselves</p>
@@ -27,8 +29,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/Content/images/InstallInFiveMinutes.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222936-InstallInFiveMinutes-w200.jpg"
+                 srcset="~/content/images/20171127222936-InstallInFiveMinutes-w800.jpg 800w, ~/content/images/20171127222936-InstallInFiveMinutes-w400.jpg 400w, ~/content/images/20171127222936-InstallInFiveMinutes-w200.jpg 200w, ~/content/images/20171127222936-InstallInFiveMinutes-w100.jpg 100w"
+                 alt="Easy installation">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s3">Install</p>
                 <p class="carousel-text s3">in</p>
@@ -37,8 +40,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/Content/images/NeverNeedsMaintenance.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222932-NeverNeedsMaintenance-w200.png"
+                 srcset="~/content/images/20171127222932-NeverNeedsMaintenance-w800.png 800w, ~/content/images/20171127222932-NeverNeedsMaintenance-w400.png 400w, ~/content/images/20171127222932-NeverNeedsMaintenance-w200.png 200w, ~/content/images/20171127222932-NeverNeedsMaintenance-w100.png 100w"
+                 alt="Never need maintenance">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s2"><br /></p>
                 <p class="carousel-text s4">NEVER</p>
@@ -47,8 +51,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/Content/images/blankSlide.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222718-BeforeAndAfter2-w200.jpg"
+                 srcset="~/content/images/20171127222718-BeforeAndAfter2-w800.jpg 800w, ~/content/images/20171127222718-BeforeAndAfter2-w400.jpg 400w, ~/content/images/20171127222718-BeforeAndAfter2-w200.jpg 200w, ~/content/images/20171127222718-BeforeAndAfter2-w100.jpg 100w"
+                 alt="Last a lifetime">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s4"><br /></p>
                 <p class="carousel-text s2">Will last a</p>
@@ -56,8 +61,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/Content/images/MadeInTheUsa.png"
-                 alt="Sample slide">
+            <img src="~/content/images/20171127222718-MadeInTheUsa-w200.jpg"
+                 srcset="~/content/images/20171127222718-MadeInTheUsa-w800.jpg 800w, ~/content/images/20171127222718-MadeInTheUsa-w400.jpg 400w, ~/content/images/20171127222718-MadeInTheUsa-w200.jpg 200w, ~/content/images/20171127222718-MadeInTheUsa-w100.jpg 100w"
+                 alt="Made in the USA">
             <div class="carousel-textbox-center">
                 <p class="carousel-text s2"><br /></p>
                 <p class="carousel-text s2">Made in</p>
@@ -67,18 +73,18 @@
         </div>
     </div>
     <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel"
+    <a class="carousel-control left" href="#carousel"
        data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#myCarousel"
+    <a class="carousel-control right" href="#carousel"
        data-slide="next">&rsaquo;</a>
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-        <li data-target="#myCarousel" data-slide-to="4"></li>
-        <li data-target="#myCarousel" data-slide-to="5"></li>
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+        <li data-target="#carousel" data-slide-to="3"></li>
+        <li data-target="#carousel" data-slide-to="4"></li>
+        <li data-target="#carousel" data-slide-to="5"></li>
     </ol>
 </div>
 
@@ -87,47 +93,155 @@
     <iframe id="watch-video" class="no-height slide-down" src="https://www.youtube.com/embed/zgkjz4k9NpU/rel=0" height="315" frameborder="allowfullscreen"></iframe>
 </section>
 
-<div class="container">
-    <div class="row">
-        <section id="index-about-heatsavers" class="col-sm-6">
-            <h2>Why Do I Need a HeatSaver?</h2>
-                <p>
-                    Your furnace or heating stove is a wonderful thing in the winter ... BUT, it's not very efficient.
-                    Much of the heat escapes out your chimney and heats the outdoors.
-                </p>
-                <p>
-                    A set of Stovepipe HeatSavers will wrap around your stovepipe, conduct the wasted heat from the flue into the bands,
-                    and radiate it back into your house, making your furnace or stove much more efficient.  
-                    It reclaims energy that would otherwise be lost.
-                    It will help you increase the heat going into your house and/or save on your energy bills!
-                </p>
-        </section>
-
-        <section id="index-how-to-measure" class="col-sm-6">
-            <h2>How to Order</h2>
-                <h3>Measure the circumference of your stovepipe</h3>
-                    <h4>Materials needed</h4>
-                        <h5>Method 1 - A flexible tape measure</h5>
-                        <ul>
-                            <li>If you have a flexible tape measure (like those used for taking clothing measurements), you may use that.</li>
-                            <li>Do NOT use a metal tape measure! You will not get a good measurement because it is too rigid.</li>
-                        </ul>
-                        <h5>Method 2 - A piece of string / yarn and a tape measure or yardstick</h5>
-                    <h4>How to Measure</h4>
-                    <ul>
-                        <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
-                        <li>Wrap your flexible tape measure or string around the stovepipe, and note where it starts to overlap.</li>
-                        <li>If using a flexible tape measure, note the measurement at the point of overlap.</li>
-                        <li>If using a string, grasp the string at the exact point of overlap.  
-                            Then place the loose end of the string at the beginning (0") of the tape measure,
-                            and stretch it tight down the tape measure.  
-                            Note the measurement at the point your fingers are grasping the string.</li>
-                    </ul>
-                <h3>Enter your measurement here</h3>
-            <div id="index-find-by-circumference">
-                @Html.Partial("_FindByCircumferencePartial")
-            </div>
-
-        </section>
+<section id="about-why-need">
+    <h2>Why Do I Need a HeatSaver?</h2>
+    <p>
+        Your furnace or heating stove is a wonderful thing in the winter ... BUT, it's not very efficient.
+        Much of the heat escapes out your chimney and heats the outdoors.
+    </p>
+    <p>
+        A set of Stovepipe HeatSavers will wrap around your stovepipe, conduct the wasted heat from the pipe into the bands,
+        and radiate it back into your house, making your furnace or stove much more efficient.
+        It reclaims energy that would otherwise be lost.
+        It will help you increase the heat going into your house and/or save on your energy bills!
+    </p>
+</section>
+ 
+<section id="index-how-to-measure">
+    <h2>How to Order</h2>
+        <h3>Measure the circumference of your stovepipe</h3>
+            <h4>Materials needed</h4>
+                <h5>Method 1 - A flexible tape measure</h5>
+                <ul>
+                    <li>
+                        If you have a flexible tape measure (like those used for taking clothing measurements), you may use that.
+                        <img src="~/content/images/20171127222934-FlexibleTapeMeasure-w200.jpg" 
+                             srcset="~/content/images/20171127222934-FlexibleTapeMeasure-w800.jpg 800w, ~/content/images/20171127222934-FlexibleTapeMeasure-w400.jpg 400w, ~/content/images/20171127222934-FlexibleTapeMeasure-w200.jpg 200w, ~/content/images/20171127222934-FlexibleTapeMeasure-w100.jpg 100w"
+                             alt="Flexible tape measure" class="max-width"/>
+                    </li>
+                    <li>
+                        Do NOT use a metal tape measure! You will not get a good measurement because it is too rigid.
+                        <img src="~/content/images/20171127222933-NoRigidTapeMeasure-w200.jpg"
+                             srcset="~/content/images/20171127222933-NoRigidTapeMeasure-w800.jpg 800w, ~/content/images/20171127222933-NoRigidTapeMeasure-w400.jpg 400w, ~/content/images/20171127222933-NoRigidTapeMeasure-w200.jpg 200w, ~/content/images/20171127222933-NoRigidTapeMeasure-w100.jpg 100w"
+                             alt="No rigid tape measure" class="max-width" />
+                    </li>
+                </ul>
+                <h5>Method 2 - A piece of non-stretchy string or yarn, a tape measure or yardstick, and something to mark with</h5>
+                <img src="~/content/images/20171127222927-TapeMeasureAndString-w200.jpg" 
+                     srcset="~/content/images/20171127222927-TapeMeasureAndString-w800.jpg 800w, ~/content/images/20171127222927-TapeMeasureAndString-w400.jpg 400w, ~/content/images/20171127222927-TapeMeasureAndString-w200.jpg 200w, ~/content/images/20171127222927-TapeMeasureAndString-w100.jpg 100w"
+                     alt="Tape measure and string" class="max-width" />
+            <h4>How to Measure</h4>
+            <ul>
+                <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
+                <li>
+                    Wrap your flexible tape measure around the stove pipe, and note the measurement at the point of overlap.
+                    <img src="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg" 
+                         srcset="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w800.jpg 800w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w400.jpg 400w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg 200w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w100.jpg 100w"
+                         alt="Measure the stovepipe with a flexible tape measure" class="max-width" />
+                </li>
+                <li>
+                    If using a string, mark the string at the exact point of overlap.
+                    <img src="~/content/images/20171127222927-MarkString-w200.jpg" 
+                         srcset="~/content/images/20171127222927-MarkString-w800.jpg 800w, ~/content/images/20171127222927-MarkString-w400.jpg 400w, ~/content/images/20171127222927-MarkString-w200.jpg 200w, ~/content/images/20171127222927-MarkString-w100.jpg 100w"
+                         alt="Measure the stovepipe with a string" class="max-width" />
+                </li>
+                <li>
+                    Then place the end of the string at the beginning (0") of the tape measure,
+                    and stretch it tight down the tape measure.  
+                    Note the measurement at the mark.
+                    <img src="~/content/images/20171127222927-MeasureString-w200.jpg"
+                         srcset="~/content/images/20171127222927-MeasureString-w800.jpg 800w, ~/content/images/20171127222927-MeasureString-w400.jpg 400w, ~/content/images/20171127222927-MeasureString-w200.jpg 200w, ~/content/images/20171127222927-MeasureString-w100.jpg 100w"
+                         alt="Measure the string" class="max-width" />
+                </li>
+            </ul>
+    <div id="index-find-by-circumference">
+        <h3>Enter your measurement here</h3>
+        @Html.Partial("_FindByCircumferencePartial")
     </div>
-</div>
+
+</section>
+
+<sections id="about-available">
+    <h2>Available Sizes</h2>
+    <p>
+        Our stove pipe heat reclaimers / radiators are sold in sets of 6.
+    </p>
+    <p>
+        We have seven sizes available: 3", 3.6", 4", 5", 6", 7", and 8" diameter.
+        These are the standard stovepipe sizes, but we can supply custom sizes also.
+        <a href="mailto:stieg_d@yahoo.com">Email us.</a>
+    </p>
+    <img src="~/content/images/20171127222932-AvailableSizes-w200.jpg" 
+         srcset="~/content/images/20171127222932-AvailableSizes-w800.jpg 800w, ~/content/images/20171127222932-AvailableSizes-w400.jpg 400w, ~/content/images/20171127222932-AvailableSizes-w200.jpg 200w, ~/content/images/20171127222932-AvailableSizes-w100.jpg 100w"
+         alt="Sizes of stovepipe heat reclaimers" class="max-width" />
+    <p>
+        Bear in mind that these are the diameters of the pipes,
+        but to measure your pipe, you will have to measure the circumference (the distance around).
+        Please see our <a href="#index-how-to-measure">detailed instructions.</a>
+    </p>
+    <p>Made in the USA from American steel.</p>
+</sections>
+<section id="about-how">
+    <h2>How They Work</h2>
+    <p>
+        Stovepipe HeatSavers are heat exchangers or reclaimers that extract wasted heat from your hot stove pipe and radiate the heat into the room.
+        Installed, the radiator rings make close contact with your stove pipe and conduct more usable heat from the hot pipe,
+        and release it into the room by the exposed loops.
+        They work like the fins you see on a motorcycle engine cylinder head....they release heat.
+        These rings increase the surface area of your stovepipe between the stove and the chimney,
+        therefore allowing more heat to be radiated and released into the room.
+    </p>
+    <p>
+        The bands conduct heat from the points of contact on the stovepipe to the loops in the band where the heat is released into the room.
+        The band loops get as hot as the stovepipe...too hot to touch.
+    </p>
+    <p>
+        So in effect, by installing this set of 6 bands, you create the equivalent of this 12 in. x 15 in. sheet of hot sheet metal,
+        500 - 700 degrees, radiating heat from both sides of the sheet into the room before it escapes out the chimney.
+        That is like a small space heater itself...and it is FREE HEAT.
+    </p>
+</section>
+<section id="about-installation">
+    <h2>Installation</h2>
+    <p>
+        They attach quickly and easily to your stovepipe....no screws or tools needed.
+        The ends lock into each other. It takes less than 5 minutes to attach all six radiators.
+    </p>
+    <p>
+        CAUTION: WEAR GLOVES and SAFETY GLASSES during installation!  Install when the stovepipe is cool.
+    </p>
+    <ul>
+        <li>
+            Wrap the radiator around the stovepipe leaving the ends on the backside of the stovepipe (so they cannot be seen from the front).
+            <img src="~/content/images/20171127222929-WrapAroundPipe-w200.jpg" 
+                 srcset="~/content/images/20171127222929-WrapAroundPipe-w400.jpg 400w, ~/content/images/20171127222929-WrapAroundPipe-w200.jpg 200w, ~/content/images/20171127222929-WrapAroundPipe-w100.jpg 100w, ~/content/images/20171127222929-WrapAroundPipe-w600.jpg 600w"
+                 alt="Wrap radiator around stovepipe" class="max-width" />
+        </li>
+        <li>
+            The ends simply snap and lock into each other.
+            The ends are designed to be stretched toward each other to snap and insure good tight contact with the stovepipe.
+            <img src="~/content/images/20171127222931-SnapAndLockTogether-w200.jpg" 
+                 srcset="~/content/images/20171127222931-SnapAndLockTogether-w400.jpg 400w, ~/content/images/20171127222931-SnapAndLockTogether-w200.jpg 200w, ~/content/images/20171127222931-SnapAndLockTogether-w100.jpg 100w, ~/content/images/20171127222931-SnapAndLockTogether-w600.jpg 600w"
+                 alt="Ends snap and lock together" class="max-width" />
+        </li>
+        <li>
+            Space them about 1 inch or more apart to allow air circulation around the loops.
+            Or you can fill up the whole pipe, staggering the loops for maximum airflow and heat reclamation.
+            They may be placed anywhere between the stove and where the stovepipe exits the room.
+            <img src="~/content/images/20171127222927-FullStovepipe-w200.jpg" 
+                 srcset="~/content/images/20171127222927-FullStovepipe-w400.jpg 400w, ~/content/images/20171127222927-FullStovepipe-w200.jpg 200w, ~/content/images/20171127222927-FullStovepipe-w100.jpg 100w, ~/content/images/20171127222927-FullStovepipe-w600.jpg 600w"
+                 alt="Stovepipe full of exchanger rings" class="max-width"/>
+        </li>
+    </ul>
+</section>
+
+
+<nav id="index-side-nav" class="side-nav">
+    <a href="#carousel">Top</a>
+    <a href="#index-promo-video">Video</a>
+    <a href="#about-why-need">About</a>
+    <a href="#index-how-to-measure">How to Order</a>
+    <a href="#about-available">Sizes Available</a>
+    <a href="#about-how">How They Work</a>
+    <a href="#about-installation">Installation</a>
+</nav>

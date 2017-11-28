@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201711141855297_CountryNotNullable.Designer.cs">
       <DependentUpon>201711141855297_CountryNotNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711280312551_WebImageOrder.cs" />
+    <Compile Include="Migrations\201711280312551_WebImageOrder.Designer.cs">
+      <DependentUpon>201711280312551_WebImageOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Faq.cs" />
@@ -254,7 +258,135 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\ImageUnavailable.png" />
+    <Content Include="Content\images\20171127222708-AvailableSizes-w100.jpg" />
+    <Content Include="Content\images\20171127222708-AvailableSizes-w200.jpg" />
+    <Content Include="Content\images\20171127222708-AvailableSizes-w400.jpg" />
+    <Content Include="Content\images\20171127222708-AvailableSizes-w800.jpg" />
+    <Content Include="Content\images\20171127222708-FlexibleTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222708-FlexibleTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222708-FlexibleTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222708-FlexibleTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222708-MarkString-w100.jpg" />
+    <Content Include="Content\images\20171127222708-MarkString-w200.jpg" />
+    <Content Include="Content\images\20171127222708-MarkString-w400.jpg" />
+    <Content Include="Content\images\20171127222708-MarkString-w800.jpg" />
+    <Content Include="Content\images\20171127222708-MeasureString-w100.jpg" />
+    <Content Include="Content\images\20171127222708-MeasureString-w200.jpg" />
+    <Content Include="Content\images\20171127222708-MeasureString-w400.jpg" />
+    <Content Include="Content\images\20171127222708-MeasureString-w800.jpg" />
+    <Content Include="Content\images\20171127222708-NoRigidTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222708-NoRigidTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222708-NoRigidTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222708-NoRigidTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222708-NoteFlexibleTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222708-NoteFlexibleTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222708-NoteFlexibleTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222708-NoteFlexibleTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222709-FullStovepipe-w100.jpg" />
+    <Content Include="Content\images\20171127222709-FullStovepipe-w200.jpg" />
+    <Content Include="Content\images\20171127222709-FullStovepipe-w400.jpg" />
+    <Content Include="Content\images\20171127222709-FullStovepipe-w600.jpg" />
+    <Content Include="Content\images\20171127222709-TapeMeasureAndString-w100.jpg" />
+    <Content Include="Content\images\20171127222709-TapeMeasureAndString-w200.jpg" />
+    <Content Include="Content\images\20171127222709-TapeMeasureAndString-w400.jpg" />
+    <Content Include="Content\images\20171127222709-TapeMeasureAndString-w800.jpg" />
+    <Content Include="Content\images\20171127222709-WrapAroundPipe-w100.jpg" />
+    <Content Include="Content\images\20171127222709-WrapAroundPipe-w200.jpg" />
+    <Content Include="Content\images\20171127222709-WrapAroundPipe-w400.jpg" />
+    <Content Include="Content\images\20171127222709-WrapAroundPipe-w600.jpg" />
+    <Content Include="Content\images\20171127222710-SnapAndLockTogether-w100.jpg" />
+    <Content Include="Content\images\20171127222710-SnapAndLockTogether-w200.jpg" />
+    <Content Include="Content\images\20171127222710-SnapAndLockTogether-w400.jpg" />
+    <Content Include="Content\images\20171127222710-SnapAndLockTogether-w600.jpg" />
+    <Content Include="Content\images\20171127222711-NeverNeedsMaintenance-w100.png" />
+    <Content Include="Content\images\20171127222711-NeverNeedsMaintenance-w200.png" />
+    <Content Include="Content\images\20171127222711-NeverNeedsMaintenance-w400.png" />
+    <Content Include="Content\images\20171127222711-NeverNeedsMaintenance-w800.png" />
+    <Content Include="Content\images\20171127222717-PayForThemselves-w100.jpg" />
+    <Content Include="Content\images\20171127222717-PayForThemselves-w200.jpg" />
+    <Content Include="Content\images\20171127222717-PayForThemselves-w400.jpg" />
+    <Content Include="Content\images\20171127222717-PayForThemselves-w800.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfter2-w100.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfter2-w200.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfter2-w400.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfter2-w800.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w100.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w200.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w400.jpg" />
+    <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w800.jpg" />
+    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w100.jpg" />
+    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w200.jpg" />
+    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w400.jpg" />
+    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w800.jpg" />
+    <Content Include="Content\images\20171127222718-MadeInTheUsa-w100.jpg" />
+    <Content Include="Content\images\20171127222718-MadeInTheUsa-w200.jpg" />
+    <Content Include="Content\images\20171127222718-MadeInTheUsa-w400.jpg" />
+    <Content Include="Content\images\20171127222718-MadeInTheUsa-w800.jpg" />
+    <Content Include="Content\images\20171127222927-FullStovepipe-w100.jpg" />
+    <Content Include="Content\images\20171127222927-FullStovepipe-w200.jpg" />
+    <Content Include="Content\images\20171127222927-FullStovepipe-w400.jpg" />
+    <Content Include="Content\images\20171127222927-FullStovepipe-w600.jpg" />
+    <Content Include="Content\images\20171127222927-MarkString-w100.jpg" />
+    <Content Include="Content\images\20171127222927-MarkString-w200.jpg" />
+    <Content Include="Content\images\20171127222927-MarkString-w400.jpg" />
+    <Content Include="Content\images\20171127222927-MarkString-w800.jpg" />
+    <Content Include="Content\images\20171127222927-MeasureString-w100.jpg" />
+    <Content Include="Content\images\20171127222927-MeasureString-w200.jpg" />
+    <Content Include="Content\images\20171127222927-MeasureString-w400.jpg" />
+    <Content Include="Content\images\20171127222927-MeasureString-w800.jpg" />
+    <Content Include="Content\images\20171127222927-TapeMeasureAndString-w100.jpg" />
+    <Content Include="Content\images\20171127222927-TapeMeasureAndString-w200.jpg" />
+    <Content Include="Content\images\20171127222927-TapeMeasureAndString-w400.jpg" />
+    <Content Include="Content\images\20171127222927-TapeMeasureAndString-w800.jpg" />
+    <Content Include="Content\images\20171127222929-WrapAroundPipe-w100.jpg" />
+    <Content Include="Content\images\20171127222929-WrapAroundPipe-w200.jpg" />
+    <Content Include="Content\images\20171127222929-WrapAroundPipe-w400.jpg" />
+    <Content Include="Content\images\20171127222929-WrapAroundPipe-w600.jpg" />
+    <Content Include="Content\images\20171127222931-SnapAndLockTogether-w100.jpg" />
+    <Content Include="Content\images\20171127222931-SnapAndLockTogether-w200.jpg" />
+    <Content Include="Content\images\20171127222931-SnapAndLockTogether-w400.jpg" />
+    <Content Include="Content\images\20171127222931-SnapAndLockTogether-w600.jpg" />
+    <Content Include="Content\images\20171127222932-AvailableSizes-w100.jpg" />
+    <Content Include="Content\images\20171127222932-AvailableSizes-w200.jpg" />
+    <Content Include="Content\images\20171127222932-AvailableSizes-w400.jpg" />
+    <Content Include="Content\images\20171127222932-AvailableSizes-w800.jpg" />
+    <Content Include="Content\images\20171127222932-MadeInTheUsa-w100.jpg" />
+    <Content Include="Content\images\20171127222932-MadeInTheUsa-w200.jpg" />
+    <Content Include="Content\images\20171127222932-MadeInTheUsa-w400.jpg" />
+    <Content Include="Content\images\20171127222932-MadeInTheUsa-w800.jpg" />
+    <Content Include="Content\images\20171127222932-NeverNeedsMaintenance-w100.png" />
+    <Content Include="Content\images\20171127222932-NeverNeedsMaintenance-w200.png" />
+    <Content Include="Content\images\20171127222932-NeverNeedsMaintenance-w400.png" />
+    <Content Include="Content\images\20171127222932-NeverNeedsMaintenance-w800.png" />
+    <Content Include="Content\images\20171127222932-NoteFlexibleTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222932-NoteFlexibleTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222932-NoteFlexibleTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222932-NoteFlexibleTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222933-BeforeAndAfter2-w100.jpg" />
+    <Content Include="Content\images\20171127222933-BeforeAndAfter2-w200.jpg" />
+    <Content Include="Content\images\20171127222933-BeforeAndAfter2-w400.jpg" />
+    <Content Include="Content\images\20171127222933-BeforeAndAfter2-w800.jpg" />
+    <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w100.jpg" />
+    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w100.jpg" />
+    <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w200.jpg" />
+    <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w400.jpg" />
+    <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w800.jpg" />
+    <Content Include="Content\images\20171127222939-PayForThemselves-w100.jpg" />
+    <Content Include="Content\images\20171127222939-PayForThemselves-w200.jpg" />
+    <Content Include="Content\images\20171127222939-PayForThemselves-w400.jpg" />
+    <Content Include="Content\images\20171127222939-PayForThemselves-w800.jpg" />
+    <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w100.jpg" />
+    <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w200.jpg" />
+    <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w400.jpg" />
+    <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w800.jpg" />
+    <Content Include="Content\images\StovePipeHeatSaverLogo.png" />
     <Content Include="Content\NicEdit\nicEditorIcons.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -298,7 +430,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -443,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711141855297_CountryNotNullable.resx">
       <DependentUpon>201711141855297_CountryNotNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280312551_WebImageOrder.resx">
+      <DependentUpon>201711280312551_WebImageOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

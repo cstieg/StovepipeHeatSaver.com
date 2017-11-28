@@ -485,17 +485,64 @@ span.glyphicon {
     max-height: 50vh;
     display: block;
     margin: auto;
+    border-radius: 6px;
+}
+
+.tab-3wide > li {
+    width: 390px;
+    height: 350px;
+}
+
+.tab-img {
+    width: 350px;
+    height: 250px;
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 800px) {
+    .tab-3wide > li {
+        width: 47vw;
+        height: 250px;
+    }
+
+    .tab-img {
+        width: 40vw;
+        height: 150px;
+    }
+}
+
+.nav-tabs > li {
+    background-color: #fdd;
+}
+
+.nav-tabs > li[class=active] {
+    border: solid yellow thick;
+    border-radius: 10px;
 }
 
 .side-nav {
     position: fixed;
     left: 10px;
     top: 140px;
+    padding: 5px;
+    background-color: white;
+    border: solid maroon thin;
+    border-radius: 10px;
 }
 
-.side-nav a {
+.side-nav * {
     display: block;
     font-size: 2vh;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: solid maroon thin;
+}
+
+.side-nav a:last-child {
+    border-bottom: none;
 }
 
 @media screen and (max-width: 1400px) {
