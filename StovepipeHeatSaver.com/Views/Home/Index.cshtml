@@ -2,7 +2,7 @@
     ViewBag.Title = "Home";
 }
 
-<div id="carousel" data-interval="5000" data-ride="carousel" class="carousel slide">
+<section id="carousel" data-interval="5000" data-ride="carousel" sidenav-name="Top" class="carousel slide">
     <!-- Carousel items -->
     <div class="carousel-inner">
         <div class="item active">
@@ -86,74 +86,98 @@
         <li data-target="#carousel" data-slide-to="4"></li>
         <li data-target="#carousel" data-slide-to="5"></li>
     </ol>
-</div>
+</section>
 
-<section id="index-promo-video">
+<section id="index-promo-video" sidenav-name="Video">
     <div id="watch-video-tab" class="centered-text btn">Watch a Video</div>
     <iframe id="watch-video" class="no-height slide-down" src="https://www.youtube.com/embed/zgkjz4k9NpU/rel=0" height="315" frameborder="allowfullscreen"></iframe>
 </section>
 
-<section id="about-why-need">
+<section id="about-why-need" sidenav-name="About">
     <h2>Why Do I Need a HeatSaver?</h2>
     <p>
         Your furnace or heating stove is a wonderful thing in the winter ... BUT, it's not very efficient.
         Much of the heat escapes out your chimney and heats the outdoors.
     </p>
     <p>
-        A set of Stovepipe HeatSavers will wrap around your stovepipe, conduct the wasted heat from the pipe into the bands,
-        and radiate it back into your house, making your furnace or stove much more efficient.
-        It reclaims energy that would otherwise be lost.
-        It will help you increase the heat going into your house and/or save on your energy bills!
-    </p>
+        A set of Stovepipe HeatSavers will:</p>
+    <ul>
+        <li>Wrap around your stovepipe, conduct the wasted heat from the pipe into the bands, and radiate it back into your house</li>
+        <li>Reclaim energy that would otherwise be lost</li>
+        <li>Make your furnace or stove much more efficient</li>
+        <li>Keep your house warmer and/or save on your energy bills!</li>
+    </ul>
 </section>
  
-<section id="index-how-to-measure">
+<section id="index-how-to-measure" sidenav-name="How To Order">
     <h2>How to Order</h2>
         <h3>Measure the circumference of your stovepipe</h3>
-            <h4>Materials needed</h4>
-                <h5>Method 1 - A flexible tape measure</h5>
-                <ul>
-                    <li>
-                        If you have a flexible tape measure (like those used for taking clothing measurements), you may use that.
-                        <img src="~/content/images/20171127222934-FlexibleTapeMeasure-w200.jpg" 
+            <h4>Choose your materials</h4>
+            <p>Click the appropriate image for instructions below</p>
+            <ul class="nav nav-tabs tab-3wide">
+                <li class="active">
+                    <a href="#flexible-measuring-tape" data-toggle="tab">
+                        <img src="~/content/images/20171127222934-FlexibleTapeMeasure-w200.jpg"
                              srcset="~/content/images/20171127222934-FlexibleTapeMeasure-w800.jpg 800w, ~/content/images/20171127222934-FlexibleTapeMeasure-w400.jpg 400w, ~/content/images/20171127222934-FlexibleTapeMeasure-w200.jpg 200w, ~/content/images/20171127222934-FlexibleTapeMeasure-w100.jpg 100w"
-                             alt="Flexible tape measure" class="max-width"/>
-                    </li>
-                    <li>
-                        Do NOT use a metal tape measure! You will not get a good measurement because it is too rigid.
+                             sizes="350px"
+                             alt="Flexible tape measure" class="tab-img" />
+                        <h5>Flexible Tape Measure</h5>
+                    </a>
+                </li>
+                <li>
+                    <a href="#string-measuring-tape" data-toggle="tab">
+                        <img src="~/content/images/20171127222927-TapeMeasureAndString-w200.jpg"
+                             srcset="~/content/images/20171127222927-TapeMeasureAndString-w800.jpg 800w, ~/content/images/20171127222927-TapeMeasureAndString-w400.jpg 400w, ~/content/images/20171127222927-TapeMeasureAndString-w200.jpg 200w, ~/content/images/20171127222927-TapeMeasureAndString-w100.jpg 100w"
+                             sizes="350px"
+                             alt="Tape measure and string" class="tab-img" />
+                        <h5>String and Tape Measure</h5>
+                    </a>
+                </li>
+                <li>
+                    <a class="disabled">
                         <img src="~/content/images/20171127222933-NoRigidTapeMeasure-w200.jpg"
                              srcset="~/content/images/20171127222933-NoRigidTapeMeasure-w800.jpg 800w, ~/content/images/20171127222933-NoRigidTapeMeasure-w400.jpg 400w, ~/content/images/20171127222933-NoRigidTapeMeasure-w200.jpg 200w, ~/content/images/20171127222933-NoRigidTapeMeasure-w100.jpg 100w"
-                             alt="No rigid tape measure" class="max-width" />
-                    </li>
-                </ul>
-                <h5>Method 2 - A piece of non-stretchy string or yarn, a tape measure or yardstick, and something to mark with</h5>
-                <img src="~/content/images/20171127222927-TapeMeasureAndString-w200.jpg" 
-                     srcset="~/content/images/20171127222927-TapeMeasureAndString-w800.jpg 800w, ~/content/images/20171127222927-TapeMeasureAndString-w400.jpg 400w, ~/content/images/20171127222927-TapeMeasureAndString-w200.jpg 200w, ~/content/images/20171127222927-TapeMeasureAndString-w100.jpg 100w"
-                     alt="Tape measure and string" class="max-width" />
-            <h4>How to Measure</h4>
-            <ul>
-                <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
-                <li>
-                    Wrap your flexible tape measure around the stove pipe, and note the measurement at the point of overlap.
-                    <img src="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg" 
-                         srcset="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w800.jpg 800w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w400.jpg 400w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg 200w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w100.jpg 100w"
-                         alt="Measure the stovepipe with a flexible tape measure" class="max-width" />
-                </li>
-                <li>
-                    If using a string, mark the string at the exact point of overlap.
-                    <img src="~/content/images/20171127222927-MarkString-w200.jpg" 
-                         srcset="~/content/images/20171127222927-MarkString-w800.jpg 800w, ~/content/images/20171127222927-MarkString-w400.jpg 400w, ~/content/images/20171127222927-MarkString-w200.jpg 200w, ~/content/images/20171127222927-MarkString-w100.jpg 100w"
-                         alt="Measure the stovepipe with a string" class="max-width" />
-                </li>
-                <li>
-                    Then place the end of the string at the beginning (0") of the tape measure,
-                    and stretch it tight down the tape measure.  
-                    Note the measurement at the mark.
-                    <img src="~/content/images/20171127222927-MeasureString-w200.jpg"
-                         srcset="~/content/images/20171127222927-MeasureString-w800.jpg 800w, ~/content/images/20171127222927-MeasureString-w400.jpg 400w, ~/content/images/20171127222927-MeasureString-w200.jpg 200w, ~/content/images/20171127222927-MeasureString-w100.jpg 100w"
-                         alt="Measure the string" class="max-width" />
+                             alt="No rigid tape measure" class="tab-img" />
+                        <p>Do NOT wrap a metal tape measure around!  You will not get a good reading because it is too rigid.</p>
+                    </a>
                 </li>
             </ul>
+            <br />
+            <h4>How to Measure</h4>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="flexible-measuring-tape">
+                    <ul>
+                        <li>If you have a flexible tape measure (like those used for taking clothing measurements), you may use that.</li>
+                        <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
+                        <li>
+                            Wrap your flexible tape measure around the stove pipe, and note the measurement at the point of overlap.
+                            <img src="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg"
+                                 srcset="~/content/images/20171127222932-NoteFlexibleTapeMeasure-w800.jpg 800w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w400.jpg 400w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w200.jpg 200w, ~/content/images/20171127222932-NoteFlexibleTapeMeasure-w100.jpg 100w"
+                                 alt="Measure the stovepipe with a flexible tape measure" class="max-width" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="string-measuring-tape">
+                    <ul>
+                        <li>You need a piece of non-stretchy string or yarn, a tape measure or yardstick, and something to mark with.</li>
+                        <li>Do NOT measure a hot stovepipe! Wait until it is cool.</li>
+                        <li>
+                            Wrap the string around the stovepipe and mark the string at the exact point of overlap.
+                            <img src="~/content/images/20171127222927-MarkString-w200.jpg"
+                                 srcset="~/content/images/20171127222927-MarkString-w800.jpg 800w, ~/content/images/20171127222927-MarkString-w400.jpg 400w, ~/content/images/20171127222927-MarkString-w200.jpg 200w, ~/content/images/20171127222927-MarkString-w100.jpg 100w"
+                                 alt="Measure the stovepipe with a string" class="max-width" />
+                        </li>
+                        <li>
+                            Then place the end of the string at the beginning (0") of the tape measure,
+                            and stretch it tight down the tape measure.
+                            Note the measurement at the mark.
+                            <img src="~/content/images/20171127222927-MeasureString-w200.jpg"
+                                 srcset="~/content/images/20171127222927-MeasureString-w800.jpg 800w, ~/content/images/20171127222927-MeasureString-w400.jpg 400w, ~/content/images/20171127222927-MeasureString-w200.jpg 200w, ~/content/images/20171127222927-MeasureString-w100.jpg 100w"
+                                 alt="Measure the string" class="max-width" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
     <div id="index-find-by-circumference">
         <h3>Enter your measurement here</h3>
         @Html.Partial("_FindByCircumferencePartial")
@@ -161,7 +185,7 @@
 
 </section>
 
-<sections id="about-available">
+<sections id="about-available" sidenav-name="Sizes Available">
     <h2>Available Sizes</h2>
     <p>
         Our stove pipe heat reclaimers / radiators are sold in sets of 6.
@@ -237,11 +261,5 @@
 
 
 <nav id="index-side-nav" class="side-nav">
-    <a href="#carousel">Top</a>
-    <a href="#index-promo-video">Video</a>
-    <a href="#about-why-need">About</a>
-    <a href="#index-how-to-measure">How to Order</a>
-    <a href="#about-available">Sizes Available</a>
-    <a href="#about-how">How They Work</a>
-    <a href="#about-installation">Installation</a>
+    <p>On This Page</p>
 </nav>

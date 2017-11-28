@@ -39,3 +39,26 @@ function getCoords(elem) {
 function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
+
+(function loadSideNav() {
+    var $sideNav = $('.side-nav');
+    if ($sideNav.length === 0) {
+        return;
+    }
+    var $sections = $('section');
+    $.each($sections, function (index, element) {
+        var sectionName = element.getAttribute('sidenav-name');
+        if (!sectionName) {
+            sectionName = $('#' + element.id).find('h2').text();
+        }
+        var onclickText = "window.location = '#" + element.id + "';compensateForHeader()";
+        $sideNav.append('<a onclick="' + onclickText + '">' + sectionName + '</a>');
+    });
+})();
+
+function compensateForHeader() {
+    $('html, body').animate({
+        scrollTop: '-=' + 120
+    }, 400);    
+}
+
