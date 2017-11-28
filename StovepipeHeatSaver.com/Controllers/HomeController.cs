@@ -53,7 +53,17 @@ namespace StovepipeHeatSaver.Controllers
                 try
                 {
                     var products = await db.Products.ToListAsync();
-                    product = products.Single(p => circumference >= p.MinCircumference && circumference <= p.MaxCircumference);
+                    products = products.FindAll(p => circumference >= p.MinCircumference && circumference <= p.MaxCircumference);
+                    switch (products.Count)
+                    {
+                        case 0:
+                            throw new Exception("Product size not found");
+                        case 1:
+                            product = products.Single();
+                            break;
+                        default:
+                            return View("Products", products);
+                    }
                         
                 }
                 catch (Exception)
