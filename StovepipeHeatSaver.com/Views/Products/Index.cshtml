@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<button class="pull-right" onclick="editIndex.toggleEditable(this, '/Edit/Products/Update');">Edit Values As Table</button>
 <table class="table">
     <tr>
         <th>
@@ -39,14 +40,14 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <tr model-id="@item.Id">
+        <td field-name="Name" field-type="string">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td field-name="Price" field-type="decimal">
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        <td field-name="Shipping" field-type="decimal">
             @Html.DisplayFor(modelItem => item.Shipping)
         </td>
         <td>
@@ -55,13 +56,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.ProductInfo)
         </td>
-        <td>
+        <td field-name="DisplayOnFrontPage" field-type="boolean">
             @Html.DisplayFor(modelItem => item.DisplayOnFrontPage)
         </td>
-        <td>
+        <td field-name="DoNotDisplay" field-type="boolean">
             @Html.DisplayFor(modelItem => item.DoNotDisplay)
         </td>
-        <td>
+        <td field-name="Diameter" field-type="decimal">
             @Html.DisplayFor(modelItem => item.Diameter)
         </td>
         <td>

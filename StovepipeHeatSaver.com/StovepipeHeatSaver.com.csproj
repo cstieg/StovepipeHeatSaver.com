@@ -314,10 +314,6 @@
     <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w200.jpg" />
     <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w400.jpg" />
     <Content Include="Content\images\20171127222718-BeforeAndAfterHeat-w800.jpg" />
-    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w100.jpg" />
-    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w200.jpg" />
-    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w400.jpg" />
-    <Content Include="Content\images\20171127222718-InstallInFiveMinutes-w800.jpg" />
     <Content Include="Content\images\20171127222718-MadeInTheUsa-w100.jpg" />
     <Content Include="Content\images\20171127222718-MadeInTheUsa-w200.jpg" />
     <Content Include="Content\images\20171127222718-MadeInTheUsa-w400.jpg" />
@@ -386,6 +382,10 @@
     <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w200.jpg" />
     <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w400.jpg" />
     <Content Include="Content\images\20171127222940-BeforeAndAfterHeat-w800.jpg" />
+    <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w100.jpg" />
+    <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w200.jpg" />
+    <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w400.jpg" />
+    <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w800.jpg" />
     <Content Include="Content\images\StovePipeHeatSaverLogo.png" />
     <Content Include="Content\NicEdit\nicEditorIcons.gif" />
     <Content Include="favicon.ico" />
@@ -412,6 +412,7 @@
     <Content Include="Scripts\NicEdit\nicEdit.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Site\EditIndex.js" />
     <Content Include="Scripts\Site\ImageUpload.js" />
     <Content Include="Scripts\Site\LightboxMessage.js" />
     <Content Include="Scripts\Site\paypal.js" />

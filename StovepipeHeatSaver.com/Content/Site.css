@@ -162,6 +162,39 @@ span.glyphicon {
 }
 
 
+/* ********************************* Side Nav ************************ */
+
+.side-nav {
+    position: fixed;
+    left: 10px;
+    top: 140px;
+    padding: 5px;
+    background-color: white;
+    border: solid maroon thin;
+    border-radius: 10px;
+}
+
+.side-nav * {
+    display: block;
+    font-size: 2vh;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: solid maroon thin;
+}
+
+.side-nav a:last-child {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 1400px) {
+    .side-nav {
+        display: none;
+    }
+}
+
 /* **************************** Main page carousel ******************************** */
 .carousel {
     margin-bottom: 30px;
@@ -280,6 +313,47 @@ span.glyphicon {
     width: 100%;
     height: 315px;
     margin: auto;
+}
+
+/* **************************** Main Page Images and Tabs ************************* */
+.max-width {
+    max-width: 100%;
+    max-height: 50vh;
+    display: block;
+    margin: auto;
+    border-radius: 6px;
+}
+
+.tab-3wide > li {
+    width: 390px;
+    height: 350px;
+}
+
+.tab-img {
+    width: 350px;
+    height: 250px;
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 800px) {
+    .tab-3wide > li {
+        width: 47vw;
+        height: 250px;
+    }
+
+    .tab-img {
+        width: 40vw;
+        height: 150px;
+    }
+}
+
+.nav-tabs > li {
+    background-color: #fdd;
+}
+
+.nav-tabs > li[class=active] {
+    border: solid yellow thick;
+    border-radius: 10px;
 }
 
 /* **************************** Product display *********************************** */
@@ -460,6 +534,39 @@ span.glyphicon {
     content: 'A';
 }
 
+
+/* ******************** EditIndex.js ***************************************** */
+
+.input-text {
+    background-color: white;
+    background-color: -moz-field;
+    border: 1px solid darkgray;
+    box-shadow: 1px 1px 1px 0 lightgray;
+    font: -moz-field;
+    font: -webkit-small-control;
+    margin-top: 5px;
+    padding: 2px 3px;
+    width: 100%;
+}
+
+.green-border {
+    border: ridge thick green;
+    border-radius: 14px;
+}
+
+.red-border {
+    border: ridge thick red;
+}
+
+.border-fade {
+    border-color: transparent;
+    border-radius: 0;
+    border-width: 1px;
+    transition-property: all;
+    transition-duration: 3s;
+    transition-timing-function: ease;
+}
+
 /* ********************* Overrides ******************************* */
 .centered {
     margin-left: auto;
@@ -480,73 +587,3 @@ span.glyphicon {
     transition: height ease-in-out 1s;
 }
 
-.max-width {
-    max-width: 100%;
-    max-height: 50vh;
-    display: block;
-    margin: auto;
-    border-radius: 6px;
-}
-
-.tab-3wide > li {
-    width: 390px;
-    height: 350px;
-}
-
-.tab-img {
-    width: 350px;
-    height: 250px;
-    border-radius: 6px;
-}
-
-@media screen and (max-width: 800px) {
-    .tab-3wide > li {
-        width: 47vw;
-        height: 250px;
-    }
-
-    .tab-img {
-        width: 40vw;
-        height: 150px;
-    }
-}
-
-.nav-tabs > li {
-    background-color: #fdd;
-}
-
-.nav-tabs > li[class=active] {
-    border: solid yellow thick;
-    border-radius: 10px;
-}
-
-.side-nav {
-    position: fixed;
-    left: 10px;
-    top: 140px;
-    padding: 5px;
-    background-color: white;
-    border: solid maroon thin;
-    border-radius: 10px;
-}
-
-.side-nav * {
-    display: block;
-    font-size: 2vh;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: solid maroon thin;
-}
-
-.side-nav a:last-child {
-    border-bottom: none;
-}
-
-@media screen and (max-width: 1400px) {
-    .side-nav {
-        display: none;
-    }
-}
