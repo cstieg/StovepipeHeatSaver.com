@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Cstieg.ControllerHelper;
 using Cstieg.ControllerHelper.ActionFilters;
 using Cstieg.Sales.Models;
@@ -23,8 +25,12 @@ namespace StovepipeHeatSaver.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            var productBases = db.Products.Include(p => p.ShippingScheme);
-            return View(await productBases.ToListAsync());
+            var products = await db.Products.Include(p => p.ShippingScheme).ToListAsync();
+            foreach (var product in products)
+            {
+                product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
+            }
+            return View(products);
         }
 
         // GET: Products/Details/5
@@ -43,15 +49,23 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Products/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            // delete images that were previously saved to newly created product that was not ultimately saved
+            foreach (var webImage in await db.WebImages.Where(w => w.ProductId == null).ToListAsync())
+            {
+                // remove image files used by product
+                imageManager.DeleteImageWithMultipleSizes(webImage.ImageUrl);
+
+                db.WebImages.Remove(webImage);
+                await db.SaveChangesAsync();
+            }
+
             ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name");
             return View();
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Price,Shipping,ShippingSchemeId,ProductInfo,DisplayOnFrontPage,DoNotDisplay,Diameter")] Product product)
@@ -60,6 +74,15 @@ namespace StovepipeHeatSaver.Controllers
             {
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
+
+                // connect images that were previously saved to product (id = null)
+                foreach (var webImage in await db.WebImages.Where(w => w.ProductId == null).ToListAsync())
+                {
+                    webImage.ProductId = product.Id;
+                    db.Entry(webImage).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -79,13 +102,16 @@ namespace StovepipeHeatSaver.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Pass in list of images for product
+            product.WebImages = product.WebImages ?? new List<WebImage>();
+            product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
+
             ViewBag.ShippingSchemeId = new SelectList(db.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
             return View(product);
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Price,Shipping,ShippingSchemeId,ProductInfo,DisplayOnFrontPage,DoNotDisplay,Diameter")] Product product)
@@ -155,7 +181,7 @@ namespace StovepipeHeatSaver.Controllers
                 {
                     ProductId = id,
                     ImageUrl = await imageManager.SaveFile(imageFile, 200, timeStamp),
-                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 800, 400, 200, 100 }, timeStamp)
+                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 1600, 800, 400, 200 }, timeStamp)
                 };
                 db.WebImages.Add(image);
                 await db.SaveChangesAsync();
@@ -208,6 +234,28 @@ namespace StovepipeHeatSaver.Controllers
                     imageId = image.Id
                 }
             };
+        }
+
+        /// <summary>
+        /// Saves an image sort to database by numbering the Order field
+        /// </summary>
+        /// <param name="id">Id of the product whose images to sort</param>
+        /// <returns>JSON object indicating success</returns>
+        [HttpPost]
+        public async Task<JsonResult> OrderWebImages(int? id)
+        {
+            List<WebImage> webImages = await db.WebImages.Where(w => w.ProductId == id).ToListAsync();
+
+            List<string> imageOrder = JsonConvert.DeserializeObject<List<string>>(Request.Params.Get("imageOrder"));
+            for (int i = 0; i < imageOrder.Count(); i++)
+            {
+                string imageId = imageOrder[i];
+                WebImage webImage = await db.WebImages.FindAsync(int.Parse(imageId));
+                webImage.Order = i;
+                db.Entry(webImage).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+            }
+            return this.JOk();
         }
 
         protected override void Dispose(bool disposing)

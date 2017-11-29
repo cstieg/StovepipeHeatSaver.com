@@ -62,3 +62,22 @@ function compensateForHeader() {
     }, 400);    
 }
 
+
+/* ****************************** Sortable Product Images **************************************** */
+var productImages = document.getElementById('product-images');
+if (productImages != null) {
+    var sortable = Sortable.create(productImages, {
+        onEnd: function (/**Event*/evt) {
+            var $productImages = $(productImages);
+            var productId = $('#Id').val();
+            var imageOrder = [];
+            $($productImages.children()).each(function (index, element) {
+                imageOrder[index] = element.id.replace('image-', '');
+            });
+            var data = {
+                imageOrder: JSON.stringify(imageOrder)
+            };
+            $.post('/edit/products/orderWebImages/' + productId, data);
+        }
+    });
+}

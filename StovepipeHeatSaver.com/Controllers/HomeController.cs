@@ -20,7 +20,12 @@ namespace StovepipeHeatSaver.Controllers
 
         public async Task<ActionResult> Products()
         {
-            return View(await db.Products.ToListAsync());
+            var products = await db.Products.Where(p => !p.DoNotDisplay).ToListAsync();
+            foreach (var product in products)
+            {
+                product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
+            }
+            return View(products);
         }
 
         public async Task<ActionResult> Product(int? id)
@@ -62,6 +67,10 @@ namespace StovepipeHeatSaver.Controllers
                             product = products.Single();
                             break;
                         default:
+                            foreach (var productSingle in products)
+                            {
+                                productSingle.WebImages = productSingle.WebImages.OrderBy(w => w.Order).ToList();
+                            }
                             return View("Products", products);
                     }
                         
@@ -79,6 +88,8 @@ namespace StovepipeHeatSaver.Controllers
             {
                 return HttpNotFound();
             }
+
+            product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
             return View(product);
         }
 

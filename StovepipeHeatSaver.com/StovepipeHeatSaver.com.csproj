@@ -417,6 +417,8 @@
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
     <Content Include="Scripts\Site\site.js" />
+    <Content Include="Scripts\Sortable\Sortable.js" />
+    <Content Include="Scripts\Sortable\Sortable.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
