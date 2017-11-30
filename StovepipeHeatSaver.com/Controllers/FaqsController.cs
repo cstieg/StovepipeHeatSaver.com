@@ -11,6 +11,7 @@ namespace StovepipeHeatSaver.Controllers
     [RoutePrefix("edit/faqs")]
     [Route("{action}/{id?}")]
     [Authorize(Roles = "Administrator")]
+    [ValidateInput(false)]
     public class FaqsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

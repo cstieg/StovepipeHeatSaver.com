@@ -20,6 +20,7 @@ namespace StovepipeHeatSaver.Controllers
     [RoutePrefix("edit/products")]
     [Route("{action}/{id?}")]
     [Authorize(Roles = "Administrator")]
+    [ValidateInput(false)]
     public class ProductsController : BaseController
     {
         // GET: Products
