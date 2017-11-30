@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace StovepipeHeatSaver.Controllers
@@ -105,7 +104,7 @@ namespace StovepipeHeatSaver.Controllers
 
         public async Task<ActionResult> Reviews()
         {
-            return View(await db.Reviews.ToListAsync());
+            return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 
         public ActionResult Contact()

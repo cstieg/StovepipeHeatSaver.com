@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace StovepipeHeatSaver.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Reviews.ToListAsync());
+            return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 
         // GET: Reviews/Details/5
