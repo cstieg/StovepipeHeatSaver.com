@@ -450,11 +450,6 @@ span.glyphicon {
     margin: auto;
 }
 
-/* *********************************About Page **************************************** */
-.video-clip > iframe {
-    max-width: 100%;
-}
-
 /* ********************************Reviews Page *************************************** */
 .product-review {
     background-color: #fee;
@@ -534,6 +529,16 @@ span.glyphicon {
     content: 'A';
 }
 
+/* ******************************** Model Scaffolding ********************************* */
+#upload-image-preview {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#product-images {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 /* ******************** EditIndex.js ***************************************** */
 
@@ -586,4 +591,5 @@ span.glyphicon {
 .slide-down {
     transition: height ease-in-out 1s;
 }
+
 
