@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -12,6 +11,7 @@ namespace StovepipeHeatSaver.Controllers
     [ClearCache]
     [RoutePrefix("edit/shippingschemes")]
     [Route("{action}/{id?}")]
+    [Authorize(Roles = "Administrator")]
     public class ShippingSchemesController : BaseController
     {
 

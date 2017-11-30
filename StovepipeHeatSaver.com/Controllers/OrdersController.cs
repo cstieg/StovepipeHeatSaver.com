@@ -7,6 +7,7 @@ using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class OrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

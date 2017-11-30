@@ -2,15 +2,21 @@
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
+using Cstieg.ControllerHelper.ActionFilters;
 using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    [ClearCache]
+    [RoutePrefix("edit/faqs")]
+    [Route("{action}/{id?}")]
+    [Authorize(Roles = "Administrator")]
     public class FaqsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Faqs
+        [Route("")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Faqs.ToListAsync());

@@ -10,6 +10,7 @@ namespace StovepipeHeatSaver.Controllers
     [ClearCache]
     [RoutePrefix("edit/countries")]
     [Route("{action}/{id?}")]
+    [Authorize(Roles = "Administrator")]
     public class CountriesController : BaseController
     {
         // GET: Countries

@@ -10,6 +10,7 @@ namespace StovepipeHeatSaver.Controllers
     [ClearCache]
     [RoutePrefix("edit/reviews")]
     [Route("{action}/{id?}")]
+    [Authorize(Roles = "Administrator")]
     public class ReviewsController : BaseController
     {
         // GET: Reviews
