@@ -366,10 +366,6 @@
     <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w200.jpg" />
     <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w400.jpg" />
     <Content Include="Content\images\20171127222933-NoRigidTapeMeasure-w800.jpg" />
-    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w100.jpg" />
-    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w200.jpg" />
-    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w400.jpg" />
-    <Content Include="Content\images\20171127222934-FlexibleTapeMeasure-w800.jpg" />
     <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w100.jpg" />
     <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w200.jpg" />
     <Content Include="Content\images\20171127222936-InstallInFiveMinutes-w400.jpg" />
@@ -386,6 +382,10 @@
     <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w200.jpg" />
     <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w400.jpg" />
     <Content Include="Content\images\20171129100602-InstallInFiveMinutes-w800.jpg" />
+    <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w1600.jpg" />
+    <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w200.jpg" />
+    <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w400.jpg" />
+    <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w800.jpg" />
     <Content Include="Content\images\StovePipeHeatSaverLogo.png" />
     <Content Include="Content\NicEdit\nicEditorIcons.gif" />
     <Content Include="favicon.ico" />
