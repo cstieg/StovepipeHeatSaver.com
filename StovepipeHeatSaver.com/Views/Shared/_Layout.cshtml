@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="heatsaver, heat reclaimer, exchanger, radiate, fins, stove, stovepipe, furnace, energy efficiency" />
-    <meta name="description" content="" />
+    @RenderSection("AdditionalMeta", false)
 
-    <title>@ViewBag.Title - StovepipeHeatSaver.com</title>
+    <title>StovepipeHeatSaver.com - Reclaim Lost Stovepipe Heat - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
