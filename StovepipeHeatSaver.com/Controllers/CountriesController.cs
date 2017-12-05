@@ -25,7 +25,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Country country = await db.Countries.FindAsync(id);
             if (country == null)
@@ -42,8 +42,6 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // POST: Countries/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,IsoCode2")] Country country)
@@ -63,7 +61,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Country country = await db.Countries.FindAsync(id);
             if (country == null)
@@ -74,8 +72,6 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // POST: Countries/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,IsoCode2")] Country country)
@@ -94,7 +90,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Country country = await db.Countries.FindAsync(id);
             if (country == null)

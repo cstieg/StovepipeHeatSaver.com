@@ -24,7 +24,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Order order = await db.Orders.FindAsync(id);
             if (order == null)
@@ -44,8 +44,6 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // POST: Orders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,CustomerId,DateOrdered,ShipToAddressId,BillToAddressId")] Order order)
@@ -68,7 +66,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Order order = await db.Orders.FindAsync(id);
             if (order == null)
@@ -105,7 +103,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Order order = await db.Orders.FindAsync(id);
             if (order == null)

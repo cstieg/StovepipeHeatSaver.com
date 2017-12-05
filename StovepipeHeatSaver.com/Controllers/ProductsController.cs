@@ -40,7 +40,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -97,7 +97,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -133,7 +133,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Product product = await db.Products.FindAsync(id);
             if (product == null)
@@ -162,6 +162,7 @@ namespace StovepipeHeatSaver.Controllers
         [HttpPost]
         public async Task<JsonResult> AddImage(int? id)
         {
+            // Allow null id for newly created product
             if (id != null)
             {
                 Product product = await db.Products.FindAsync(id);
@@ -170,7 +171,6 @@ namespace StovepipeHeatSaver.Controllers
                     return this.JError(404, "Can't find product " + id.ToString());
                 }
             }
-
 
             // Check file is exists and is valid image
             HttpPostedFileBase imageFile = _ModelControllersHelper.GetImageFile(ModelState, Request, "", "file");

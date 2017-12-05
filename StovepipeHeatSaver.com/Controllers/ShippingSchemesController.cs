@@ -14,7 +14,6 @@ namespace StovepipeHeatSaver.Controllers
     [Authorize(Roles = "Administrator")]
     public class ShippingSchemesController : BaseController
     {
-
         // GET: ShippingSchemes
         [Route("")]
         public async Task<ActionResult> Index()
@@ -27,7 +26,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)
@@ -63,7 +62,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)
@@ -75,8 +74,6 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // POST: ShippingSchemes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description")] ShippingScheme shippingScheme)
@@ -95,7 +92,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)

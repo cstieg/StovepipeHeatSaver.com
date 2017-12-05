@@ -13,7 +13,6 @@ namespace StovepipeHeatSaver.Controllers
     [Authorize(Roles = "Administrator")]
     public class ShippingCountriesController : BaseController
     {
-        
         // GET: ShippingCountries/Details/5
         public async Task<ActionResult> Details(int? id)
         {
