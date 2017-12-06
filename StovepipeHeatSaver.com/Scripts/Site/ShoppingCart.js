@@ -234,3 +234,7 @@ function updateCountryInShoppingCart(country) {
         recalculate();
     });
 }
+
+function getCountry() {
+    return $('#country-select option:selected').val();
+}

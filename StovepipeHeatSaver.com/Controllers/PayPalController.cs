@@ -8,6 +8,7 @@ using Cstieg.Geography;
 using Cstieg.ControllerHelper;
 using Cstieg.Sales.PayPal;
 using Cstieg.Sales.Models;
+using System.Collections.Generic;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -24,7 +25,7 @@ namespace StovepipeHeatSaver.Controllers
         /// <returns>A JSON object in PayPal order format</returns>
         public JsonResult GetOrderJson()
         {
-            //string country = Request.Params.Get("country");
+            string country = Request.Params.Get("country");
             ShoppingCart shoppingCart;
             try
             {
@@ -35,11 +36,8 @@ namespace StovepipeHeatSaver.Controllers
                 return this.JError(400, e.Message);
             }
 
-            //shoppingCart.Country = country;
-            //if (country == "US")
-            //{
-            //    shoppingCart.RemoveAllShippingCharges();
-            //}
+            shoppingCart.Country = country;
+            shoppingCart.UpdateShippingCharges();
 
             shoppingCart.SaveToSession(HttpContext);
 
@@ -73,7 +71,7 @@ namespace StovepipeHeatSaver.Controllers
             try 
             {
                 paymentDetails.VerifyShoppingCart(shoppingCart);
-                CustomVerification(shoppingCart, paymentDetails);
+                paymentDetails.VerifyCountry(shoppingCart, await db.Countries.ToListAsync());
 
                 await SaveShoppingCartToDbAsync(shoppingCart, paymentDetails.Payer.PayerInfo);
             }
@@ -194,20 +192,5 @@ namespace StovepipeHeatSaver.Controllers
             await db.SaveChangesAsync();
         }
 
-        /// <summary>
-        /// Custom verification of shopping cart
-        /// </summary>
-        /// <param name="shoppingCart">Shopping cart stored in session</param>
-        /// <param name="paymentDetails">Payment details received from PayPal API</param>
-        protected void CustomVerification(ShoppingCart shoppingCart, PaymentDetails paymentDetails)
-        {
-            AddressBase shippingAddress = paymentDetails.Payer.PayerInfo.ShippingAddress;
-            if ((shoppingCart.Country == "US" && shippingAddress.Country != "US") ||
-                (shoppingCart.Country != "US" && shippingAddress.Country == "US"))
-            {
-                // change to JSON error
-                throw new ArgumentException("Your country does not match the country selected!");
-            }
-        }
     }
 }

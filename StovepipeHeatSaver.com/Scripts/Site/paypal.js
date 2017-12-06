@@ -27,16 +27,15 @@ paypal.Button.render({
     // payment() is called when the button is clicked
     payment: function (data, actions) {
         // Get JSON order information from server
-        return $.get('/paypal/GetOrderJson')
-            .then(function (data) {
-                var payment = JSON.parse(data);
-
-                // Make a call to the REST api to create the payment
-                return actions.payment.create({ payment: payment });
-            })
-            .catch(function (data) {
-                alert('Error processing order: \n' + data.responseJSON.message);
-            });
+        return $.get('/paypal/GetOrderJson?country=' + getCountry(), function (data) {
+            var payment = JSON.parse(data);
+            debugger;
+            // Make a call to the REST api to create the payment
+            return actions.payment.create({ payment: payment });
+        })
+        .fail(function (data) {
+            alert('Error processing order: \n' + data.responseJSON.message);
+        });
     },
 
     // onAuthorize() is called when the buyer approves the payment
