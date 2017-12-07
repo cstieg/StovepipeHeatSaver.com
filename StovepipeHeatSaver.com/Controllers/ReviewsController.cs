@@ -1,17 +1,20 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Net;
 using System.Web.Mvc;
 using Cstieg.ControllerHelper.ActionFilters;
 using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit reviews model
+    /// </summary>
     [ClearCache]
     [RoutePrefix("edit/reviews")]
     [Route("{action}/{id?}")]
     [Authorize(Roles = "Administrator")]
+    // Allow HTML in testimonial text
     [ValidateInput(false)]
     public class ReviewsController : BaseController
     {

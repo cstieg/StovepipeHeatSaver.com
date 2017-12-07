@@ -7,10 +7,14 @@ using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit FAQ model
+    /// </summary>
     [ClearCache]
     [RoutePrefix("edit/faqs")]
     [Route("{action}/{id?}")]
     [Authorize(Roles = "Administrator")]
+    // Allow HTML in FAQ text
     [ValidateInput(false)]
     public class FaqsController : Controller
     {

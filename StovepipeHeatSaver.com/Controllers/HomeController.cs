@@ -12,11 +12,13 @@ namespace StovepipeHeatSaver.Controllers
     [OutputCache(CacheProfile = "CacheForADay")]
     public class HomeController : BaseController
     {
+        // GET: /
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET: Products
         public async Task<ActionResult> Products()
         {
             var products = await db.Products.Where(p => !p.DoNotDisplay).ToListAsync();
@@ -27,6 +29,8 @@ namespace StovepipeHeatSaver.Controllers
             return View(products);
         }
 
+        // GET: Product/id
+        // GET: Product?circumference=10.8&unit=inches
         public async Task<ActionResult> Product(int? id)
         {
             Product product;
@@ -92,21 +96,25 @@ namespace StovepipeHeatSaver.Controllers
             return View(product);
         }
 
+        // GET: ProductSizeNotFound
         public ActionResult ProductSizeNotFound()
         {
             return View();
         }
         
+        // GET: Faq
         public async Task<ActionResult> Faq()
         {
             return View(await db.Faqs.ToListAsync());
         }
 
+        // GET: Reviews
         public async Task<ActionResult> Reviews()
         {
             return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 
+        // GET: Contact
         public ActionResult Contact()
         {
             return View();

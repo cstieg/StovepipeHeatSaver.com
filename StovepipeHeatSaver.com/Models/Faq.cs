@@ -2,6 +2,9 @@
 
 namespace StovepipeHeatSaver.Models
 {
+    /// <summary>
+    /// Model of Frequently Asked Question to be displayed on FAQ page
+    /// </summary>
     public class Faq
     {
         [Key]

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -16,10 +15,14 @@ using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit product model
+    /// </summary>
     [ClearCache]
     [RoutePrefix("edit/products")]
     [Route("{action}/{id?}")]
     [Authorize(Roles = "Administrator")]
+    // Allow HTML in ProductInfo field
     [ValidateInput(false)]
     public class ProductsController : BaseController
     {

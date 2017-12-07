@@ -1,9 +1,12 @@
 ﻿using System;
-using Cstieg.Sales.Models;
 using System.ComponentModel.DataAnnotations;
+using Cstieg.Sales.Models;
 
 namespace StovepipeHeatSaver.Models
 {
+    /// <summary>
+    /// Model of product to be sold
+    /// </summary>
     public class Product : ProductBase
     {
         public const decimal MinTolerancePct = 0.028M;

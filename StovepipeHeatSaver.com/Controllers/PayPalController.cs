@@ -8,7 +8,6 @@ using Cstieg.Geography;
 using Cstieg.ControllerHelper;
 using Cstieg.Sales.PayPal;
 using Cstieg.Sales.Models;
-using System.Collections.Generic;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -36,6 +35,7 @@ namespace StovepipeHeatSaver.Controllers
                 return this.JError(400, e.Message);
             }
 
+            // apply country-specific charges
             shoppingCart.Country = country;
             shoppingCart.UpdateShippingCharges();
 
@@ -118,7 +118,6 @@ namespace StovepipeHeatSaver.Controllers
                 shoppingCart.Order.Customer = customer;
                 shoppingCart.Order.CustomerId = customer.Id;
             }
-
 
             customer.LastVisited = DateTime.Now;
             if (isNewCustomer)

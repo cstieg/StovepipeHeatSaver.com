@@ -1,13 +1,15 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Net;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
 using Cstieg.ControllerHelper.ActionFilters;
-using System.Linq;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit shipping pricing scheme model
+    /// </summary>
     [ClearCache]
     [RoutePrefix("edit/shippingschemes")]
     [Route("{action}/{id?}")]

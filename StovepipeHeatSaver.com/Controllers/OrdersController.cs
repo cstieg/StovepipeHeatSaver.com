@@ -1,12 +1,14 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Net;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
 using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit orders model
+    /// </summary>
     [Authorize(Roles = "Administrator")]
     public class OrdersController : Controller
     {

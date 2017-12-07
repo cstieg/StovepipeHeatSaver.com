@@ -7,6 +7,9 @@ using Cstieg.ControllerHelper.ActionFilters;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Controller to edit country list model
+    /// </summary>
     [ClearCache]
     [RoutePrefix("edit/countries")]
     [Route("{action}/{id?}")]

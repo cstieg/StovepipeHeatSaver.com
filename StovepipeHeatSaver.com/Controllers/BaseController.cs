@@ -1,14 +1,18 @@
 ﻿using System.Web.Mvc;
-using StovepipeHeatSaver.Models;
 using Cstieg.WebFiles;
+using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
+    /// <summary>
+    /// Base controller to be provide basic behavior for all controllers
+    /// </summary>
     public class BaseController : Controller
     {
         protected ApplicationDbContext db = new ApplicationDbContext();
         public static string contentFolder = "/content";
 
+        // storage service for storing uploaded images
         protected IFileService storageService;
         protected ImageManager imageManager;
 

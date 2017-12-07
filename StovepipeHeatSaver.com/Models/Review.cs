@@ -5,6 +5,9 @@ using System.Web.Mvc;
 
 namespace StovepipeHeatSaver.Models
 {
+    /// <summary>
+    /// Model of customer review or testimonial
+    /// </summary>
     public class Review
     {
         [Key]
@@ -25,6 +28,10 @@ namespace StovepipeHeatSaver.Models
         [AllowHtml]
         public string Text { get; set; }
 
+        /// <summary>
+        /// Formats a string containing information about the reviewer (name and location)
+        /// </summary>
+        /// <returns>The formatted string containing the reviewer's name and location</returns>
         public string GetReviewer()
         {
             string reviewerText = "";
