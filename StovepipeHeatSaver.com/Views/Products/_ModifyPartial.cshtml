@@ -78,7 +78,7 @@
                                 <picture id="image-@webImage.Id">
                                     <img src="@webImage.ImageUrl" class="thumbnail"/>
                                     <p>@webImage.Caption</p>
-                                    <button onclick="imageDelete(@webImage.ProductId, @webImage.Id);return false;">
+                                    <button onclick="imageDelete('/Edit/Products/DeleteImage/', @webImage.ProductId, @webImage.Id);return false;">
                                         Delete Image
                                     </button>
                                 </picture>
@@ -93,11 +93,13 @@
                     <label for="imageFile" class="btn btn-default">Choose image file to add</label>
                     @if (Model == null)
                     {
-                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(null, '#product-images')" />
+                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" 
+                               onchange="imageUpload('/Edit/Products/AddImage/', null, '#product-images')" />
                     }
                     else
                     {
-                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" onchange="imageUpload(@Model.Id, '#product-images')" />
+                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" 
+                               onchange="imageUpload('/Edit/Products/AddImage/', @Model.Id, '#product-images')" />
                     }
                 </div>
                 <div id="upload-instructions" class="col-md-12">

@@ -12,7 +12,8 @@ function imageUploadPreview(targetId) {
     }
 }
 
-function imageUpload(productId, container) {
+// Uploads multiple images to the server
+function imageUpload(url, productId, container) {
     // global variable to keep track of pending image uploads
     imageUploadPendingCount = 0;
     showLightboxMessage("Please wait while image upload finishes", "ImageUploadPendingLightboxMessage");
@@ -21,19 +22,20 @@ function imageUpload(productId, container) {
     var $container = $(container);
     for (var i = 0; i < e.srcElement.files.length; i++) {
         var file = e.srcElement.files[i];
-        imageUploadSingle(file, productId, $container);
+        imageUploadSingle(file, url, productId, $container);
         imageUploadPendingCount++;
     }
 }
 
-function imageUploadSingle(file, productId, $container) {
+// Uploads a single image to the server
+function imageUploadSingle(file, url, productId, $container) {
     var reader = new FileReader();
     reader.onloadend = function () {
         var myFormData = new FormData();
         myFormData.append('file', file);
         $.ajax({
             type: 'POST',
-            url: '/Edit/Products/AddImage/' + productId,
+            url: url + productId,
             data: myFormData,
             processData: false, // important
             contentType: false, // important
@@ -42,7 +44,7 @@ function imageUploadSingle(file, productId, $container) {
                 var $newPicture = $(`
                             <picture id="image-${response.imageId}">
                                 <img src="${reader.result}" class="thumbnail" />
-                                <button onclick="imageDelete(${productId}, ${response.imageId});return false;">
+                                <button onclick="imageDelete('/Edit/Products/DeleteImage/', ${productId}, ${response.imageId});return false;">
                                     Delete Image
                                 </button>
                             </picture>
@@ -59,10 +61,11 @@ function imageUploadSingle(file, productId, $container) {
     reader.readAsDataURL(file);
 }
 
-function imageDelete(productId, imageId) {
+// Deletes an image from the server
+function imageDelete(url, productId, imageId) {
     $.ajax({
         type: 'POST',
-        url: '/Edit/Products/DeleteImage/' + productId,
+        url: url + productId,
         data: { imageId: imageId },
         success: function (response) {
             $('#image-' + imageId).remove();
