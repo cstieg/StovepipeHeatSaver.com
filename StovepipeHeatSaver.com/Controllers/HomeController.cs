@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace StovepipeHeatSaver.Controllers
 {
-    [OutputCache(CacheProfile = "CacheForADay")]
+    [OutputCache(CacheProfile = "CacheForAWeek")]
     public class HomeController : BaseController
     {
         // GET: /
