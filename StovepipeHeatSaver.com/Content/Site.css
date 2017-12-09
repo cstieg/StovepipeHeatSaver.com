@@ -326,7 +326,7 @@ span.glyphicon {
 
 .tab-3wide > li {
     width: 390px;
-    height: 350px;
+    min-height: 350px;
 }
 
 .tab-img {
@@ -338,7 +338,7 @@ span.glyphicon {
 @media screen and (max-width: 800px) {
     .tab-3wide > li {
         width: 47vw;
-        height: 250px;
+        min-height: 250px;
     }
 
     .tab-img {
