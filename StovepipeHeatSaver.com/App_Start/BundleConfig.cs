@@ -26,6 +26,7 @@ namespace StovepipeHeatSaver
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                       "~/Scripts/Site/site.js",
                       "~/Scripts/Site/ShoppingCart.js",
+                      "~/Scripts/Site/RandomId.js",
                       "~/Scripts/Site/ImageUpload.js",
                       "~/Scripts/Site/LightboxMessage.js",
                       "~/Scripts/Site/EditIndex.js"));
@@ -38,7 +39,9 @@ namespace StovepipeHeatSaver
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/EditIndex.css",
+                      "~/Content/site.css",
+                      "~/Content/LightboxMessage.css"));
         }
     }
 }

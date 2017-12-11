@@ -257,6 +257,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\EditIndex.css" />
     <Content Include="Content\images\20171127222708-AvailableSizes-w100.jpg" />
     <Content Include="Content\images\20171127222708-AvailableSizes-w200.jpg" />
     <Content Include="Content\images\20171127222708-AvailableSizes-w400.jpg" />
@@ -386,6 +387,7 @@
     <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w400.jpg" />
     <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w800.jpg" />
     <Content Include="Content\images\StovePipeHeatSaverLogo.png" />
+    <Content Include="Content\LightboxMessage.css" />
     <Content Include="Content\NicEdit\nicEditorIcons.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -417,6 +419,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Site\EditIndex.js" />
     <Content Include="Scripts\Site\ImageUpload.js" />
+    <Content Include="Scripts\Site\RandomId.js" />
     <Content Include="Scripts\Site\LightboxMessage.js" />
     <Content Include="Scripts\Site\paypal.js" />
     <Content Include="Scripts\Site\ShoppingCart.js" />
@@ -503,6 +506,7 @@
     <Content Include="Views\ShippingSchemes\_ShippingCountriesIndexPartial.cshtml" />
     <Content Include="Views\Countries\_ModifyPartial.cshtml" />
     <Content Include="Views\Products\_ModifyPartial.cshtml" />
+    <Content Include="Views\Products\_ProductImagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

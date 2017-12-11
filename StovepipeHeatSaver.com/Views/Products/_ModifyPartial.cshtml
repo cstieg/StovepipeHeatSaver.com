@@ -75,13 +75,7 @@
                         {
                             foreach (var webImage in Model.WebImages)
                             {
-                                <picture id="image-@webImage.Id">
-                                    <img src="@webImage.ImageUrl" class="thumbnail"/>
-                                    <p>@webImage.Caption</p>
-                                    <button onclick="imageDelete('/Edit/Products/DeleteImage/', @webImage.ProductId, @webImage.Id);return false;">
-                                        Delete Image
-                                    </button>
-                                </picture>
+                                @Html.Partial("_ProductImagePartial", webImage)
                             }
                         }
                     }
@@ -91,16 +85,15 @@
                 <hr />
                 <div class="form-horizontal">
                     <label for="imageFile" class="btn btn-default">Choose image file to add</label>
-                    @if (Model == null)
-                    {
-                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" 
-                               onchange="imageUpload('/Edit/Products/AddImage/', null, '#product-images')" />
+                    @{ 
+                        int? ModelId = null;
+                        if (Model != null)
+                        {
+                            ModelId = Model.Id;
+                        }
                     }
-                    else
-                    {
-                        <input id="imageFile" type="file" multiple name="imageFile" class="hidden" 
-                               onchange="imageUpload('/Edit/Products/AddImage/', @Model.Id, '#product-images')" />
-                    }
+                    <input id="imageFile" type="file" accept=".jpg, .jpeg, .png, .gif" multiple name="imageFile" class="hidden" 
+                               onchange="ImageUpload.uploadImages('/Edit/Products/AddImage/@ModelId', '#product-images')" />
                 </div>
                 <div id="upload-instructions" class="col-md-12">
                     <p>

@@ -63,43 +63,9 @@
         }
 */
 
-// Should add the following CSS
-/*
-
-.input-text {
-    background-color: white;
-    background-color: -moz-field;
-    border: 1px solid darkgray;
-    box-shadow: 1px 1px 1px 0 lightgray;
-    font: -moz-field;
-    font: -webkit-small-control;
-    margin-top: 5px;
-    padding: 2px 3px;
-    width: 100%;
-}
-
-.green-border {
-    border: ridge thick green;
-    border-radius: 14px;
-}
-
-.red-border {
-    border: ridge thick red;
-}
-
-.border-fade {
-    border-color: transparent;
-    border-radius: 0;
-    border-width: 1px;
-    transition-property: all;
-    transition-duration: 3s;
-    transition-timing-function: ease;
-}
-*/
-
 
 var editIndex = {
-    // Initialize model
+    // Initialize module
     init: function () {
         this.$editableRows = $('tr[model-id]');
         this.$editableElements = this.$editableRows.find('td[field-name]');

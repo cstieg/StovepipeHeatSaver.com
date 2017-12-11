@@ -163,7 +163,7 @@ namespace StovepipeHeatSaver.Controllers
         /// <param name="id">Product id</param>
         /// <returns>Json result containing image id</returns>
         [HttpPost]
-        public async Task<JsonResult> AddImage(int? id)
+        public async Task<ActionResult> AddImage(int? id)
         {
             // Allow null id for newly created product
             if (id != null)
@@ -190,14 +190,7 @@ namespace StovepipeHeatSaver.Controllers
                 };
                 db.WebImages.Add(image);
                 await db.SaveChangesAsync();
-                return new JsonResult
-                {
-                    Data = new
-                    {
-                        success = "True",
-                        imageId = image.Id
-                    }
-                };
+                return PartialView("_ProductImagePartial", image);
             }
             catch (Exception e)
             {
