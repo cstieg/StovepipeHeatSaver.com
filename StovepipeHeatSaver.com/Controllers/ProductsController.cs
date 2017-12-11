@@ -165,6 +165,8 @@ namespace StovepipeHeatSaver.Controllers
         [HttpPost]
         public async Task<ActionResult> AddImage(int? id)
         {
+            int? maxImageOrderNo = 0;
+
             // Allow null id for newly created product
             if (id != null)
             {
@@ -173,6 +175,9 @@ namespace StovepipeHeatSaver.Controllers
                 {
                     return this.JError(404, "Can't find product " + id.ToString());
                 }
+
+                // Newly added image should go at end of collection unless purposefully reordered
+                maxImageOrderNo = await db.WebImages.Where(w => w.ProductId == id).MaxAsync(w => w.Order) ?? 0;
             }
 
             // Check file is exists and is valid image
@@ -186,7 +191,8 @@ namespace StovepipeHeatSaver.Controllers
                 {
                     ProductId = id,
                     ImageUrl = await imageManager.SaveFile(imageFile, 200, timeStamp),
-                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 1600, 800, 400, 200 }, timeStamp)
+                    ImageSrcSet = await imageManager.SaveImageMultipleSizes(imageFile, new List<int>() { 1600, 800, 400, 200 }, timeStamp),
+                    Order = maxImageOrderNo + 1
                 };
                 db.WebImages.Add(image);
                 await db.SaveChangesAsync();
