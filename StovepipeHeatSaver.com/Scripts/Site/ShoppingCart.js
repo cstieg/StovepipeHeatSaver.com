@@ -50,7 +50,7 @@ function buyNow(id) {
             window.location = "/shoppingCart";
         },
         error: function (result) {
-            if (result.status = 403) {
+            if (result.status === 403) {
                 window.location = "/shoppingCart";
             }
             else {
@@ -146,7 +146,7 @@ function refreshDetail(orderDetail) {
     var $extendedPrice = $orderDetail.find('.item-extended-price');
     var $shipping = $orderDetail.find('.item-shipping');
     var $totalPrice = $orderDetail.find('.item-total-price');
-    
+
     $name.text(orderDetail.Product.Name);
     $unitPrice.text('$' + orderDetail.UnitPrice.toFixed(2));
     $quantity.text(orderDetail.Quantity);
@@ -205,7 +205,7 @@ function setCountry() {
         var $countryOption = $countrySelect.find('option[value="' + country + '"]');
 
         // Select 'other' if country is not in the list
-        if ($countryOption.length == 0) {
+        if ($countryOption.length === 0) {
             $countryOption = $countrySelect.find('option[value="--"]');
         }
         $countryOption.attr('selected', 'selected');
@@ -215,7 +215,7 @@ function setCountry() {
 
 // Event called when country is manually changed
 function countryChange()
-{   
+{
     var country = $('#country-select option:selected').val();
     updateCountryInShoppingCart(country);
 }

@@ -74,7 +74,7 @@ var editIndex = {
         this.postUrl = '';
 
         // Prevent focusout event double fire on switch tabs
-        this.prevActiveElement;
+        this.prevActiveElement = null;
         $(window).on('blur', function () {
             prevActiveElement = document.activeElement;
         });
@@ -165,14 +165,14 @@ var editIndex = {
         var $elementInnerDiv = $element.find('input[type="checkbox"]');
         $elementInnerDiv.removeClass('input-text');
         $elementInnerDiv.attr('disabled', true);
-    }, 
+    },
 
     // Allow traversing up or down through the rows
     processKeys: function (e) {
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
             var $td = $(e.currentTarget).closest('td');
             var cellIndex = $td[0].cellIndex;
-            var $newRow
+            var $newRow;
             if (e.key === 'ArrowDown') {
                 $newRow = $($td.closest('tr')[0].nextElementSibling);
             }

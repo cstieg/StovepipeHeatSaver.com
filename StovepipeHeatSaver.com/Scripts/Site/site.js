@@ -1,22 +1,26 @@
+/* ********************** Main page video display **************************** */
+// Set handler for clicking video tab
 ﻿(function toggleVideo() {
     $('#watch-video-tab').on('click', { toggleTarget: '#watch-video' }, toggleHidden);
 })();
 
-async function toggleHidden(e) {
+// Display or hide video div
+function toggleHidden (e) {
     $(e.data.toggleTarget).toggleClass('no-height');
-    if ($(e.data.toggleTarget).hasClass('no-height') == false) {
-        // sleep to wait for slide down transition
-        await sleep(1000);
-        var bottom = getCoords($(e.data.toggleTarget)[0]).top + $(e.data.toggleTarget)[0].offsetHeight;
-        var screenBottom = window.pageYOffset + window.innerHeight;
-        var scrollDown = Math.max(bottom - screenBottom, 0);
-        $('html, body').animate({
-            scrollTop: '+=' + scrollDown
-        }, 1000);
 
+    // make sure video div is fully visible
+    if ($(e.data.toggleTarget).hasClass('no-height') === false) {
+        // delay to wait for animation to take place and set bottom coords
+        setTimeout(function() {
+            var bottom = getCoords($(e.data.toggleTarget)[0]).top + $(e.data.toggleTarget)[0].offsetHeight;
+            var screenBottom = window.pageYOffset + window.innerHeight;
+            var scrollDown = Math.max(bottom - screenBottom, 0);
+            $('html, body').animate({
+                scrollTop: '+=' + scrollDown
+            }, 1000);
+        }, 1020);
     }
 }
-
 
 // stackoverflow.com
 function getCoords(elem) {
@@ -36,10 +40,7 @@ function getCoords(elem) {
     return { top: Math.round(top), left: Math.round(left) };
 }
 
-function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
-
+/* **************************** Main page side nav *********************** */ 
 (function loadSideNav() {
     var $sideNav = $('.side-nav');
     if ($sideNav.length === 0) {
@@ -56,16 +57,17 @@ function sleep(time) {
     });
 })();
 
+// After clicking to id, scroll back up to compensate for height of header
 function compensateForHeader() {
     $('html, body').animate({
         scrollTop: '-=' + 120
-    }, 400);    
+    }, 400);
 }
 
 
 /* ****************************** Sortable Product Images **************************************** */
 var productImages = document.getElementById('product-images');
-if (productImages != null) {
+if (productImages !== null) {
     var sortable = Sortable.create(productImages, {
         onEnd: function (/**Event*/evt) {
             var $productImages = $(productImages);

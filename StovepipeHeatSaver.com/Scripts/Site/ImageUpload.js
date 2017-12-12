@@ -66,12 +66,12 @@ var ImageUploader = function () {
     this.uploadSingleImage = function (file, url, $container) {
         var reader = new FileReader();
         var that = this;
-        
+
         // Post image data to server when finished reading with FileReader
         reader.onloadend = function () {
             var myFormData = new FormData();
             myFormData.append('file', file);
-            
+
             $.ajax({
                 context: that,
                 type: 'POST',
@@ -117,15 +117,15 @@ var ImageUploader = function () {
         if (imageUploadPendingCount === 0) {
             lightboxMessage.destroy();
         }
-    };
+    }
 
 
     // Previews an image file uploaded to form before form is saved
     // targetId: the element in which to display the image preview
     this.previewImage = function (targetId) {
         var e = window.event;
-        for (var i = 0; i < e.srcElement.files.length; i++) {
-            var file = e.srcElement.files[i];
+        if (e.srcElement.files.length === 1) {
+            var file = e.srcElement.files[0];
             var $targetImg = $(targetId);
             var reader = new FileReader();
             reader.onloadend = function () {
@@ -134,6 +134,7 @@ var ImageUploader = function () {
             reader.readAsDataURL(file);
         }
     };
+
 
 
     return {

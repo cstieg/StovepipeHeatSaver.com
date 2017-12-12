@@ -1,4 +1,4 @@
-﻿function randomId(idLength, possibleChars = null) {
+﻿function randomId(idLength, possibleChars) {
     possibleChars = possibleChars || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
     var returnVal = '';
     for (var i = 0; i < idLength; i++) {
