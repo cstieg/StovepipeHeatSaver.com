@@ -4,22 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @RenderSection("AdditionalMeta", false)
-
     <title>StovepipeHeatSaver.com - Reclaim Lost Stovepipe Heat - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" itemscope itemtype="http://schema.org/Organization">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="~/"><img src="~/Content/images/StovepipeHeatSaverLogo.png" alt="Stovepipe Heatsaver logo" class="logo" /></a>
+                <a itemprop="url" href="~/">
+                    <img itemprop="logo" src="~/Content/images/StovepipeHeatSaverLogo.png" alt="Stovepipe Heatsaver logo" class="logo" />
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -39,14 +39,20 @@
 @Html.Partial("_LoginPartial")
 -->
             </div>
+
         </div>
        
     </div>
+    @RenderSection("BreadCrumbs", false)
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - StovepipeHeatSaver.com</p>
+        <footer class="container">
+            <div class="row text-center">
+                <div class="col-sm-4">&copy; @DateTime.Now.Year - Detex</div>
+                <div class="col-sm-4"><a href="mailto:webmaster@stovepipeheatsaver.com">Website feedback</a></div>
+                <div class="col-sm-4">Website created by <a href="http://www.christopherstieg.com">Christopher Stieg</a></div>
+            </div>
         </footer>
     </div>
 

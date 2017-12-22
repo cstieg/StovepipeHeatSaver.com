@@ -3,6 +3,20 @@
     ViewData["Title"] = "Shopping Cart";
 }
 
+@section BreadCrumbs
+{
+    <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/" itemprop="item">StovePipeHeatSaver</a>
+            <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/ShoppingCart" itemprop="item">Shopping Cart</a>
+            <meta itemprop="position" content="2" />
+        </li>
+    </ul>
+}
+
 <h1>Shopping Cart</h1>
 <hr />
 
@@ -22,7 +36,24 @@
         foreach (var item in Model.GetItems())
         {
             <div class="row item-detail-line" id="item-@item.Product.Id">
-                <div class="col-xs-5 col-sm-6 col-md-5 col-lg-5 item-name">@item.Product.Name</div>
+                <a href="/home/product/@item.Product.Id">
+                    <div class="hidden-xs hidden-sm hidden-md col-lg-1">
+                        <div class="image-wrapper">
+                            @if (item.Product.WebImages != null && item.Product.WebImages.Count() > 0)
+                            {
+                                <img class="product-image"
+                                     src="@item.Product.WebImages.First().ImageUrl"
+                                     srcset="@item.Product.WebImages.First().ImageSrcSet"
+                                     sizes="200px"
+                                     alt="@item.Product.Name image" />
+                            }
+                            else
+                            {
+                                <img class="product-image" src="~/Content/images/ImageUnavailable.png" alt="@item.Product.Name image" />
+                            }
+                        </div>
+                    <div class="col-xs-5 col-sm-6 col-md-5 col-lg-4 item-name">@item.Product.Name</div>
+                </a>
                 <div class="hidden-xs col-sm-2 col-md-1 col-lg-1 item-unit-price">$@item.UnitPrice</div>
                 <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 item-quantity">
                     @if (!item.IsPromotionalItem)

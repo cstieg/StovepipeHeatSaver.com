@@ -3,6 +3,21 @@
 @{
     ViewBag.Title = "Reviews";
 }
+
+@section BreadCrumbs
+{
+    <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/" itemprop="item">StovePipeHeatSaver</a>
+            <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/Reviews" itemprop="item">Reviews</a>
+            <meta itemprop="position" content="2" />
+        </li>
+    </ul>
+}
+
 <h2>@ViewBag.Title</h2>
 
 <div id="product-reviews" class="container">

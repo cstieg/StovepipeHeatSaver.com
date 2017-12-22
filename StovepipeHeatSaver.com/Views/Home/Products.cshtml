@@ -4,6 +4,21 @@
     ViewBag.Title = "Products";
 }
 
+@section BreadCrumbs
+{
+    <ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/" itemprop="item">StovePipeHeatSaver</a>
+            <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="/Products" itemprop="item">Products</a>
+            <meta itemprop="position" content="2" />
+        </li>
+    </ul>
+}
+
+
 <h2>Products</h2>   
 <h4>Stop! Measure the circumference; don't guess on the diameter!!</h4>
 <p>Please be sure to measure the circumference (distance around) your stove pipe.  This is different from the diameter.  

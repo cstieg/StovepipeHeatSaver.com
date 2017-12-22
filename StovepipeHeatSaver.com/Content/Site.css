@@ -3,7 +3,7 @@
 
 body {
     /* Padding for height of navbar header */
-    padding: 146px 10px 20px 10px;
+    padding: 116px 10px 20px 10px;
     background-image: url("");
     background-color: #ffe; /* offwhite */
 }
@@ -43,6 +43,12 @@ hr {
 
 .larger-text {
     font-size: larger;
+}
+
+.breadcrumb {
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -393,11 +399,13 @@ span.glyphicon {
     font-size: larger;
     min-width: 100px;
     min-height: 20px;
+    padding: 3px;
     border: gray 2px outset;
 }
 
 .add-to-shopping-cart {
     margin: 4px;
+    padding: 3px;
 }
 
 .product-item button:hover {
