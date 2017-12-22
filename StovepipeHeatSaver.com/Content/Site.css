@@ -563,4 +563,6 @@ span.glyphicon {
     transition: height ease-in-out 1s;
 }
 
-
+.hundred-percent {
+    width: 100%;
+}
