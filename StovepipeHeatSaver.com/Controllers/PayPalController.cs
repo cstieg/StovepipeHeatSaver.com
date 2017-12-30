@@ -172,20 +172,14 @@ namespace StovepipeHeatSaver.Controllers
                 shoppingCart.Order.BillToAddressId = shoppingCart.Order.ShipToAddressId;
             }
 
-            await db.SaveChangesAsync();
-
-
             // add order details to database
             for (int i = 0; i < shoppingCart.Order.OrderDetails.Count; i++)
             {
                 var orderDetail = shoppingCart.Order.OrderDetails[i];
                 orderDetail.ProductId = orderDetail.Product.Id;
+                orderDetail.Product = db.Products.Find(orderDetail.ProductId);
 
                 db.Entry(orderDetail).State = EntityState.Added;
-
-                // don't add duplicate of product
-                db.Entry(orderDetail.Product).State = EntityState.Unchanged;
-                db.Entry(orderDetail.Product.ShippingScheme).State = EntityState.Unchanged;
             }
 
             // add order to database
