@@ -12,6 +12,13 @@ var clientInfo = {
     mode: document.getElementById('paypalMode').innerText,
 };
 
+if (!paypal.isEligible()) {
+    // Do not show PayPal experience
+    $('#paypal-button-container').text('We are having problems displaying the PayPal button.  This may occur with Internet Explorer users. ' +
+        'Please ensure that JavaScript is enabled, and that the security mode in the Internet zone is set to medium high. ' +
+        'Also please consider using a modern browser such as Chrome, FireFox, Edge, Opera, Safari, etc.');
+}
+
 paypal.Button.render({
 
     env: clientInfo.mode,
