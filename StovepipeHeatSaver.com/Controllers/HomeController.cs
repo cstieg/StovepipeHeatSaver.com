@@ -60,13 +60,22 @@ namespace StovepipeHeatSaver.Controllers
         {
             string circumferenceParam = Request.Params.Get("circumference");
             string unit = Request.Params.Get("unit");
+            decimal circumference;
 
             if (circumferenceParam == null || unit == null)
             {
                 return HttpNotFound();
             }
 
-            decimal circumference = decimal.Parse(circumferenceParam);
+            try
+            {
+                circumference = decimal.Parse(circumferenceParam);
+            }
+            catch (Exception)
+            {
+                return HttpNotFound("Please enter valid decimal.");
+            }
+
             switch (unit)
             {
                 case "inches":
