@@ -17,7 +17,7 @@ namespace StovepipeHeatSaver
             routes.MapRoute(
                 name: "Product",
                 url: "Product/{id}",
-                defaults: new { controller = "Home", action = "Product", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Product" }
             );
 
             routes.MapRoute(
