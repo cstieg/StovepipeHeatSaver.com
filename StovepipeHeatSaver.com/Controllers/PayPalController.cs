@@ -8,6 +8,7 @@ using Cstieg.Geography;
 using Cstieg.ControllerHelper;
 using Cstieg.Sales.PayPal;
 using Cstieg.Sales.Models;
+using System.Net;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -73,7 +74,7 @@ namespace StovepipeHeatSaver.Controllers
                 paymentDetails.VerifyShoppingCart(shoppingCart);
                 paymentDetails.VerifyCountry(shoppingCart, await db.Countries.ToListAsync());
 
-                await SaveShoppingCartToDbAsync(shoppingCart, paymentDetails.Payer.PayerInfo);
+                await SaveShoppingCartToDbAsync(shoppingCart, paymentDetails);
             }
             catch (Exception e)
             {
@@ -92,9 +93,10 @@ namespace StovepipeHeatSaver.Controllers
         /// Saves the shopping cart to the database.
         /// </summary>
         /// <param name="shoppingCart">Shopping cart stored in session</param>
-        /// <param name="payerInfo">Payer info received from PayPal API</param>
-        private async Task SaveShoppingCartToDbAsync(ShoppingCart shoppingCart, PayerInfo payerInfo)
+        /// <param name="paymentDetails">Payment details received from PayPal API</param>
+        private async Task SaveShoppingCartToDbAsync(ShoppingCart shoppingCart, PaymentDetails paymentDetails)
         {
+            PayerInfo payerInfo = paymentDetails.Payer.PayerInfo;
             var customersDb = db.Customers;
             var addressesDb = db.Addresses;
             var ordersDb = db.Orders;
@@ -183,6 +185,7 @@ namespace StovepipeHeatSaver.Controllers
             }
 
             // add order to database
+            shoppingCart.Order.Cart = paymentDetails.Cart;
             shoppingCart.Order.DateOrdered = DateTime.Now;
             ordersDb.Add(shoppingCart.Order);
 
