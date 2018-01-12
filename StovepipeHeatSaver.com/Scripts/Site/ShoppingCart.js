@@ -214,8 +214,7 @@ function setCountry() {
 }
 
 // Event called when country is manually changed
-function countryChange()
-{
+function countryChange() {
     var country = $('#country-select option:selected').val();
     updateCountryInShoppingCart(country);
 }

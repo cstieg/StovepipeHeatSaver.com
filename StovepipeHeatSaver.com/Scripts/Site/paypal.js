@@ -9,7 +9,7 @@
 
 var clientInfo = {
     clientId: document.getElementById('paypalClientId').innerText,
-    mode: document.getElementById('paypalMode').innerText,
+    mode: document.getElementById('paypalMode').innerText
 };
 
 if (!paypal.isEligible()) {
@@ -41,7 +41,7 @@ paypal.Button.render({
                 // Make a call to the REST api to create the payment
                 return actions.payment.create({ payment: payment });
             })
-            .catch(function (data) {
+            .fail(function (data) {
                 alert('Error processing order: \n' + data.responseJSON.message);
             });
     },
@@ -50,21 +50,42 @@ paypal.Button.render({
     onAuthorize: function (data, actions) {
         return actions.payment.get()
             .then(function (paymentDetails) {
+                var lightbox = new LightboxMessage('Please wait...');
+                lightbox.display();
+
                 var verifyData = {
                     paymentDetails: JSON.stringify(paymentDetails)
                 };
-                $.post("/PayPal/VerifyAndSave", verifyData)
-                    .then(function () {
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/PayPal/VerifyAndSave',
+                    data: verifyData,
+                    success: function () {
                         // Execute the payment
-                        return actions.payment.execute();
-                    })
-                    .then(function (data) {
-                        // Show a success page to the buyer
-                        window.location.href = "/ShoppingCart/OrderSuccess";
-                    })
-                    .catch(function (data) {
-                        alert('Error processing order: \n' + data.responseJSON.message);
-                    });
+                        return actions.payment.execute()
+                            .then(function (data) {
+                                // Show a success page to the buyer
+                                $.post('/Mail/ConfirmOrder?cart=' + data.cart).fail(function () {
+                                    debugger;
+                                });
+                                window.location.href = '/ShoppingCart/OrderSuccess';
+                            },
+                            function (data) {
+                                alert('Error in PayPal processing order: \n' + data.responseJSON.message);
+                                lightbox.destroy();
+                            });
+                    },
+                    error: function (data) {
+                        if (data.responseJSON) {
+                            alert('Error processing order: ' + data.responseJSON.message);
+                        }
+                        else {
+                            alert('Error processing order.');
+                        }
+                        lightbox.destroy();
+                    }
+                });
             });
     }
 
