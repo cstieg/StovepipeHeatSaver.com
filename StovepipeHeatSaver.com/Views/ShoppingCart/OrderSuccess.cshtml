@@ -1,4 +1,5 @@
-﻿
+﻿@model Cstieg.Sales.Models.Order
+
 @{
     ViewBag.Title = "Order Success";
 }
@@ -26,3 +27,14 @@
 <br />
 <br />
 <p class="larger-text text-center">Congratulations!  Your order has been successfully placed!</p>
+<br />
+<h2>Order Details</h2>
+<hr />
+@foreach (var orderDetails in Model.OrderDetails)
+{
+    <p>Item: @orderDetails.Product.Name</p>
+    <p>Quantity: @orderDetails.Quantity</p>
+    <p>Paid: @orderDetails.TotalPrice</p>
+    <br />
+}
+

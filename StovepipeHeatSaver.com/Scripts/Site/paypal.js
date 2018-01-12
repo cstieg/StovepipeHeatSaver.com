@@ -69,7 +69,7 @@ paypal.Button.render({
                                 $.post('/Mail/ConfirmOrder?cart=' + data.cart).fail(function () {
                                     debugger;
                                 });
-                                window.location.href = '/ShoppingCart/OrderSuccess';
+                                window.location.href = '/ShoppingCart/OrderSuccess?cart=' + data.cart;
                             },
                             function (data) {
                                 alert('Error in PayPal processing order: \n' + data.responseJSON.message);

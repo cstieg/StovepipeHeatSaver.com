@@ -26,9 +26,16 @@ namespace StovepipeHeatSaver.Controllers
             return View(shoppingCart);
         }
 
-        public ActionResult OrderSuccess()
+        public async Task<ActionResult> OrderSuccess()
         {
-            return View();
+            string id = Request.Params.Get("cart");
+            Order order = await db.Orders.Include(o => o.Customer).Where(o => o.Cart == id).SingleOrDefaultAsync();
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(order);
         }
         
         /// <summary>
