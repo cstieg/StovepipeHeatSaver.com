@@ -110,9 +110,8 @@ namespace StovepipeHeatSaver.Controllers
                 {
                     Registered = DateTime.Now,
                     EmailAddress = payerInfo.Email,
-                    CustomerName = payerInfo.FirstName + " " +
-                                    payerInfo.MiddleName + " " +
-                                    payerInfo.LastName
+                    FirstName = payerInfo.FirstName,
+                    LastName = payerInfo.LastName
                 };
             }
             else
