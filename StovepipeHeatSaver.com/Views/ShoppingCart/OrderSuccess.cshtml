@@ -26,7 +26,7 @@
 <br />
 <br />
 <br />
-<p class="larger-text text-center">Congratulations!  Your order has been successfully placed!</p>
+<p class="larger-text">You have successfully placed your order.  We will ship to @Model.ShipToAddress via US Postal Service.</p>
 <br />
 <h2>Order Details</h2>
 <hr />
@@ -37,4 +37,5 @@
     <p>Paid: @orderDetails.TotalPrice</p>
     <br />
 }
-
+<hr />
+<p>Total: $@Model.Total</p>

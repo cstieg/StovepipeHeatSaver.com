@@ -26,6 +26,11 @@ namespace StovepipeHeatSaver.Controllers
             return View(shoppingCart);
         }
 
+        // GET: ShoppingCart/OrderSuccess?cart=DF39FEI314040
+        /// <summary>
+        /// Displays confirmation for completed order
+        /// </summary>
+        /// <param name="cart">Alphanumeric cart id assigned to order by PayPal</param>
         public async Task<ActionResult> OrderSuccess()
         {
             string id = Request.Params.Get("cart");
@@ -34,6 +39,7 @@ namespace StovepipeHeatSaver.Controllers
             {
                 return HttpNotFound();
             }
+            order.ShipToAddress = await db.Addresses.FindAsync(order.ShipToAddressId);
 
             return View(order);
         }
