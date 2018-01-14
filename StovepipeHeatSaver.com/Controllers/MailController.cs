@@ -24,6 +24,7 @@ namespace StovepipeHeatSaver.Controllers
         {
             string id = Request.Params.Get("cart");
             Order order = await db.Orders.Include(o => o.Customer).Where(o => o.Cart == id).SingleOrDefaultAsync();
+            //Order order = await db.Orders.Include(o => o.Customer).FirstOrDefaultAsync();
             if (order == null)
             {
                 return HttpNotFound();
@@ -37,8 +38,9 @@ namespace StovepipeHeatSaver.Controllers
             var message = new MailMessage
             {
                 From = new MailAddress("webmaster@stovepipeheatsaver.com"),
-                Subject = "Order confirmation",
-                Body = body
+                Subject = "Order confirmation - " + order.Description,
+                Body = body,
+                IsBodyHtml = true
             };
             message.To.Add(new MailAddress(order.Customer.EmailAddress));
 
