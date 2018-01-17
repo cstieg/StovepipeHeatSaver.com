@@ -26,6 +26,8 @@ namespace StovepipeHeatSaver.Controllers
     [ValidateInput(false)]
     public class ProductsController : BaseController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Products
         [Route("")]
         public async Task<ActionResult> Index()

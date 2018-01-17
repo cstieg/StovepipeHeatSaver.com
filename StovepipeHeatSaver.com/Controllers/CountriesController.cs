@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using Cstieg.Geography;
 using Cstieg.ControllerHelper.ActionFilters;
+using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -16,6 +17,8 @@ namespace StovepipeHeatSaver.Controllers
     [Authorize(Roles = "Administrator")]
     public class CountriesController : BaseController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Countries
         [Route("")]
         public async Task<ActionResult> Index()

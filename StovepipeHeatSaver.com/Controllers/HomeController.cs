@@ -22,6 +22,7 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Products
         public async Task<ActionResult> Products()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             var products = await db.Products.Where(p => !p.DoNotDisplay).ToListAsync();
             foreach (var product in products)
             {
@@ -58,6 +59,7 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Product?circumference=10.8&unit=inches
         public async Task<ActionResult> ProductByCircumference(HttpRequestBase Request)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             string circumferenceParam = Request.Params.Get("circumference");
             string unit = Request.Params.Get("unit");
             decimal circumference;
@@ -120,6 +122,7 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Product/1
         public async Task<ActionResult> ProductById(int id)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             string circumferenceParam = Request.Params.Get("circumference");
             string unit = Request.Params.Get("unit");
             var product = await db.Products.FindAsync(id);
@@ -130,6 +133,7 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Product/StovepipeHeatSaver for 6" stove pipe
         public async Task<ActionResult> ProductByProductName(string productName)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             Product product = await db.Products.Where(p => p.Name.ToLower() == productName.ToLower()).SingleOrDefaultAsync();
             if (product == null)
             {
@@ -149,12 +153,14 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Faq
         public async Task<ActionResult> Faq()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             return View(await db.Faqs.ToListAsync());
         }
 
         // GET: Reviews
         public async Task<ActionResult> Reviews()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Cstieg.Sales.Models;
 using Cstieg.ControllerHelper.ActionFilters;
+using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -16,6 +17,8 @@ namespace StovepipeHeatSaver.Controllers
     [Authorize(Roles = "Administrator")]
     public class ShippingSchemesController : BaseController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: ShippingSchemes
         [Route("")]
         public async Task<ActionResult> Index()

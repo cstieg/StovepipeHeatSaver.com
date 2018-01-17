@@ -18,6 +18,8 @@ namespace StovepipeHeatSaver.Controllers
     [ValidateInput(false)]
     public class ReviewsController : BaseController
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Reviews
         [Route("")]
         public async Task<ActionResult> Index()
