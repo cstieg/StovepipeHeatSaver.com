@@ -38,7 +38,8 @@ namespace StovepipeHeatSaver.Controllers
         /// <summary>
         /// Saves the shopping cart object for the current anonymous user in the database, using the AnonymousId from cookie to identify the owner.
         /// </summary>
-        /// <param name="shoppingCart"></param>
+        /// <param name="shoppingCart">ShoppingCart object to save</param>
+        /// <param name="db">Database context to which ShoppingCart belongs</param>
         protected async Task SaveShoppingCart(ShoppingCart shoppingCart, ApplicationDbContext db)
         {
 
@@ -65,6 +66,7 @@ namespace StovepipeHeatSaver.Controllers
         /// Gets the shopping cart object for the current anonymous user (according to AnonymousId stored in cookie) from database.
         /// </summary>
         /// <returns>The shopping cart object for the current user</returns>
+        /// <param name="db">Database context to which ShoppingCart belongs</param>
         protected async Task<ShoppingCart> GetShoppingCart(ApplicationDbContext db)
         {
             return await db.ShoppingCarts.Include(s => s.Order)
@@ -77,6 +79,7 @@ namespace StovepipeHeatSaver.Controllers
         /// Deletes a shopping cart object from the database
         /// </summary>
         /// <param name="shoppingCart">The shopping cart object to delete</param>
+        /// <param name="db">Database context to which ShoppingCart belongs</param>
         protected async Task DeleteShoppingCart(ShoppingCart shoppingCart, ApplicationDbContext db)
         {
             db.Entry(shoppingCart).State = EntityState.Deleted;

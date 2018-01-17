@@ -61,14 +61,25 @@ namespace StovepipeHeatSaver.Controllers
 
             // get address and add to shopping cart
             AddressBase shippingAddress = paymentDetails.Payer.PayerInfo.ShippingAddress;
+            if (shoppingCart.Order.ShipToAddress == null)
+            {
+                shoppingCart.Order.ShipToAddress = new ShipToAddress();
+            }
             shippingAddress.CopyTo(shoppingCart.Order.ShipToAddress);
 
-            try 
+            try
             {
                 // verify payment details
                 paymentDetails.VerifyShoppingCart(shoppingCart);
                 paymentDetails.VerifyCountry(shoppingCart, await db.Countries.ToListAsync());
-
+            }
+            catch (Exception e)
+            {
+                return this.JError(400, e.Message);
+            }
+            
+            try
+            { 
                 // save order info to db
                 await SaveShoppingCartToDbAsync(shoppingCart, paymentDetails, db);
 
@@ -77,7 +88,7 @@ namespace StovepipeHeatSaver.Controllers
             }
             catch (Exception e)
             {
-                return this.JError(400, e.Message);
+                return this.JError(500, "Database error");
             }
 
             // On success, front end will execute payment with PayPal
@@ -92,7 +103,7 @@ namespace StovepipeHeatSaver.Controllers
         /// <param name="db">Database context to which shopping cart belongs</param>
         private async Task SaveShoppingCartToDbAsync(ShoppingCart shoppingCart, PaymentDetails paymentDetails, ApplicationDbContext db)
         {
-            // update customer
+            // update customer ------------------------------------------------------
             DateTime currentTime = DateTime.Now;
             PayerInfo payerInfo = paymentDetails.Payer.PayerInfo;
             Customer customer = await db.Customers.SingleOrDefaultAsync(c => c.EmailAddress == payerInfo.Email);
@@ -117,7 +128,7 @@ namespace StovepipeHeatSaver.Controllers
                 db.Entry(customer).State = EntityState.Modified;
             }
 
-            // update address
+            // update address ----------------------------------------------------------
             bool isNewAddress = true;
             if (!isNewCustomer)
             {
@@ -137,21 +148,23 @@ namespace StovepipeHeatSaver.Controllers
                 if (!isNewAddress)
                 {
                     shoppingCart.Order.ShipToAddressId = addressOnFile.Id;
-                    db.Entry(shoppingCart.Order.ShipToAddress).State = EntityState.Unchanged;
-                    db.Entry(shoppingCart.Order.BillToAddress).State = EntityState.Unchanged;
+                    if (shoppingCart.Order.ShipToAddress != null)
+                    {
+                        db.Entry(shoppingCart.Order.ShipToAddress).State = EntityState.Detached;
+                    }
+                    if (shoppingCart.Order.BillToAddress != null)
+                    {
+                        db.Entry(shoppingCart.Order.BillToAddress).State = EntityState.Detached;
+                    }
                 }
             }
 
-            // update other models with newly saved customer entity
-            shoppingCart.Order.Customer = customer;
-            shoppingCart.Order.CustomerId = customer.Id;
-            shoppingCart.Order.ShipToAddress.Customer = customer;
-            shoppingCart.Order.ShipToAddress.CustomerId = customer.Id;
             shoppingCart.Order.ShipToAddress.SetNullStringsToEmpty();
 
             // Add new address to database
             if (isNewAddress)
-            {
+            { 
+                shoppingCart.Order.ShipToAddress.Customer = customer;
                 db.Addresses.Add(shoppingCart.Order.ShipToAddress);
             }
 
@@ -159,10 +172,9 @@ namespace StovepipeHeatSaver.Controllers
             if (shoppingCart.Order.BillToAddress == null || shoppingCart.Order.BillToAddress.Address1 == "")
             {
                 shoppingCart.Order.BillToAddressId = shoppingCart.Order.ShipToAddressId;
-                db.Entry(shoppingCart.Order.BillToAddress).State = EntityState.Unchanged;
             }
 
-            // add order to database
+            // add order to database --------------------------------------------------
             shoppingCart.Order.Cart = paymentDetails.Cart;
             shoppingCart.Order.DateOrdered = currentTime;
             db.Entry(shoppingCart.Order).State = EntityState.Modified;
