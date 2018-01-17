@@ -40,9 +40,16 @@ paypal.Button.render({
 
                 // Make a call to the REST api to create the payment
                 return actions.payment.create({ payment: payment });
+            },
+            // on error
+            function (data) {
+                alert('Error processing order: \n' + data.responseJSON.message);
+                window.location.href = "/ShoppingCart";
             })
             .fail(function (data) {
-                alert('Error processing order: \n' + data.responseJSON.message);
+                debugger;
+                alert('Error processing PayPal order: \n' + data.responseJSON.message);
+                window.location.href = "/ShoppingCart";
             });
     },
 

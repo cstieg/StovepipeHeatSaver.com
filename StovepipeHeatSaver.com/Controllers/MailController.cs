@@ -2,6 +2,7 @@
 using Cstieg.Sales.Models;
 using RazorEngine;
 using RazorEngine.Templating;
+using StovepipeHeatSaver.Models;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace StovepipeHeatSaver.Controllers
         [HttpPost]
         public async Task<ActionResult> ConfirmOrder()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             string id = Request.Params.Get("cart");
             Order order = await db.Orders.Include(o => o.Customer).Where(o => o.Cart == id).SingleOrDefaultAsync();
             //Order order = await db.Orders.Include(o => o.Customer).FirstOrDefaultAsync();

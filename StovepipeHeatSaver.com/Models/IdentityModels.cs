@@ -31,6 +31,7 @@ namespace StovepipeHeatSaver.Models
             return new ApplicationDbContext();
         }
 
+        public DbSet<Cstieg.Sales.Models.ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<Cstieg.Sales.Models.Customer> Customers { get; set; }
         public DbSet<Cstieg.Sales.Models.Order> Orders { get; set; }
         public DbSet<Cstieg.Sales.Models.OrderDetail> OrderDetails { get; set; }

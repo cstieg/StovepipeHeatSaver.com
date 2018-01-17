@@ -53,6 +53,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
@@ -118,9 +121,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -257,6 +257,26 @@
     <Compile Include="Migrations\201801141813290_CustomerName.cs" />
     <Compile Include="Migrations\201801141813290_CustomerName.Designer.cs">
       <DependentUpon>201801141813290_CustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151915191_shoppingCart.cs" />
+    <Compile Include="Migrations\201801151915191_shoppingCart.Designer.cs">
+      <DependentUpon>201801151915191_shoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151952505_OrderDateNullable.cs" />
+    <Compile Include="Migrations\201801151952505_OrderDateNullable.Designer.cs">
+      <DependentUpon>201801151952505_OrderDateNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801152007113_OrderNullableCustomer.cs" />
+    <Compile Include="Migrations\201801152007113_OrderNullableCustomer.Designer.cs">
+      <DependentUpon>201801152007113_OrderNullableCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801152052290_orderCascadeOnDelete.cs" />
+    <Compile Include="Migrations\201801152052290_orderCascadeOnDelete.Designer.cs">
+      <DependentUpon>201801152052290_orderCascadeOnDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801152126166_OrderDetailNoOrderNavigation.cs" />
+    <Compile Include="Migrations\201801152126166_OrderDetailNoOrderNavigation.Designer.cs">
+      <DependentUpon>201801152126166_OrderDetailNoOrderNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -505,7 +525,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderSuccess - old.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
@@ -551,7 +571,7 @@
     <Content Include="Views\Products\_ModifyPartial.cshtml" />
     <Content Include="Views\Products\_ProductImagePartial.cshtml" />
     <Content Include="Views\Mail\OrderSuccessEmail.cshtml" />
-    <Content Include="Views\ShoppingCart\OrderSuccess - Copy.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
     <None Include="Web.Remote.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -636,6 +656,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801141813290_CustomerName.resx">
       <DependentUpon>201801141813290_CustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151915191_shoppingCart.resx">
+      <DependentUpon>201801151915191_shoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151952505_OrderDateNullable.resx">
+      <DependentUpon>201801151952505_OrderDateNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801152007113_OrderNullableCustomer.resx">
+      <DependentUpon>201801152007113_OrderNullableCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801152052290_orderCascadeOnDelete.resx">
+      <DependentUpon>201801152052290_orderCascadeOnDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801152126166_OrderDetailNoOrderNavigation.resx">
+      <DependentUpon>201801152126166_OrderDetailNoOrderNavigation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
