@@ -20,12 +20,24 @@
 
 
 <h2>Products</h2>   
-<h4>Stop! Measure the circumference; don't guess on the diameter!!</h4>
-<p>Please be sure to measure the circumference (distance around) your stove pipe.  This is different from the diameter.  
-    See the <a href="/#index-how-to-measure">instructions</a> for help.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <h4>Stop! Measure the circumference; don't guess on the diameter!!</h4>
+            <div class="hidden-xs hidden-sm hidden-md col-lg-12"><br /></div>
+            <p>
+                Please be sure to measure the circumference (distance around) your stove pipe.  This is different from the diameter.
+                See the <a href="/#index-how-to-measure">instructions</a> for help.
+            </p>
 
-<div>
-    @Html.Partial("_FindByCircumferencePartial")
+            <div>
+                @Html.Partial("_FindByCircumferencePartial")
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <img src="~/Content/images/CircumferenceDiameter.png" class="max-width" />
+        </div>
+    </div>
 </div>
 
 <div class="container">
