@@ -446,6 +446,7 @@
     <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w200.jpg" />
     <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w400.jpg" />
     <Content Include="Content\images\20171129133235-FlexibleTapeMeasure-w800.jpg" />
+    <Content Include="Content\images\CircumferenceDiameter.png" />
     <Content Include="Content\images\ImageUnavailable.png" />
     <Content Include="Content\images\StovepipeHeatSaverLogo-small.png" />
     <Content Include="Content\images\StovePipeHeatSaverLogo.png" />
@@ -525,7 +526,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\OrderSuccess - old.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />

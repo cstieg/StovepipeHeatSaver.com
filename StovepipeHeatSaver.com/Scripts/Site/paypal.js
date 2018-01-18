@@ -47,7 +47,6 @@ paypal.Button.render({
                 window.location.href = "/ShoppingCart";
             })
             .fail(function (data) {
-                debugger;
                 alert('Error processing PayPal order: \n' + data.responseJSON.message);
                 window.location.href = "/ShoppingCart";
             });
@@ -72,10 +71,10 @@ paypal.Button.render({
                         // Execute the payment
                         return actions.payment.execute()
                             .then(function (data) {
+                                // Email an order confirmation page to the buyer
+                                $.post('/Mail/ConfirmOrder?cart=' + data.cart);
+
                                 // Show a success page to the buyer
-                                $.post('/Mail/ConfirmOrder?cart=' + data.cart).fail(function () {
-                                    debugger;
-                                });
                                 window.location.href = '/ShoppingCart/OrderSuccess?cart=' + data.cart;
                             },
                             function (data) {

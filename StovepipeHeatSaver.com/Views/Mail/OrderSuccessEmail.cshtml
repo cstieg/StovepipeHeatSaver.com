@@ -17,7 +17,7 @@
         {
             if (orderDetails.Product.WebImages.Count > 0)
             {
-                <img src="@Server.MapPath(orderDetails.Product.WebImages.First().ImageUrl)" />
+                <img src="@ViewBag.baseURL@orderDetails.Product.WebImages.First().ImageUrl" />
             }
             <p>Item: @orderDetails.Product.Name</p>
             <p>Quantity: @orderDetails.Quantity</p>
