@@ -5,21 +5,17 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerHelper", "..\_Reusables\C#\ControllerHelper\ControllerHelper\ControllerHelper.csproj", "{C8DB3F11-651C-4A00-B2D6-650700D0007F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geography", "..\_Reusables\C#\Geography\Geography\Geography.csproj", "{C68013C0-5ECD-4C34-AE72-07F6742EFB70}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Image", "..\_Reusables\C#\Image\Image.csproj", "{EA5294A7-7F80-4DA0-960B-0AE3D376C841}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionHelper", "..\_Reusables\C#\SessionHelper\SessionHelper\SessionHelper.csproj", "{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringHelper", "..\_Reusables\C#\StringHelper\StringHelper.csproj", "{DFF3EF94-9144-45EB-BE2D-9BDE93671212}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StovepipeHeatSaver.com", "StovepipeHeatSaver.com\StovepipeHeatSaver.com.csproj", "{AEC1819D-A750-4E8A-B4F5-3A14436621A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFiles", "..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj", "{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales", "..\_Reusables\C#\Sales\Sales\Sales.csproj", "{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales", "..\_Reusables\C#\Sales\Sales\Sales.csproj", "{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.PayPal", "..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj", "{601225F6-0D4D-41AE-89BA-5677D1354BFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.RSS", "..\_Reusables\C#\Sales\Sales.RSS\Sales.RSS.csproj", "{0251C200-62B2-4E2F-824A-AA927F0BB48B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.PayPal", "..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj", "{FD833E40-981E-494F-AF45-048F9A2714EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StovepipeHeatSaver.com.Test", "StovepipeHeatSaver.com.Test\StovepipeHeatSaver.com.Test.csproj", "{DFF2E133-7397-4BD6-A010-77709093560C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,30 +30,6 @@ Global
 		{C8DB3F11-651C-4A00-B2D6-650700D0007F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8DB3F11-651C-4A00-B2D6-650700D0007F}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
 		{C8DB3F11-651C-4A00-B2D6-650700D0007F}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{C68013C0-5ECD-4C34-AE72-07F6742EFB70}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{EA5294A7-7F80-4DA0-960B-0AE3D376C841}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{890D5C31-8E0C-40F9-94DE-36B4FDDB2AAE}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{DFF3EF94-9144-45EB-BE2D-9BDE93671212}.Remote|Any CPU.Build.0 = Remote|Any CPU
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC1819D-A750-4E8A-B4F5-3A14436621A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -70,18 +42,30 @@ Global
 		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
 		{5612C6E4-F55C-4120-B33D-BCFCC2BDA4BD}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{DB2B6BDC-FAE9-4263-8B08-94FBEE9A3850}.Remote|Any CPU.Build.0 = Remote|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Remote|Any CPU.ActiveCfg = Remote|Any CPU
-		{601225F6-0D4D-41AE-89BA-5677D1354BFB}.Remote|Any CPU.Build.0 = Remote|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Remote|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7878A0-2385-4D93-9D5E-06FAD9982CA2}.Remote|Any CPU.Build.0 = Release|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Remote|Any CPU.ActiveCfg = Release|Any CPU
+		{0251C200-62B2-4E2F-824A-AA927F0BB48B}.Remote|Any CPU.Build.0 = Release|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Remote|Any CPU.ActiveCfg = Release|Any CPU
+		{FD833E40-981E-494F-AF45-048F9A2714EE}.Remote|Any CPU.Build.0 = Release|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Remote|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF2E133-7397-4BD6-A010-77709093560C}.Remote|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
