@@ -1,5 +1,4 @@
-﻿using StovepipeHeatSaver.Models;
-using StovepipeHeatSaver.Services;
+﻿using StovepipeHeatSaver.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -47,7 +46,7 @@ namespace StovepipeHeatSaver.Controllers
             }
             catch
             {
-                return await ProductByProductName(id);
+                return await ProductByUrlName(id);
             }
         }
 
@@ -121,9 +120,9 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Product/StovepipeHeatSaver for 6" stove pipe
-        public async Task<ActionResult> ProductByProductName(string productName)
+        public async Task<ActionResult> ProductByUrlName(string productName)
         {
-            var product = await _productService.GetByNameAsync(productName);
+            var product = await _productService.GetByUrlNameAsync(productName);
             if (product == null)
             {
                 return HttpNotFound();

@@ -15,6 +15,7 @@ function shoppingCartPostError(xhr) {
         message += xhr.statusCode;
     }
     alert(message);
+    debugger;
 }
 
 // Adds a product with a given id to the shopping cart
@@ -61,7 +62,7 @@ function buyNow(id) {
 }
 
 // Increments the quantity of an item in the shopping cart with a given id
-function IncrementItem(id) {
+function incrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
@@ -80,7 +81,7 @@ function IncrementItem(id) {
 }
 
 // Decrements the quantity of an item in the shopping cart with a given id
-function DecrementItem(id) {
+function decrementItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id
@@ -110,7 +111,7 @@ function DecrementItem(id) {
 }
 
 // Removes an item with a given id from the shopping cart
-function RemoveItem(id) {
+function removeItem(id) {
     var postData = {
         __RequestVerificationToken: antiForgeryToken(),
         ID: id

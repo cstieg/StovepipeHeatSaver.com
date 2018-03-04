@@ -1,8 +1,8 @@
-﻿@model StovepipeHeatSaver.Models.Product
+﻿@model Cstieg.Sales.Models.Product
 
 <article class="col-xs-12 col-sm-4 col-md-3 col-lg-3 product-item"
          onmouseover="$(this).addClass('selected');"
-         onmouseout="$(this).removeClass('selected');" />
+         onmouseout="$(this).removeClass('selected');" >
     <a href="/Product/@Model.Id">
         <div class="image-wrapper">
             @if (Model.WebImages != null && Model.WebImages.Count() > 0)

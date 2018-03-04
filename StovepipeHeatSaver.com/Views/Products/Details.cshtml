@@ -1,4 +1,4 @@
-﻿@model StovepipeHeatSaver.Models.Product
+﻿@model Cstieg.Sales.Models.Product
 
 @{
     ViewBag.Title = "Details";
@@ -67,11 +67,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Diameter)
+            Diameter
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Diameter)
+            @Model.ProductExtension.Diameter
         </dd>
 
     </dl>
