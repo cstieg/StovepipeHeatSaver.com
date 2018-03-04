@@ -1,15 +1,13 @@
 namespace StovepipeHeatSaver.com.Test.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<StovepipeHeatSaver.com.Test.Repositories.StovepipeHeatSaverTestContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(StovepipeHeatSaver.com.Test.Repositories.StovepipeHeatSaverTestContext context)

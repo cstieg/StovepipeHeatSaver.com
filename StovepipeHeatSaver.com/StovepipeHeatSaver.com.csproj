@@ -49,6 +49,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cstieg.FileHelper">
+      <HintPath>..\..\_Reusables\C#\FileHelper\FileHelper\bin\Release\Cstieg.FileHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -121,12 +130,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -205,6 +208,8 @@
     <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\RssController.cs" />
+    <Compile Include="Controllers\ShippingCountriesController.cs" />
     <Compile Include="Controllers\ShippingSchemesController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
@@ -278,14 +283,29 @@
     <Compile Include="Migrations\201801152126166_OrderDetailNoOrderNavigation.Designer.cs">
       <DependentUpon>201801152126166_OrderDetailNoOrderNavigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801302035347_updated.cs" />
+    <Compile Include="Migrations\201801302035347_updated.Designer.cs">
+      <DependentUpon>201801302035347_updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803031843431_ProductExtension.cs" />
+    <Compile Include="Migrations\201803031843431_ProductExtension.Designer.cs">
+      <DependentUpon>201803031843431_ProductExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803040015253_NoProductExtension.cs" />
+    <Compile Include="Migrations\201803040015253_NoProductExtension.Designer.cs">
+      <DependentUpon>201803040015253_NoProductExtension.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Faq.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IProductExtensionContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductExtensions.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ProductExtensionService.cs" />
+    <Compile Include="Services\ProductServiceExtension.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -570,8 +590,15 @@
     <Content Include="Views\Countries\_ModifyPartial.cshtml" />
     <Content Include="Views\Products\_ModifyPartial.cshtml" />
     <Content Include="Views\Products\_ProductImagePartial.cshtml" />
-    <Content Include="Views\Mail\OrderSuccessEmail.cshtml" />
+    <Content Include="..\..\_Reusables\C#\Sales\Sales\Views\Mail\OrderSuccessEmail.cshtml">
+      <Link>Views\Mail\OrderSuccessEmail.cshtml</Link>
+    </Content>
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
+    <Content Include="Views\ShippingCountries\Create.cshtml" />
+    <Content Include="Views\ShippingCountries\Delete.cshtml" />
+    <Content Include="Views\ShippingCountries\Details.cshtml" />
+    <Content Include="Views\ShippingCountries\Edit.cshtml" />
+    <Content Include="Views\ShippingCountries\Index.cshtml" />
     <None Include="Web.Remote.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -599,20 +626,16 @@
       <Project>{c8db3f11-651c-4a00-b2d6-650700d0007f}</Project>
       <Name>ControllerHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\Geography\Geography\Geography.csproj">
-      <Project>{c68013c0-5ecd-4c34-ae72-07f6742efb70}</Project>
-      <Name>Geography</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_Reusables\C#\Image\Image.csproj">
-      <Project>{ea5294a7-7f80-4da0-960b-0ae3d376c841}</Project>
-      <Name>Image</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\Sales.PayPal\Sales.PayPal\Sales.PayPal.csproj">
-      <Project>{601225f6-0d4d-41ae-89ba-5677d1354bfb}</Project>
+      <Project>{fd833e40-981e-494f-af45-048f9a2714ee}</Project>
       <Name>Sales.PayPal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\_Reusables\C#\Sales\Sales.RSS\Sales.RSS.csproj">
+      <Project>{0251c200-62b2-4e2f-824a-aa927f0bb48b}</Project>
+      <Name>Sales.RSS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\Sales\Sales\Sales.csproj">
-      <Project>{db2b6bdc-fae9-4263-8b08-94fbee9a3850}</Project>
+      <Project>{af7878a0-2385-4d93-9d5e-06fad9982ca2}</Project>
       <Name>Sales</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\_Reusables\C#\WebFiles\WebFiles\WebFiles.csproj">
@@ -671,6 +694,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801152126166_OrderDetailNoOrderNavigation.resx">
       <DependentUpon>201801152126166_OrderDetailNoOrderNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801302035347_updated.resx">
+      <DependentUpon>201801302035347_updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803031843431_ProductExtension.resx">
+      <DependentUpon>201803031843431_ProductExtension.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803040015253_NoProductExtension.resx">
+      <DependentUpon>201803040015253_NoProductExtension.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

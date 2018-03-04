@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Cstieg.Sales.Models;
+using Cstieg.Sales.Repositories;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Configuration;
 using System.Data.Entity;
@@ -19,28 +21,36 @@ namespace StovepipeHeatSaver.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, ISalesDbContext, IProductExtensionContext
     {
         public ApplicationDbContext()
             : base(ConfigurationManager.AppSettings["DbConnection"], throwIfV1Schema: false)
         {
         }
 
+        public ApplicationDbContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-        public DbSet<Cstieg.Sales.Models.ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<Cstieg.Sales.Models.Customer> Customers { get; set; }
-        public DbSet<Cstieg.Sales.Models.Order> Orders { get; set; }
-        public DbSet<Cstieg.Sales.Models.OrderDetail> OrderDetails { get; set; }
-        public DbSet<Cstieg.Sales.Models.ShipToAddress> Addresses { get; set; }
-        public DbSet<Cstieg.Sales.Models.ShippingScheme> ShippingSchemes { get; set; }
-        public DbSet<Cstieg.Sales.Models.ShippingCountry> ShippingCountries { get; set; }
-        public DbSet<Cstieg.Sales.Models.WebImage> WebImages { get; set; }
-        public DbSet<Cstieg.Geography.Country> Countries { get; set; }
+        
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<PromoCode> PromoCodes { get; set; }
+        public DbSet<PromoCodeAdded> PromoCodesAdded { get; set; }
+        public DbSet<ShippingCountry> ShippingCountries { get; set; }
+        public DbSet<ShippingScheme> ShippingSchemes { get; set; }
+        public DbSet<WebImage> WebImages { get; set; }
+
+        public DbSet<ProductExtension> ProductExtensions { get; set; }
+
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Review> Reviews { get; set; }
     }

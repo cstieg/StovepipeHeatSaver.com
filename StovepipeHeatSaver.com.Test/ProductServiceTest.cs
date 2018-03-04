@@ -64,7 +64,7 @@ namespace StovepipeHeatSaver.com.Test
             var product1 = await context.Products.FirstAsync(p => p.Name == "Product 1");
 
             // Act
-            var product = await _productExtensionService.GetProductExtension(product1);
+            var product = await _productExtensionService.GetProductExtensionAsync(product1);
 
             // Assert
             Assert.AreEqual(6, product.ProductExtension.Diameter);
@@ -77,7 +77,7 @@ namespace StovepipeHeatSaver.com.Test
             var products = await context.Products.ToListAsync();
 
             // Act
-            products = await _productExtensionService.GetProductExtensions(products);
+            products = await _productExtensionService.GetProductExtensionsAsync(products);
 
             // Assert
             Assert.IsNotNull(products[0].ProductExtension.Diameter);
@@ -95,6 +95,62 @@ namespace StovepipeHeatSaver.com.Test
             Assert.IsTrue(products.Exists(p => p.Name == "Product 1"));
             Assert.IsTrue(products.Exists(p => p.Name == "Product 2"));
             Assert.IsTrue(products[0].ProductExtension.Diameter == 6);
+        }
+
+        [TestMethod]
+        public async Task AddProductExtensionAsync()
+        {
+            // Arrange
+            var product = new Product()
+            {
+                Name = "New Product",
+                Price = 1.00M,
+                Shipping = 0.01M
+            };
+            context.Products.Add(product);
+            await context.SaveChangesAsync();
+
+            var productExtension = new ProductExtension() { ProductId = product.Id, Diameter = 3.14M };
+            product.ProductExtension = productExtension;
+
+            // Act
+            _productExtensionService.AddProductExtension(product);
+            await context.SaveChangesAsync();
+
+            // Assert
+            Assert.IsNotNull(await context.ProductExtensions.SingleAsync(p => p.ProductId == product.Id && p.Diameter == 3.14M));
+        }
+
+        [TestMethod]
+        public async Task EditProductExtensionAsync()
+        {
+            // Arrange
+            var productExtension = await context.ProductExtensions.FirstAsync();
+            productExtension.Diameter = 100M;
+
+            var product = await context.Products.FindAsync(productExtension.ProductId);
+
+            // Act
+            _productExtensionService.EditProductExtension(product);
+            await context.SaveChangesAsync();
+
+            // Assert
+            Assert.IsNotNull(await context.ProductExtensions.SingleAsync(p => p.ProductId == product.Id && p.Diameter == 100M));
+        }
+
+        [TestMethod]
+        public async Task DeleteProductExtensionAsync()
+        {
+            // Arrange
+            var product = await context.Products.SingleAsync(p => p.Name == "Product 5");
+            product.ProductExtension = await context.ProductExtensions.FirstAsync(p => p.ProductId == product.Id);
+
+            // Act
+            _productExtensionService.DeleteProductExtension(product);
+            await context.SaveChangesAsync();
+
+            // Assert
+            Assert.IsFalse(await context.ProductExtensions.AnyAsync(p => p.Diameter == 15M));
         }
     }
 }

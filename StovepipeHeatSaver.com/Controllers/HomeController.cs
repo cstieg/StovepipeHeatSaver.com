@@ -1,4 +1,5 @@
 ﻿using StovepipeHeatSaver.Models;
+using StovepipeHeatSaver.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,12 +23,7 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Products
         public async Task<ActionResult> Products()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var products = await db.Products.Where(p => !p.DoNotDisplay).ToListAsync();
-            foreach (var product in products)
-            {
-                product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
-            }
+            var products = await _productService.GetDisplayProductsAsync();
             return View(products);
         }
 
@@ -40,7 +36,7 @@ namespace StovepipeHeatSaver.Controllers
         /// <param name="id">May be an integer id or string product name</param>
         public async Task<ActionResult> Product(string id)
         {
-            if (id== null || id == "")
+            if (id == null || id == "")
             {
                 return await ProductByCircumference(Request);
             }
@@ -59,7 +55,6 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Product?circumference=10.8&unit=inches
         public async Task<ActionResult> ProductByCircumference(HttpRequestBase Request)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             string circumferenceParam = Request.Params.Get("circumference");
             string unit = Request.Params.Get("unit");
             decimal circumference;
@@ -91,21 +86,15 @@ namespace StovepipeHeatSaver.Controllers
 
             try
             {
-                var products = await db.Products.ToListAsync();
-                products = products.FindAll(p => circumference >= p.MinCircumference && circumference <= p.MaxCircumference);
+                var products = await _productService.GetProductsForCircumferenceAsync(circumference);
                 switch (products.Count)
                 {
                     case 0:
                         throw new Exception("Product size not found");
                     case 1:
                         var product = products.Single();
-                        product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
                         return View(product);
                     default:
-                        foreach (var productSingle in products)
-                        {
-                            productSingle.WebImages = productSingle.WebImages.OrderBy(w => w.Order).ToList();
-                        }
                         return View("Products", products);
                 }       
             }
@@ -122,26 +111,25 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Product/1
         public async Task<ActionResult> ProductById(int id)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            string circumferenceParam = Request.Params.Get("circumference");
-            string unit = Request.Params.Get("unit");
-            var product = await db.Products.FindAsync(id);
-            product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
-            return View(product);
+            var product = await _productService.GetAsync(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("Product", product);
         }
 
         // GET: Product/StovepipeHeatSaver for 6" stove pipe
         public async Task<ActionResult> ProductByProductName(string productName)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Product product = await db.Products.Where(p => p.Name.ToLower() == productName.ToLower()).SingleOrDefaultAsync();
+            var product = await _productService.GetByNameAsync(productName);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            
-            product.WebImages = product.WebImages.OrderBy(w => w.Order).ToList();
-            return View(product);
+
+            return View("Product", product);
         }
 
         // GET: ProductSizeNotFound
@@ -153,15 +141,13 @@ namespace StovepipeHeatSaver.Controllers
         // GET: Faq
         public async Task<ActionResult> Faq()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            return View(await db.Faqs.ToListAsync());
+            return View(await _context.Faqs.ToListAsync());
         }
 
         // GET: Reviews
         public async Task<ActionResult> Reviews()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            return View(await db.Reviews.OrderByDescending(r => r.Date).ToListAsync());
+            return View(await _context.Reviews.OrderByDescending(r => r.Date).ToListAsync());
         }
 
         // GET: Contact

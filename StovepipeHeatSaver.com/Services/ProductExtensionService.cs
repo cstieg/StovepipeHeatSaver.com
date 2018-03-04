@@ -16,22 +16,44 @@ namespace StovepipeHeatSaver.Services
             _context = context;
         }
 
-        public async Task<Product> GetProductExtension(Product product)
+        public async Task<Product> GetProductExtensionAsync(Product product)
         {
             var productExtension = await _context.ProductExtensions.SingleAsync(p => p.ProductId == product.Id);
             product.ProductExtension = productExtension;
             return product;
         }
 
-        public async Task<List<Product>> GetProductExtensions(List<Product> products)
+        public async Task<List<Product>> GetProductExtensionsAsync(List<Product> products)
         {
             List<Product> productsWithExtensions = new List<Product>();
             foreach (var product in products)
             {
-                productsWithExtensions.Add(await GetProductExtension(product));
+                productsWithExtensions.Add(await GetProductExtensionAsync(product));
             }
             return productsWithExtensions;
         }
         
+        public void DeleteProductExtension(Product product)
+        {
+            _context.ProductExtensions.Remove(product.ProductExtension);
+        }
+
+        public void AddProductExtension(Product product)
+        {
+            if (product.ProductExtension != null)
+            {
+                product.ProductExtension.Product = product;
+                _context.ProductExtensions.Add(product.ProductExtension);
+            }
+        }
+
+        public void EditProductExtension(Product product)
+        {
+            if (product.ProductExtension != null)
+            {
+                product.ProductExtension.Product = product;
+                _context.Entry(product.ProductExtension).State = EntityState.Modified;
+            }
+        }
     }
 }

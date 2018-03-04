@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Cstieg.Sales.Interfaces;
 using Cstieg.Sales.Models;
 
 namespace StovepipeHeatSaver.Models
@@ -7,8 +9,15 @@ namespace StovepipeHeatSaver.Models
     /// <summary>
     /// Model of product to be sold
     /// </summary>
-    public class Product : ProductBase
+    public class ProductExtension : ISalesEntity
     {
+        [Key]
+        public int Id { get; set; }
+
+        [ForeignKey("Product")]
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+
         public const decimal MinTolerancePct = 0.028M;
         public const decimal MaxTolerancePct = 0.08M;
 
