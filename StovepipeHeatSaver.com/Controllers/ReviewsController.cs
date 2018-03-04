@@ -28,12 +28,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Reviews/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             Review review = await db.Reviews.FindAsync(id);
             if (review == null)
             {
@@ -51,7 +47,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: Reviews/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
+        public async Task<ActionResult> Create(Review review)
         {
             if (ModelState.IsValid)
             {
@@ -64,12 +60,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Reviews/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             Review review = await db.Reviews.FindAsync(id);
             if (review == null)
             {
@@ -81,7 +73,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: Reviews/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Person,Date,Location,Text")] Review review)
+        public async Task<ActionResult> Edit(Review review)
         {
             if (ModelState.IsValid)
             {
@@ -93,12 +85,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Reviews/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             Review review = await db.Reviews.FindAsync(id);
             if (review == null)
             {

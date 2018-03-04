@@ -28,12 +28,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Faqs/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Faq faq = await db.Faqs.FindAsync(id);
             if (faq == null)
             {
@@ -51,7 +47,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: Faqs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Question,Answer")] Faq faq)
+        public async Task<ActionResult> Create(Faq faq)
         {
             if (ModelState.IsValid)
             {
@@ -64,12 +60,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Faqs/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             Faq faq = await db.Faqs.FindAsync(id);
             if (faq == null)
             {
@@ -81,7 +73,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: Faqs/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Question,Answer")] Faq faq)
+        public async Task<ActionResult> Edit(Faq faq)
         {
             if (ModelState.IsValid)
             {
@@ -93,12 +85,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: Faqs/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             Faq faq = await db.Faqs.FindAsync(id);
             if (faq == null)
             {

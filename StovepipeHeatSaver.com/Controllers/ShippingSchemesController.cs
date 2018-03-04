@@ -1,10 +1,10 @@
-﻿using System.Data.Entity;
+﻿using Cstieg.ControllerHelper.ActionFilters;
+using Cstieg.Sales.Models;
+using StovepipeHeatSaver.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Cstieg.Sales.Models;
-using Cstieg.ControllerHelper.ActionFilters;
-using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -27,12 +27,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: ShippingSchemes/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)
             {
@@ -50,7 +46,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: ShippingSchemes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description")] ShippingScheme shippingScheme)
+        public async Task<ActionResult> Create(ShippingScheme shippingScheme)
         {
             if (ModelState.IsValid)
             {
@@ -63,12 +59,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: ShippingSchemes/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)
             {
@@ -81,7 +73,7 @@ namespace StovepipeHeatSaver.Controllers
         // POST: ShippingSchemes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description")] ShippingScheme shippingScheme)
+        public async Task<ActionResult> Edit(ShippingScheme shippingScheme)
         {
             if (ModelState.IsValid)
             {
@@ -93,12 +85,8 @@ namespace StovepipeHeatSaver.Controllers
         }
 
         // GET: ShippingSchemes/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
             ShippingScheme shippingScheme = await db.ShippingSchemes.FindAsync(id);
             if (shippingScheme == null)
             {
