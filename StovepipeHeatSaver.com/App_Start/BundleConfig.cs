@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace DeerflyPatches
+namespace StovepipeHeatSaver
 {
     public class BundleConfig
     {
