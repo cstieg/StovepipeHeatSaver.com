@@ -15,6 +15,12 @@ namespace StovepipeHeatSaver
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
+                name: "Rss",
+                url: "rss/{action}.txt",
+                defaults: new { controller = "Rss", action = "Products" }
+            );
+
+            routes.MapRoute(
                 name: "Product",
                 url: "Product/{id}",
                 defaults: new { controller = "Home", action = "Product" }
@@ -42,5 +48,4 @@ namespace StovepipeHeatSaver
             return ControllerHelper.HasAction(typeof(HomeController), values[parameterName].ToString());
         }
     }
-
 }
