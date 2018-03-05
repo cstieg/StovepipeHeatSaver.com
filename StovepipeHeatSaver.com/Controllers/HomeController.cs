@@ -1,4 +1,5 @@
-﻿using StovepipeHeatSaver.Services;
+﻿using Cstieg.ControllerHelper.ActionFilters;
+using StovepipeHeatSaver.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -166,5 +167,12 @@ namespace StovepipeHeatSaver.Controllers
             List<string> controllers = new List<string>(controllersArray);
             return View(controllers);
         }
+
+        [ClearCache]
+        public ActionResult ClearCache()
+        {
+            return RedirectToActionPermanent("Index");
+        }
     }
+
 }
