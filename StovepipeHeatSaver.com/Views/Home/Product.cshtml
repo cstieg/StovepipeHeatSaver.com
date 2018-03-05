@@ -1,9 +1,9 @@
-﻿@model StovepipeHeatSaver.Models.Product
+﻿@model Cstieg.Sales.Models.Product
 
 @section AdditionalMeta
 {
-    <meta name="keywords" content="stove pipe, heat reclaimer, @Model.Diameter inch" />
-    <meta name="description" content="Reclaim lost heat from your @Model.Diameter inch stovepipe.  Buy stove pipe heat exchanger here." />
+    <meta name="keywords" content="stove pipe, heat reclaimer, @Model.ProductExtension.Diameter inch" />
+    <meta name="description" content="Reclaim lost heat from your @Model.ProductExtension.Diameter inch stovepipe.  Buy stove pipe heat exchanger here." />
 }
 
 @{
@@ -97,6 +97,11 @@
 
 
         <section id="product-page-description" class="col-md-6">
+            <meta itemprop="condition" content="@Model.Condition" />
+            <meta itemprop="brand" content="@Model.Brand" />
+            <meta itemprop="sku" content="@Model.Sku" />
+            <meta itemprop="category" content="@Model.GoogleProductCategory" />
+            <meta itemprop="description" content="@Model.MetaDescription" />
             <dl class="dl-horizontal">
                 <dt>
                     @Html.LabelFor(model => model.Name)
@@ -107,14 +112,14 @@
 
                 <dt>Stovepipe Circumference</dt>
                 <dd itemprop="width">
-                    @Html.DisplayFor(model => model.Circumference) inches
+                    @Model.ProductExtension.Circumference.ToString("0.0") inches
                 </dd>
 
                 <dt>
                     Fits stovepipes with circumference of
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.MinCircumference) to @Html.DisplayFor(model => model.MaxCircumference) inches
+                    @Model.ProductExtension.MinCircumference.ToString("0.0") to @Model.ProductExtension.MaxCircumference.ToString("0.0") inches
                 </dd>
 
                 <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -122,15 +127,14 @@
                         @Html.LabelFor(model => model.Price)
                     </dt>
                     <dd>
-                        <meta itemprop="priceCurrency" content="USD" />
-                        $<span itemprop="price">@Html.DisplayFor(model => model.Price)</span>
+                        $<span itemprop="price">@Html.DisplayFor(model => model.Price)</span> <span itemprop="priceCurrency">USD</span>
                     </dd>
 
                     <dt>
                         US Shipping
                     </dt>
                     <dd>
-                        $@Html.DisplayFor(model => model.Shipping)
+                        $@Html.DisplayFor(model => model.Shipping) USD
                     </dd>
 
                     <dt>
@@ -158,9 +162,9 @@
             <div class="button-container">
                 <button class="btn buy-now centered" onclick="buyNow(@Model.Id)">Add to Shopping Cart</button>
                 <!--
-                <br />
-                <button class="btn add-to-shopping-cart centered" onclick="addToShoppingCart(@Model.Id)">Add to Shopping Cart</button>
-                -->
+        <br />
+        <button class="btn add-to-shopping-cart centered" onclick="addToShoppingCart(@Model.Id)">Add to Shopping Cart</button>
+        -->
             </div>
         </section>
     </div>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @RenderSection("AdditionalMeta", false)
-    <title>StovepipeHeatSaver.com - Reclaim Lost Stovepipe Heat - @ViewBag.Title</title>
+    <title>StovepipeHeatSaver.com - @ViewBag.Title</title>
     @Styles.RenderFormat("<link rel='stylesheet' href='{0}' async />", "~/Content/css")
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -46,10 +46,10 @@
                 </button>
                 <a itemprop="url" href="~/">
                     <img itemprop="logo" class="logo"
-                         src="~/Content/images/StovepipeHeatSaverLogo-small.png" 
+                         src="~/Content/images/StovepipeHeatSaverLogo-small.png"
                          srcset="~/Content/images/StovepipeHeatSaverLogo.png 360w, ~/Content/images/StovepipeHeatSaverLogo-Small.png 200w"
                          sizes="200px"
-                         alt="Stovepipe Heatsaver logo"  />
+                         alt="Stovepipe Heatsaver logo" />
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -64,15 +64,15 @@
                             <span class="glyphicon glyphicon-shopping-cart"></span>Cart
                             <span class="badge" id="shoppingCartCount"></span>
                         </a>
-                    </li>   
+                    </li>
                 </ul>
                 <!--
-@Html.Partial("_LoginPartial")
--->
+                @Html.Partial("_LoginPartial")
+                -->
             </div>
 
         </div>
-       
+
     </div>
     @RenderSection("BreadCrumbs", false)
     <div class="container body-content">
@@ -88,8 +88,6 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/sortable")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
     <div id="anti-forgery-token" class="hidden">@Html.AntiForgeryToken()</div>

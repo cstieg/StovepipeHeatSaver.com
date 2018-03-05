@@ -442,22 +442,6 @@ span.glyphicon {
 }
 
 
-/* ******************************** Shopping Cart Page ******************************** */
-.shopping-cart-product-image {
-    max-width: 100%;
-}
-
-#no-paypal {
-    width: 250px;
-    border: ridge thick maroon;
-    border-radius: 14px;
-    padding: 6px;
-}
-
-#no-paypal h4 {
-    margin: auto;
-}
-
 /* ********************************Reviews Page *************************************** */
 .product-review {
     background-color: #fee;
