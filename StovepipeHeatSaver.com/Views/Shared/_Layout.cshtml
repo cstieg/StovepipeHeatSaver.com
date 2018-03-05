@@ -86,10 +86,10 @@
             </div>
         </footer>
     </div>
+    <span class="hidden-md" id="anti-forgery-token">@Html.AntiForgeryToken()</span>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
-    <div id="anti-forgery-token" class="hidden">@Html.AntiForgeryToken()</div>
 </body>
 </html>
