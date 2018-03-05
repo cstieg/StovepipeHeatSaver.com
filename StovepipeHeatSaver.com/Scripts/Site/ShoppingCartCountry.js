@@ -31,6 +31,7 @@ var shoppingCartCountry = (function () {
 
     // Event called when country is manually changed
     function changeCountry() {
+        debugger;
         postCountry(getCountry());
     }
 

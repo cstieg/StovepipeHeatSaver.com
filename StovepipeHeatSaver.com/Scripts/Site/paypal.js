@@ -73,7 +73,7 @@ paypal.Button.render({
                             .then(function (data) {
                                 // Email an order confirmation page to the buyer
                                 $.post('/Mail/ConfirmOrder?cart=' + data.id);
-                                debugger;
+
                                 // Show a success page to the buyer
                                 window.location.href = '/ShoppingCart/OrderSuccess?cart=' + data.id;
                             },
