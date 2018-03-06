@@ -2,7 +2,6 @@
 using StovepipeHeatSaver.Models;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -22,43 +21,32 @@ namespace StovepipeHeatSaver.Controllers
         [Route("")]
         public async Task<ActionResult> Index()
         {
-            var orders = db.Orders.Include(o => o.Customer).OrderByDescending(o => o.DateOrdered);
-            var orderList = await orders.ToListAsync();
-            foreach (var order in orderList)
-            {
-                order.OrderDetails = await db.OrderDetails.Where(o => o.OrderId == order.Id).Include(o => o.Product).ToListAsync();
-            }
-            return View(orderList);
+            var orders = await db.Orders.Include(o => o.Customer).Include(o => o.OrderDetails)
+                .Include(o => o.OrderDetails.Select(od => od.Product))
+                .Where(o => o.CustomerId != null).OrderByDescending(o => o.DateOrdered)
+                .Take(100).ToListAsync();
+            return View(orders);
         }
 
         // GET: Orders/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            Order order = await db.Orders.FindAsync(id);
+            Order order = await db.Orders.Include(o => o.OrderDetails.Select(od => od.Product)).SingleOrDefaultAsync(o => o.Id == id);
             if (order == null)
             {
                 return HttpNotFound();
             }
 
-            foreach (var orderDetail in order.OrderDetails)
-            {
-                orderDetail.Product = await db.Products.FirstOrDefaultAsync(o => o.Id == orderDetail.ProductId);
-            }
             return View(order);
         }
 
         // GET: Orders/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            Order order = await db.Orders.FindAsync(id);
+            Order order = await db.Orders.Include(o => o.OrderDetails.Select(od => od.Product)).SingleOrDefaultAsync(o => o.Id == id);
             if (order == null)
             {
                 return HttpNotFound();
-            }
-
-            foreach (var orderDetail in order.OrderDetails)
-            {
-                orderDetail.Product = await db.Products.FirstOrDefaultAsync(o => o.Id == orderDetail.ProductId);
             }
 
             return View(order);
