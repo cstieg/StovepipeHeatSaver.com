@@ -40,20 +40,23 @@ namespace StovepipeHeatSaver.Services
 
         public void AddProductExtension(Product product)
         {
-            if (product.ProductExtension != null)
+            ProductExtension productExtension = product.ProductExtension;
+            if (productExtension != null)
             {
-                product.ProductExtension.Product = product;
-                _context.ProductExtensions.Add(product.ProductExtension);
+                productExtension.Product = product;
+                _context.ProductExtensions.Add(productExtension);
             }
         }
 
         public void EditProductExtension(Product product)
         {
-            if (product.ProductExtension != null)
+            ProductExtension productExtension = product.ProductExtension;
+            if (productExtension != null)
             {
-                product.ProductExtension.Product = product;
-                _context.Entry(product.ProductExtension).State = EntityState.Modified;
+                productExtension.ProductId = product.Id;
+                _context.Entry(productExtension).State = EntityState.Modified;
             }
+            product.ProductExtension = null;
         }
     }
 }

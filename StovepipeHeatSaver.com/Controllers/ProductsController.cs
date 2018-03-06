@@ -11,6 +11,7 @@ using Cstieg.ControllerHelper.ActionFilters;
 using Cstieg.Sales.Models;
 using Cstieg.WebFiles.Controllers;
 using Cstieg.WebFiles;
+using StovepipeHeatSaver.Models;
 
 namespace StovepipeHeatSaver.Controllers
 {
@@ -70,19 +71,28 @@ namespace StovepipeHeatSaver.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Product product)
         {
+            await BindProductExtension(Request, product);
             if (ModelState.IsValid)
             {
-                await _productService.AddAsync(product);
-
-                // connect images that were previously saved to product (id = null)
-                foreach (var webImage in await _context.WebImages.Where(w => w.ProductId == null).ToListAsync())
+                try
                 {
-                    webImage.ProductId = product.Id;
-                    _context.Entry(webImage).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                    await _productService.AddAsync(product);
+
+                    // connect images that were previously saved to product (id = null)
+                    foreach (var webImage in await _context.WebImages.Where(w => w.ProductId == null).ToListAsync())
+                    {
+                        webImage.ProductId = product.Id;
+                        _context.Entry(webImage).State = EntityState.Modified;
+                        await _context.SaveChangesAsync();
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    return HttpNotFound(e.Message);
                 }
 
-                return RedirectToAction("Index");
             }
 
             ViewBag.ShippingSchemeId = new SelectList(_context.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
@@ -108,12 +118,21 @@ namespace StovepipeHeatSaver.Controllers
         // POST: Products/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Edit(Product product)
         {
+            await BindProductExtension(Request, product);
             if (ModelState.IsValid)
             {
-                await _productService.EditAsync(product);
-                return RedirectToAction("Index");
+                try
+                {
+                    await _productService.EditAsync(product);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    return HttpNotFound(e.Message);
+                }
             }
             ViewBag.ShippingSchemeId = new SelectList(_context.ShippingSchemes, "Id", "Name", product.ShippingSchemeId);
             return View(product);
@@ -241,6 +260,7 @@ namespace StovepipeHeatSaver.Controllers
         public async Task<JsonResult> Update(int id)
         {
             Product existingProduct;
+     
             try
             {
                 existingProduct = await _productService.GetAsync(id);
@@ -292,6 +312,17 @@ namespace StovepipeHeatSaver.Controllers
                 await _context.SaveChangesAsync();
             }
             return this.JOk();
+        }
+
+        private async Task BindProductExtension(HttpRequestBase request, Product product)
+        {
+            ProductExtension productExtension = await _context.ProductExtensions.SingleOrDefaultAsync(p => p.ProductId == product.Id)
+                ?? new ProductExtension();
+            productExtension.Product = product;
+            productExtension.ProductId = product.Id;
+            productExtension.Diameter = decimal.Parse(request.Unvalidated.Form.Get("Diameter"));
+
+            product.ProductExtension = productExtension;
         }
 
     }
