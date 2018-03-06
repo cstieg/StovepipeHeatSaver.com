@@ -547,10 +547,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\ModelViews\Orders\Create.cshtml" />
     <Content Include="Views\ModelViews\Orders\Delete.cshtml" />
     <Content Include="Views\ModelViews\Orders\Details.cshtml" />
-    <Content Include="Views\ModelViews\Orders\Edit.cshtml" />
     <Content Include="Views\ModelViews\Orders\Index.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
@@ -599,6 +597,8 @@
     <Content Include="Views\ModelViews\ShippingCountries\Index.cshtml" />
     <Content Include="Views\ModelViews\_ViewStart.cshtml" />
     <Content Include="Views\Mail\OrderSuccessEmail.cshtml" />
+    <Content Include="Views\ModelViews\Orders\_DetailPartial.cshtml" />
+    <Content Include="Views\ModelViews\ShippingCountries\_ModifyPartial.cshtml" />
     <None Include="Web.Remote.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

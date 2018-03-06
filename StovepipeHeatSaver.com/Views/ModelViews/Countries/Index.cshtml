@@ -1,11 +1,13 @@
-﻿@model IEnumerable<Cstieg.Geography.Country>
+﻿@model IEnumerable<Cstieg.Sales.Models.Country>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit Countries";
 }
 
-<h2>Index</h2>
-
+<h2>Countries</h2>
+<div>
+    @Html.ActionLink("Back to Edit", "Index", "edit")
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

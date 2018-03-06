@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<Cstieg.Sales.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit Products";
 }
 
-<h2>Index</h2>
-
+<h2>Products</h2>
+<div>
+    @Html.ActionLink("Back to Edit", "Index", "edit")
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

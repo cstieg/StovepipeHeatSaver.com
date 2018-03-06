@@ -1,4 +1,4 @@
-﻿@model Cstieg.Sales.Order
+﻿@model Cstieg.Sales.Models.Order
 
 @{
     ViewBag.Title = "Details";
@@ -6,45 +6,8 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BillToAddress.Recipient)
-        </dt>
+@Html.Partial("_DetailPartial")
 
-        <dd>
-            @Html.DisplayFor(model => model.BillToAddress.Recipient)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer.CustomerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Customer.CustomerName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShipToAddress.Recipient)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShipToAddress.Recipient)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOrdered)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOrdered)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

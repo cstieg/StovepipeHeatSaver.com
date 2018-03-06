@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<StovepipeHeatSaver.Models.Review>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Edit Reviews";
 }
 
-<h2>Index</h2>
-
+<h2>Reviews</h2>
+<div>
+    @Html.ActionLink("Back to Edit", "Index", "edit")
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
