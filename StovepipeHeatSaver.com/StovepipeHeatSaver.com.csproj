@@ -591,9 +591,6 @@
     <Content Include="Views\ModelViews\Countries\_ModifyPartial.cshtml" />
     <Content Include="Views\ModelViews\Products\_ModifyPartial.cshtml" />
     <Content Include="Views\ModelViews\Products\_ProductImagePartial.cshtml" />
-    <Content Include="..\..\_Reusables\C#\Sales\Sales\Views\Mail\OrderSuccessEmail.cshtml">
-      <Link>Views\Mail\OrderSuccessEmail.cshtml</Link>
-    </Content>
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
     <Content Include="Views\ModelViews\ShippingCountries\Create.cshtml" />
     <Content Include="Views\ModelViews\ShippingCountries\Delete.cshtml" />
@@ -601,6 +598,7 @@
     <Content Include="Views\ModelViews\ShippingCountries\Edit.cshtml" />
     <Content Include="Views\ModelViews\ShippingCountries\Index.cshtml" />
     <Content Include="Views\ModelViews\_ViewStart.cshtml" />
+    <Content Include="Views\Mail\OrderSuccessEmail.cshtml" />
     <None Include="Web.Remote.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

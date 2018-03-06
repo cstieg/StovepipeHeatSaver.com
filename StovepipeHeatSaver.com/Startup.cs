@@ -1,5 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Linq;
+using System.Web.Mvc;
 
 [assembly: OwinStartupAttribute(typeof(StovepipeHeatSaver.Startup))]
 namespace StovepipeHeatSaver
