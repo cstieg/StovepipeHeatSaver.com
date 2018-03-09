@@ -59,8 +59,25 @@ hr {
     white-space: normal;
 }
 
-h1 {
-    font-family: Impact;
+.title {
+    width: 100%;
+    position: absolute;
+    top: 45px;
+    text-align: center;
+}
+
+.title h1 {
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+
+
+@media screen and (max-width: 500px) {
+    .title {
+        text-align: right;
+        font-size: 10px;
+    }
 }
 
 h2,
